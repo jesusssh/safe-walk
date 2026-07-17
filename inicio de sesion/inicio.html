@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeWalk</title>
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <style>
+        .pantalla {
+            display: none;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .activa {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Pantalla 1 -->
+    <div id="login" class="pantalla activa">
+        <h1>SafeWalk</h1>
+        <h3>Camina seguro. Llega seguro</h3>
+
+        <input type="email" placeholder="Correo">
+        <br><br>
+
+        <input type="password" placeholder="Contraseña">
+        <br><br>
+
+        <button onclick="iniciarSesion()">
+            Iniciar Sesión
+        </button>
+
+        <p>¿Olvidaste tu contraseña?</p>
+    </div>
+
+    <!-- Pantalla 2 -->
+    <div id="inicio" class="pantalla">
+        <h1>SafeWalk</h1>
+
+        <h2>Bienvenido</h2>
+
+        <button onclick="cerrarSesion()">
+            Cerrar Sesión
+        </button>
+    </div>
+
+    <script>
+        function iniciarSesion() {
+            document.getElementById("login").classList.remove("activa");
+            document.getElementById("inicio").classList.add("activa");
+        }
+
+        function cerrarSesion() {
+            document.getElementById("inicio").classList.remove("activa");
+            document.getElementById("login").classList.add("activa");
+        }
+    </script>
+    <footer class="footer-nav">
+
+    <div class="nav-item">
+        img/home.png
+        <span>Inicio</span>
+    </div>
+
+    <div class="nav-item">
+        img/alertas.png
+        <span>Alertas</span>
+    </div>
+
+    <div class="nav-item">
+        img/reportar.png alt="Reportar">
+        <span>Reportar</span>
+    </div>
+
+    <div class="nav-item">
+        img/sos.png
+        <span>SOS</span>
+    </div>
+
+    <div class="nav-item">
+        img/rutas.png
+        <span>Rutas</span>
+    </div>
+
+    <div class="nav-item">
+        /perfil.png" alt="Perfil">
+        <span>Perfil</span>
+    </div>
+
+</footer>
+
+</body>
+</html>
