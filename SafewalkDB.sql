@@ -24,30 +24,8 @@ telefono_contacto VARCHAR(20) NOT NULL,
 correo VARCHAR(150) NOT NULL,
 parentesco VARCHAR(50) NULL,
 
-FOREIGN KEY id_usuario REFERENCES usuarios(id_usuario)
+FOREIGN KEY(id_usuario) REFERENCES usuarios(id_usuario)
 );
-
-CREATE TABLE IF NOT EXISTS votos_reportes(
-id_voto INT AUTO_INCREMENT PRIMARY KEY,
-id_reporte INT NOT NULL,
-id_usuario INT NOT NULL,
-
-tipo_voto ENUM(
- 'confirmar',
- 'falso'
- ) NOT NULL,
-
-fecha_voto DATETIME DEFAULT CURRENT_TIMESTAMP,
-UNIQUE(id_reporte,id_usuario),
-
-FOREIGN KEY id_reporte 
-REFERENCES reportes(id_reporte),
-FOREIGN KEY id_usuario 
-REFERENCES usuarios(id_usuario)
-
-);
-
-
 
 CREATE TABLE IF NOT EXISTS reportes(
 
@@ -70,12 +48,37 @@ votos_positivos INT DEFAULT 0,
 votos_negativos INT DEFAULT 0,
 
 fecha_reporte DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-fecha_expiracion DATETIME NULL
+fecha_expiracion DATETIME NULL,
 
-FOREIGN KEY id_usuario 
+
+FOREIGN KEY (id_usuario)
 REFERENCES usuarios(id_usuario)
 
 ); 
+
+CREATE TABLE IF NOT EXISTS votos_reportes(
+id_voto INT AUTO_INCREMENT PRIMARY KEY,
+id_reporte INT NOT NULL,
+id_usuario INT NOT NULL,
+
+tipo_voto ENUM(
+ 'confirmar',
+ 'falso'
+ ) NOT NULL,
+
+fecha_voto DATETIME DEFAULT CURRENT_TIMESTAMP,
+UNIQUE(id_reporte,id_usuario),
+
+FOREIGN KEY (id_reporte) 
+REFERENCES 	reportes (id_reporte),
+FOREIGN KEY (id_usuario) 
+REFERENCES usuarios(id_usuario)
+
+);
+
+
+
+
 
 CREATE TABLE IF NOT EXISTS alert_sos(
 
@@ -87,9 +90,9 @@ longitud DECIMAL(11,8) NOT NULL,
 
 mensaje VARCHAR(255) NULL,
 
-fecha_alerta DATETIME DEFAULT CURRENT_TIMESTAMP
+fecha_alerta DATETIME DEFAULT CURRENT_TIMESTAMP,
 
-FOREIGN KEY id_usuario 
+FOREIGN KEY (id_usuario)
 REFERENCES usuarios(id_usuario)
 );
 
