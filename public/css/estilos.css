@@ -1,0 +1,56 @@
+.foto{
+
+    width: 55px;
+    margin-left: 100px;
+}
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    background:#ececec;
+    font-family:Arial;
+}
+
+#map{
+    width:100%;
+    height:100%;
+}
+
+.topbar{
+    position:absolute;
+    top:0;
+    width: 100%;
+    height: 50px;
+    background:#24185f;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+}
+
+.bottom-nav{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:70px;
+    background:white;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:1000;
+}
+
+.bottom-nav button,
+.topbar button{
+    border:none;
+    background:none;
+    font-size:22px;
+}
