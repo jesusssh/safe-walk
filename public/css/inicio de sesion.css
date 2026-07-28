@@ -1,121 +1,106 @@
-*{
+body{
     margin:0;
     padding:0;
-    box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-body{
-    background:#f5f7fa;
-    color:#333;
-}
-
-/* Pantallas */
-.pantalla{
-    display:none;
     min-height:100vh;
+    background:linear-gradient(
+        135deg,
+        #111827,
+        #1e3a8a
+    );
+    font-family:'Segoe UI',sans-serif;
+}
+.logo-img{
+    width:180px;
+    height:auto;
+    display:block;
+    margin:0;
+}
+
+.slogan{
+    color:#cbd5e1;
+    text-align:center;
+    margin:0;
+    font-size:1.1rem;
+    margin-top: -50px;
+}
+.login-container{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
     padding:20px;
 }
 
-.activa{
-    display:block;
-}
-
-/* Logo */
-.logo{
-    text-align:center;
-    margin-top:50px;
-}
-
-.logo h1{
-    color:#003366;
-    font-size:40px;
-}
-
-.logo p{
-    color:#666;
-    margin-top:10px;
-}
-
-/* Formularios */
-input{
-    width:100%;
-    padding:15px;
-    margin:10px 0;
-    border:1px solid #ddd;
-    border-radius:10px;
-    font-size:16px;
-}
-
-button{
-    width:100%;
-    padding:15px;
+.login-card{
+    width:420px;
+    max-width:95%;
+    margin:0 auto;
     border:none;
-    border-radius:10px;
-    background:#0078D7;
+    border-radius:25px;
+    padding:30px;
+}
+
+.logo{
     color:white;
-    font-size:16px;
-    cursor:pointer;
-    font-weight:bold;
+    font-size:3rem;
+    font-weight:700;
 }
-
-button:hover{
-    background:#005fb8;
-}
-
-/* Links */
-a{
-    color:#0078D7;
-    text-decoration:none;
-}
-
-/* Tarjetas */
-.card{
-    background:white;
-    margin:15px 0;
-    padding:15px;
-    border-radius:15px;
-    box-shadow:0 2px 10px rgba(0,0,0,.1);
-}
-
-/* Alertas */
-.alerta{
-    border-left:5px solid red;
-}
-
-.segura{
-    border-left:5px solid green;
-}
-
-/* Perfil */
-.avatar{
-    width:100px;
-    height:100px;
-    border-radius:50%;
-    background:#ddd;
-    margin:auto;
-}
-
-/* Barra inferior */
-.navbar{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:white;
+.logo-section{
     display:flex;
-    justify-content:space-around;
-    padding:15px;
-    box-shadow:0 -2px 10px rgba(0,0,0,.1);
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
 }
 
-.navbar button{
-    background:none;
-    color:#444;
-    width:auto;
-    padding:5px;
+.slogan{
+    color:#cbd5e1;
+    text-align:center;
+    margin-bottom:30px;
 }
 
-.navbar button:hover{
-    color:#0078D7;
+
+
+.form-control{
+    border-radius:12px;
+    padding:12px;
+}
+
+.login-btn{
+    border-radius:12px;
+    padding:12px;
+    background:#2563eb;
+    border:none;
+}
+
+.login-btn:hover{
+    background:#1d4ed8;
+}
+
+.small-link{
+    text-decoration:none;
+    color:#2563eb;
+}
+
+.register-link{
+    text-decoration:none;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+.login-card{
+    animation:fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
 }
