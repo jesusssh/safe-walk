@@ -1,0 +1,258 @@
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f5f9;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+/* ==========================
+   CONTENEDOR
+========================== */
+
+.contenedor{
+    width:90%;
+    max-width:1000px;
+    margin:40px auto;
+    background:#fff;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+/* ==========================
+   ENCABEZADO
+========================== */
+
+.encabezado{
+    height:70px;
+    background:#3d2f8d;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+}
+
+.encabezado h2{
+    font-size:22px;
+}
+
+.btn-icono{
+    background:none;
+    border:none;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+}
+
+/* ==========================
+   FONDO CIRCULAR
+========================== */
+
+.fondo-perfil{
+    width:100%;
+    height:120px;
+    background:#5d48d6;
+    border-radius:0 0 50% 50%;
+}
+
+/* ==========================
+   PERFIL
+========================== */
+
+.perfil{
+    margin-top:-70px;
+    text-align:center;
+    padding:20px;
+}
+
+.foto-perfil{
+    width:140px;
+    height:140px;
+    margin:auto;
+    position:relative;
+}
+
+.foto-perfil img{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    object-fit:cover;
+    border:6px solid white;
+    background:#ddd;
+}
+
+/* ==========================
+   BOTÓN EDITAR FOTO
+========================== */
+
+.editar-foto{
+    width:38px;
+    height:38px;
+    background:#5d48d6;
+    color:white;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:absolute;
+    bottom:5px;
+    right:5px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.editar-foto:hover{
+    background:#4631b9;
+}
+
+/* ==========================
+   NOMBRE
+========================== */
+
+#nombreUsuario{
+    margin-top:18px;
+    font-size:28px;
+    color:#222;
+}
+
+#correoUsuario{
+    color:#777;
+    margin-top:8px;
+    font-size:15px;
+}
+
+/* ==========================
+   ESTADÍSTICAS
+========================== */
+
+.estadisticas{
+    width:90%;
+    margin:20px auto;
+    background:white;
+    border:2px solid #e5e5e5;
+    border-radius:15px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:18px;
+}
+
+.dato{
+    flex:1;
+    text-align:center;
+}
+
+.dato h3{
+    font-size:26px;
+    color:#3d2f8d;
+}
+
+.dato span{
+    color:#666;
+    font-size:14px;
+}
+
+.linea{
+    width:2px;
+    height:45px;
+    background:#ddd;
+}
+
+/* ==========================
+   MENÚ
+========================== */
+
+.menu{
+    width:90%;
+    margin:25px auto;
+}
+
+.opcion{
+    width:100%;
+    border:none;
+    background:white;
+    padding:18px;
+    margin-bottom:15px;
+    border-radius:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.opcion:hover{
+    transform:translateY(-3px);
+}
+
+.lado-izquierdo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.lado-izquierdo i{
+    color:#5d48d6;
+    font-size:20px;
+}
+
+.lado-izquierdo span{
+    font-size:16px;
+    color:#333;
+}
+
+.opcion .fa-chevron-right{
+    color:#888;
+}
+
+/* ==========================
+   BOTÓN CERRAR SESIÓN
+========================== */
+
+.cerrar-sesion{
+    width:90%;
+    margin:30px auto;
+}
+
+#logout{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:15px;
+    background:#ff4d4d;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#logout:hover{
+    background:#e33434;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media(max-width:420px){
+
+    .contenedor{
+        width:100%;
+        min-height:100vh;
+        border-radius:0;
+    }
+
+}
