@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergencia SOS</title>
+    <link rel="stylesheet" href="estilo.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+</head>
+<body>
+
+<header>
+    <h2>Emergencia SOS</h2>
+    <span>!</span>
+</header>
+
+<div class="contenedor">
+
+    <button id="btnSOS">
+        🔔
+        <h1>SOS</h1>
+    </button>
+
+    <p>
+        Tu ubicación será enviada a tus contactos de emergencia
+        y a usuarios cercanos.
+    </p>
+
+</div>
+
+<div class="contactos">
+
+    <div class="titulo">
+        <h3>Contactos de Emergencia</h3>
+        <a href="#">Editar</a>
+    </div>
+
+    <div class="persona">
+
+        <img src="img/persona.png">
+
+        <div>
+            <strong>María</strong><br>
+            <small>Papá</small><br>
+            <small>+503 7777-1111</small>
+        </div>
+
+        <button class="llamar">📞</button>
+
+    </div>
+
+    <div class="persona">
+
+        <img src="img/persona.png">
+
+        <div>
+            <strong>Ana</strong><br>
+            <small>Mamá</small><br>
+            <small>+503 7777-2222</small>
+        </div>
+
+        <button class="llamar">📞</button>
+
+    </div>
+
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="s"></script>
+
+</body>
+</html>
