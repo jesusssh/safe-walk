@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+
+    <link rel="stylesheet" href="css/editarperfil.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <div class="card">
+
+        <div class="foto">
+
+            <img id="fotoPerfil" src="img/avatar.png" alt="Perfil">
+
+            <label for="nuevaFoto" class="camara">
+                <i class="fa-solid fa-camera"></i>
+            </label>
+
+            <input
+            type="file"
+            id="nuevaFoto"
+            accept="image/*"
+            hidden>
+
+        </div>
+
+        <h1>Editar Perfil</h1>
+
+        <form>
+
+            <div class="grupo">
+
+                <label>Nombre</label>
+
+                <input
+                type="text"
+                id="nombre"
+                placeholder="Ingrese su nombre">
+
+            </div>
+
+            <div class="grupo">
+
+                <label>Apellido</label>
+
+                <input
+                type="text"
+                id="apellido"
+                placeholder="Ingrese su apellido">
+
+            </div>
+
+            <div class="grupo">
+
+                <label>Correo</label>
+
+                <input
+                type="email"
+                id="correo"
+                placeholder="correo@ejemplo.com">
+
+            </div>
+
+            <div class="grupo">
+
+                <label>Teléfono</label>
+
+                <input
+                type="tel"
+                id="telefono"
+                placeholder="0000-0000">
+
+            </div>
+
+            <div class="grupo">
+
+                <label>Nueva Contraseña</label>
+
+                <input
+                type="password"
+                id="password"
+                placeholder="********">
+
+            </div>
+
+            <div class="botones">
+
+                <button type="button" id="guardar">
+                    Guardar Cambios
+                </button>
+
+                <button
+                type="button"
+                id="cancelar">
+
+                    Cancelar
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<script src="java/editarperfil.js"></script>
+
+</body>
+
+</html>
