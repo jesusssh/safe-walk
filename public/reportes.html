@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeWalk - Nuevo Reporte</title>
+
+    <link href="https://cdn.jsdelivr.net/npm.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/reportes.css">
+</head>
+<body>
+
+    <div class="reporte-container">
+
+        <div class="header-reporte">
+            <a href="mp.html" class="volver">&#8592;</a>
+            <h2>Nuevo Reporte</h2>
+        </div>
+
+        <div class="reporte-card">
+
+            <h5>Tipo de incidente</h5>
+
+            <div class="tipos">
+
+                <button type="button" class="tipo-btn">
+                    🚨 Robo
+                </button>
+
+                <button type="button" class="tipo-btn">
+                    ⚠️ Acoso
+                </button>
+
+                <button type="button" class="tipo-btn">
+                    🌙 Calle Oscura
+                </button>
+
+                <button type="button" class="tipo-btn">
+                    📍 Otro
+                </button>
+
+            </div>
+
+            <h5 class="mt-4">Ubicación</h5>
+
+            <input
+                type="text"
+                class="form-control"
+                placeholder="Ubicación actual">
+
+            <h5 class="mt-4">Descripción (Opcional)</h5>
+
+            <textarea
+                class="form-control"
+                id="descripcion"
+                rows="4"
+                maxlength="200"
+                placeholder="Cuenta lo que sucedió..."></textarea>
+
+            <div class="contador">
+                <span id="contador">0</span>/200
+            </div>
+
+            <h5 class="mt-4">Agregar foto</h5>
+
+            <input
+                type="file"
+                class="form-control">
+
+            <button class="btn-enviar">
+                Enviar Reporte
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="reportes.js"></script>
+
+</body>
+</html>
