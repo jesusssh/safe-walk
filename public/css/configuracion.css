@@ -1,0 +1,40 @@
+
+.header-pagina {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #1a1040; /* Ajusta a tu color azul principal */
+    color: #ffffff;
+    padding: 16px;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 20px;
+}
+
+.header-pagina h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.btn-volver {
+    position: absolute;
+    left: 16px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+
+.opcion .derecha {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.valor-opcion {
+    color: #888888;
+    font-size: 0.9rem;
+}

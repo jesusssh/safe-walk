@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - SafeWalk</title>
+
+    <link rel="stylesheet" href="css/configuracion.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+   <link rel="stylesheet" href="css/estilosper.css">
+</head>
+
+<body>
+
+    <main class="contenedor">
+
+        <!-- Encabezado con botón de regresar -->
+        <header class="header-pagina">
+            <button id="btnVolver" class="btn-volver" onclick="volverPerfil()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <h1>Configuración</h1>
+        </header>
+
+        <!-- Lista de opciones de configuración -->
+        <section class="opciones">
+
+            <button class="opcion">
+                <div class="izquierda">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>Notificaciones</span>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <button class="opcion">
+                <div class="izquierda">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Privacidad</span>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <button class="opcion">
+                <div class="izquierda">
+                    <i class="fa-solid fa-ruler"></i>
+                    <span>Unidades de distancia</span>
+                </div>
+                <div class="derecha">
+                    <span class="valor-opcion">Km</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </button>
+
+            <button class="opcion">
+                <div class="izquierda">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>Idioma</span>
+                </div>
+                <div class="derecha">
+                    <span class="valor-opcion">Español</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </button>
+
+            <button class="opcion">
+                <div class="izquierda">
+                    <i class="fa-solid fa-sun"></i>
+                    <span>Tema</span>
+                </div>
+                <div class="derecha">
+                    <span class="valor-opcion">Claro</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </button>
+
+            <button class="opcion">
+                <div class="izquierda">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span>Ayuda y soporte</span>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <button class="opcion">
+                <div class="izquierda">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span>Acerca de SafeWalk</span>
+                </div>
+                <div class="derecha">
+                    <span class="valor-opcion">V1.0.0</span>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </button>
+
+        </section>
+
+        <!-- Botón de Cerrar Sesión -->
+        <section class="salir">
+            <button id="btnCerrar" class="cerrar">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Cerrar Sesión
+            </button>
+        </section>
+
+    </main>
+
+    <script src="js/configuracion.js"></script>
+
+</body>
+
+</html>
