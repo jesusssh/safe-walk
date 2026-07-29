@@ -31,5 +31,6 @@ document.getElementById("btnSOS").addEventListener("click",function(){
         alert("🚨 SOS enviado.\n\nUbicación:\n"+lat+", "+lng);
 
     });
+    
 
 });

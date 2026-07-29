@@ -107,3 +107,30 @@ header{
     margin-top:20px;
 
 }
+header{
+    background:red;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:15px;
+}
+
+.volver{
+    color:white;
+    text-decoration:none;
+    font-size:28px;
+    font-weight:bold;
+}
+
+header h2{
+    margin:0;
+    flex:1;
+    text-align:center;
+}
+
+header span{
+    font-size:24px;
+    width:28px;
+    text-align:center;
+}
