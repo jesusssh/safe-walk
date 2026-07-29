@@ -1,77 +1,156 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Perfil</title>
+    <title> Mi Perfil</title>
+
     <link rel="stylesheet" href="css/estilos.css">
-  
 
+   
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
-<main class="contenedor">
 
-    <section class="perfil">
-<div class="foto-perfil">
-    <img id="perfil" src="img/avatar-default.png" alt="Foto de perfil">
+    <main class="contenedor">
 
-    <label for="subirFoto" class="camara">
-        📷
-    </label>
+        <section class="perfil">
 
-    <input type="file" id="subirFoto" accept="image/*" hidden>
-</div>
-</section>
-<section>
-    <h1>María García</h1>
-    <p>maria.garcia@email.com</p>
+            <div class="foto-perfil">
 
-    <div class="estadisticas">
-        <div>
-            <h3>125</h3>
-            <span>Reportes</span>
-        </div>
+                <img id="perfil" src="img/avatar.png" alt="Foto de Perfil">
 
-        <div>
-            <h3>12</h3>
-            <span>Seguidores</span>
-        </div>
-    </div>
-</section>
-<section>
-    <div class="menu">
+                <label for="subirFoto" class="camara">
+                    <i class="fa-solid fa-camera"></i>
+                </label>
 
-        <div class="opcion">
-            <i class="fa-solid fa-file-lines"></i>
-            <span>Mis reportes</span>
-            <i class="fa-solid fa-chevron-right"></i>
-        </div>
+                <input
+                    type="file"
+                    id="subirFoto"
+                    accept="image/*"
+                    hidden>
 
-        <div class="opcion">
-            <i class="fa-solid fa-phone"></i>
-            <span>Contactos de Emergencia</span>
-            <i class="fa-solid fa-chevron-right"></i>
-        </div>
+            </div>
 
-        <div class="opcion">
-            <i class="fa-solid fa-gear"></i>
-            <span>Configuración</span>
-            <i class="fa-solid fa-chevron-right"></i>
-        </div>
+            <div class="datos-usuario">
 
-    </div>
+                <h1 id="nombreUsuario">
+                    Nombre Completo
+                </h1>
 
-    <button class="cerrar">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        Cerrar Sesión
-    </button>
+                <p id="correoUsuario">
+                    correo@ejemplo.com
+                </p>
 
-</div>
-</section>
-</main>
-<script src="java/script.js"></script>
+            </div>
 
+        </section>
+
+
+        <section class="estadisticas">
+
+            <div class="card">
+
+                <h2 id="cantidadReportes">0</h2>
+
+                <p>Reportes</p>
+
+            </div>
+
+            <div class="card">
+
+                <h2 id="cantidadContactos">0</h2>
+
+                <p>Contactos</p>
+
+            </div>
+
+        </section>
+
+      
+
+        <section class="opciones">
+
+            <button id="btnReportes" class="opcion">
+
+                <div class="izquierda">
+
+                    <i class="fa-solid fa-file-lines"></i>
+
+                    <span>Mis Reportes</span>
+
+                </div>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </button>
+
+            <button id="btnEditar" class="opcion">
+
+                <div class="izquierda">
+
+                    <i class="fa-solid fa-user-pen"></i>
+
+                    <span>Editar Perfil</span>
+
+                </div>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </button>
+
+            <button id="btnContactos" class="opcion">
+
+                <div class="izquierda">
+
+                    <i class="fa-solid fa-address-book"></i>
+
+                    <span>Contactos de Emergencia</span>
+
+                </div>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </button>
+
+            <button id="btnConfiguracion" class="opcion">
+
+                <div class="izquierda">
+
+                    <i class="fa-solid fa-gear"></i>
+
+                    <span>Configuración</span>
+
+                </div>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </button>
+
+        </section>
+
+
+        <section class="salir">
+
+            <button id="btnCerrar" class="cerrar">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Cerrar Sesión
+
+            </button>
+
+        </section>
+
+       
+
+    </main>
+
+    <script src="java/script.js"></script>
+ 
 </body>
-
 
 </html>

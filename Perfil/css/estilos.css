@@ -1,6 +1,4 @@
-/* ==========================
-   RESET
-========================== */
+
 
 *{
     margin:0;
@@ -10,249 +8,220 @@
 }
 
 body{
-    background:#f4f5f9;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
+    background:#f4f6f9;
+    color:#333;
 }
 
-/* ==========================
-   CONTENEDOR
-========================== */
 
-.contenedor{
-    width:90%;
-    max-width:1000px;
-    margin:40px auto;
-    background:#fff;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.1);
-}
 
-/* ==========================
-   ENCABEZADO
-========================== */
-
-.encabezado{
-    height:70px;
-    background:#3d2f8d;
+.header{
+    width:100%;
+    background:#2C3E50;
     color:white;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:0 20px;
+    padding:15px 40px;
 }
 
-.encabezado h2{
-    font-size:22px;
+.logo h2{
+    color:#4FC3F7;
 }
 
-.btn-icono{
-    background:none;
-    border:none;
+.menu{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+.menu li a{
+    text-decoration:none;
     color:white;
-    font-size:20px;
-    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
 }
 
-/* ==========================
-   FONDO CIRCULAR
-========================== */
-
-.fondo-perfil{
-    width:100%;
-    height:120px;
-    background:#5d48d6;
-    border-radius:0 0 50% 50%;
+.menu li a:hover,
+.menu li a.activo{
+    color:#4FC3F7;
 }
 
-/* ==========================
-   PERFIL
-========================== */
+
+
+.contenedor{
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+    background:white;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+    padding:35px;
+}
+
+
 
 .perfil{
-    margin-top:-70px;
-    text-align:center;
-    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:35px;
+    border-bottom:1px solid #ddd;
+    padding-bottom:25px;
 }
 
 .foto-perfil{
-    width:140px;
-    height:140px;
-    margin:auto;
     position:relative;
 }
 
 .foto-perfil img{
-    width:140px;
-    height:140px;
+    width:150px;
+    height:150px;
     border-radius:50%;
     object-fit:cover;
-    border:6px solid white;
-    background:#ddd;
+    border:5px solid #4FC3F7;
 }
 
-/* ==========================
-   BOTÓN EDITAR FOTO
-========================== */
-
-.editar-foto{
-    width:38px;
-    height:38px;
-    background:#5d48d6;
+.camara{
+    position:absolute;
+    bottom:5px;
+    right:5px;
+    background:#4FC3F7;
     color:white;
+    width:40px;
+    height:40px;
     border-radius:50%;
     display:flex;
     justify-content:center;
     align-items:center;
-    position:absolute;
-    bottom:5px;
-    right:5px;
     cursor:pointer;
-    transition:.3s;
+    font-size:18px;
 }
 
-.editar-foto:hover{
-    background:#4631b9;
+.datos-usuario h1{
+    font-size:30px;
+    margin-bottom:10px;
 }
 
-/* ==========================
-   NOMBRE
-========================== */
-
-#nombreUsuario{
-    margin-top:18px;
-    font-size:28px;
-    color:#222;
-}
-
-#correoUsuario{
+.datos-usuario p{
     color:#777;
-    margin-top:8px;
-    font-size:15px;
+    font-size:17px;
 }
 
-/* ==========================
-   ESTADÍSTICAS
-========================== */
 
 .estadisticas{
-    width:90%;
-    margin:20px auto;
-    background:white;
-    border:2px solid #e5e5e5;
-    border-radius:15px;
     display:flex;
-    justify-content:space-around;
-    align-items:center;
-    padding:18px;
+    justify-content:center;
+    gap:30px;
+    margin:35px 0;
 }
 
-.dato{
-    flex:1;
+.card{
+    width:180px;
     text-align:center;
+    padding:20px;
+    background:#F8F9FA;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
 }
 
-.dato h3{
-    font-size:26px;
-    color:#3d2f8d;
+.card h2{
+    color:#2196F3;
+    margin-bottom:8px;
+    font-size:30px;
 }
 
-.dato span{
+.card p{
     color:#666;
-    font-size:14px;
 }
 
-.linea{
-    width:2px;
-    height:45px;
-    background:#ddd;
-}
 
-/* ==========================
-   MENÚ
-========================== */
 
-.menu{
-    width:90%;
-    margin:25px auto;
+.opciones{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
 }
 
 .opcion{
-    width:100%;
-    border:none;
-    background:white;
-    padding:18px;
-    margin-bottom:15px;
-    border-radius:15px;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    width:100%;
+    border:none;
+    background:#fff;
+    padding:18px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
     cursor:pointer;
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
     transition:.3s;
+    font-size:16px;
 }
 
 .opcion:hover{
-    transform:translateY(-3px);
+    background:#E3F2FD;
+    transform:translateX(5px);
 }
 
-.lado-izquierdo{
+.izquierda{
     display:flex;
     align-items:center;
     gap:15px;
 }
 
-.lado-izquierdo i{
-    color:#5d48d6;
+.izquierda i{
+    color:#2196F3;
     font-size:20px;
 }
 
-.lado-izquierdo span{
-    font-size:16px;
-    color:#333;
+
+
+.salir{
+    margin-top:30px;
+    text-align:center;
 }
 
-.opcion .fa-chevron-right{
-    color:#888;
-}
-
-/* ==========================
-   BOTÓN CERRAR SESIÓN
-========================== */
-
-.cerrar-sesion{
-    width:90%;
-    margin:30px auto;
-}
-
-#logout{
-    width:100%;
-    padding:16px;
-    border:none;
-    border-radius:15px;
-    background:#ff4d4d;
+.cerrar{
+    background:#E53935;
     color:white;
-    font-size:16px;
+    border:none;
+    padding:15px 35px;
+    border-radius:10px;
     cursor:pointer;
+    font-size:16px;
     transition:.3s;
 }
 
-#logout:hover{
-    background:#e33434;
+.cerrar:hover{
+    background:#C62828;
 }
 
-/* ==========================
-   RESPONSIVE
-========================== */
 
-@media(max-width:420px){
 
-    .contenedor{
+@media(max-width:768px){
+
+    .header{
+        flex-direction:column;
+        gap:15px;
+        padding:20px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .perfil{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .estadisticas{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .card{
         width:100%;
-        min-height:100vh;
-        border-radius:0;
+        max-width:250px;
     }
 
 }
