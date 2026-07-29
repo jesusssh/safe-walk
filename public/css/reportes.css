@@ -43,14 +43,26 @@ body{
 }
 
 .reporte-card{
-    width:100%;
-    max-width:500px;
+    width:75vw;
+    max-width:900px;
+    min-height:75vh;
+
     background:white;
     border-radius:25px;
-    padding:30px;
+    padding:40px;
+
     box-shadow:0 10px 30px rgba(0,0,0,.25);
 
     animation:aparecer .8s ease;
+}
+@media(max-width:768px){
+
+    .reporte-card{
+        width:95%;
+        min-height:auto;
+        padding:25px;
+    }
+
 }
 
 .reporte-card h5{
@@ -58,28 +70,43 @@ body{
 }
 
 .tipos{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-top:15px;
 }
 
 .tipo-btn{
+    height:100px;
+
     border:none;
+    border-radius:15px;
+
     background:#e5e7eb;
-    border-radius:12px;
-    padding:12px 18px;
+
+    font-size:1.1rem;
+    font-weight:600;
+
     cursor:pointer;
     transition:.3s;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .tipo-btn:hover{
-    background:#2563eb;
+    background:#3b82f6;
     color:white;
 }
 
-.tipo-btn.activo{
-    background:#2563eb;
-    color:white;
+.tipo-btn.activo,
+.tipo-btn.activo:hover{
+    background:#2563eb !important;
+    color:white !important;
+    border:3px solid #1d4ed8;
+    box-shadow:0 0 15px rgba(37,99,235,.5);
+    transform:scale(1.03);
 }
 
 .form-control{
@@ -122,4 +149,53 @@ body{
         transform:translateY(0);
     }
 
+}
+.ubicacion-container{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.btn-ubicacion{
+    border:none;
+    border-radius:12px;
+    padding:12px;
+    background:#2563eb;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-ubicacion:hover{
+    background:#1d4ed8;
+}
+
+.opciones-ubicacion{
+    display:flex;
+    gap:20px;
+    margin-bottom:15px;
+}
+
+.opciones-ubicacion label{
+    font-weight:600;
+}
+
+#mapaIncidente{
+    height:300px;
+    width:100%;
+    margin-top:15px;
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.btn-ubicacion{
+    width:100%;
+    margin-top:10px;
+    border:none;
+    border-radius:12px;
+    padding:12px;
+    background:#2563eb;
+    color:white;
+    font-weight:600;
 }

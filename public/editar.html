@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editar contactos</title>
+<link rel="stylesheet" href="css/editar.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <h2>Editar Contactos</h2>
+</header>
+
+<div class="contenedor">
+
+    <label>Nombre 1</label>
+    <input type="text" id="nombre1">
+
+    <label>Parentesco</label>
+    <input type="text" id="parentesco1">
+
+    <label>Teléfono</label>
+    <input  type="text"
+    id="telefono1"
+    maxlength="8"
+    inputmode="numeric"
+    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+    placeholder="0000000">
+
+     <label>Correo</label>
+    <input type="email" id="correo1" placeholder="correo@ejemplo.com">
+
+    <hr>
+
+    <label>Nombre 2</label>
+    <input type="text" id="nombre2">
+
+    <label>Parentesco</label>
+    <input type="text" id="parentesco2">
+
+    <label>Teléfono</label>
+    <input     
+    type="text"
+    id="telefono2"
+    maxlength="8"
+    inputmode="numeric"
+    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+    placeholder="0000000">
+
+    <label>Correo</label>
+    <input type="email" id="correo2" placeholder="correo@ejemplo.com">
+
+    <button onclick="window.location.href='sos.html'" id="guardar">Guardar</button>
+
+    <a href="sos.html" class="volver">Volver</a>
+
+</div>
+
+<script src="js/editar.js"></script>
+
+</body>
+</html>
