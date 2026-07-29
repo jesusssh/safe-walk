@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos de Emergencia - SafeWalk</title>
+
+    <!-- Usamos el mismo CSS general -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <main class="contenedor">
+
+        <!-- Encabezado con botón de volver -->
+        <header class="header-pagina">
+            <button id="btnVolver" class="btn-volver" onclick="volverPerfil()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <h1>Contactos de Emergencia</h1>
+        </header>
+
+        <!-- Lista de Contactos -->
+        <section class="lista-contactos">
+
+            <div class="card-contacto">
+                <div class="info-contacto">
+                    <img src="img/avatar.png" alt="Foto Mamá" class="avatar-contacto">
+                    <div class="datos">
+                        <h3>Mamá</h3>
+                        <p>+52 55 1234 5678</p>
+                    </div>
+                </div>
+                <a href="tel:+525512345678" class="btn-llamar">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+            </div>
+
+            <div class="card-contacto">
+                <div class="info-contacto">
+                    <img src="img/avatar.png" alt="Foto Papá" class="avatar-contacto">
+                    <div class="datos">
+                        <h3>Papá</h3>
+                        <p>+52 55 8765 4321</p>
+                    </div>
+                </div>
+                <a href="tel:+525587654321" class="btn-llamar">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+            </div>
+
+            <div class="card-contacto">
+                <div class="info-contacto">
+                    <img src="img/avatar.png" alt="Foto Mejor Amiga" class="avatar-contacto">
+                    <div class="datos">
+                        <h3>Mejor Amiga</h3>
+                        <p>+52 55 1122 3444</p>
+                    </div>
+                </div>
+                <a href="tel:+525511223444" class="btn-llamar">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
+            </div>
+
+        </section>
+
+        <!-- Botón para Agregar Nuevo Contacto -->
+        <section class="acciones-contacto">
+            <button class="btn-agregar" onclick="agregarContacto()">
+                <i class="fa-solid fa-user-plus"></i>
+                Agregar Nuevo Contacto
+            </button>
+        </section>
+
+    </main>
+
+    <script src="java/script.js"></script>
+
+</body>
+
+</html>

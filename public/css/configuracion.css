@@ -1,4 +1,4 @@
-/* Header con fondo morado oscuro/azul institucional */
+
 .header-pagina {
     display: flex;
     align-items: center;
@@ -27,7 +27,7 @@
     cursor: pointer;
 }
 
-/* Alineación para opciones con valores textuales (Km, Español, etc.) */
+
 .opcion .derecha {
     display: flex;
     align-items: center;
