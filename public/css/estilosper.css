@@ -1,19 +1,28 @@
 
-
+ 
+ 
+ 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
     font-family:Arial, Helvetica, sans-serif;
 }
-
+ 
 body{
-    background:#f4f6f9;
-    color:#333;
+    margin:0;
+    padding:0;
+    min-height:100vh;
+    background:linear-gradient(
+        135deg,
+        #111827,
+        #1e3a8a
+    );
+    font-family:'Segoe UI',sans-serif;
 }
-
-
-
+ 
+ 
+ 
 .header{
     width:100%;
     background:#2C3E50;
@@ -23,31 +32,31 @@ body{
     align-items:center;
     padding:15px 40px;
 }
-
+ 
 .logo h2{
     color:#4FC3F7;
 }
-
+ 
 .menu{
     list-style:none;
     display:flex;
     gap:25px;
 }
-
+ 
 .menu li a{
     text-decoration:none;
     color:white;
     font-weight:bold;
     transition:.3s;
 }
-
+ 
 .menu li a:hover,
 .menu li a.activo{
     color:#4FC3F7;
 }
-
-
-
+ 
+ 
+ 
 .contenedor{
     width:90%;
     max-width:900px;
@@ -57,9 +66,9 @@ body{
     box-shadow:0 5px 15px rgba(0,0,0,.15);
     padding:35px;
 }
-
-
-
+ 
+ 
+ 
 .perfil{
     display:flex;
     align-items:center;
@@ -67,11 +76,11 @@ body{
     border-bottom:1px solid #ddd;
     padding-bottom:25px;
 }
-
+ 
 .foto-perfil{
     position:relative;
 }
-
+ 
 .foto-perfil img{
     width:150px;
     height:150px;
@@ -79,7 +88,7 @@ body{
     object-fit:cover;
     border:5px solid #4FC3F7;
 }
-
+ 
 .camara{
     position:absolute;
     bottom:5px;
@@ -95,25 +104,25 @@ body{
     cursor:pointer;
     font-size:18px;
 }
-
+ 
 .datos-usuario h1{
     font-size:30px;
     margin-bottom:10px;
 }
-
+ 
 .datos-usuario p{
     color:#777;
     font-size:17px;
 }
-
-
+ 
+ 
 .estadisticas{
     display:flex;
     justify-content:center;
     gap:30px;
     margin:35px 0;
 }
-
+ 
 .card{
     width:180px;
     text-align:center;
@@ -122,25 +131,25 @@ body{
     border-radius:10px;
     box-shadow:0 3px 10px rgba(0,0,0,.1);
 }
-
+ 
 .card h2{
     color:#2196F3;
     margin-bottom:8px;
     font-size:30px;
 }
-
+ 
 .card p{
     color:#666;
 }
-
-
-
+ 
+ 
+ 
 .opciones{
     display:flex;
     flex-direction:column;
     gap:15px;
 }
-
+ 
 .opcion{
     display:flex;
     justify-content:space-between;
@@ -155,30 +164,30 @@ body{
     transition:.3s;
     font-size:16px;
 }
-
+ 
 .opcion:hover{
     background:#E3F2FD;
     transform:translateX(5px);
 }
-
+ 
 .izquierda{
     display:flex;
     align-items:center;
     gap:15px;
 }
-
+ 
 .izquierda i{
     color:#2196F3;
     font-size:20px;
 }
-
-
-
+ 
+ 
+ 
 .salir{
     margin-top:30px;
     text-align:center;
 }
-
+ 
 .cerrar{
     background:#E53935;
     color:white;
@@ -189,39 +198,84 @@ body{
     font-size:16px;
     transition:.3s;
 }
-
+ 
 .cerrar:hover{
     background:#C62828;
 }
-
-
-
+ 
+ 
+ 
 @media(max-width:768px){
-
+ 
     .header{
         flex-direction:column;
         gap:15px;
         padding:20px;
     }
-
+ 
     .menu{
         flex-wrap:wrap;
         justify-content:center;
     }
-
+ 
     .perfil{
         flex-direction:column;
         text-align:center;
     }
-
+ 
     .estadisticas{
         flex-direction:column;
         align-items:center;
     }
-
+ 
     .card{
         width:100%;
         max-width:250px;
     }
+ 
+}
+ 
 
+
+/* Header con barra morada/azul oscura */
+.header-pagina {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #161233; /* El color exacto de tu barra */
+    color: #ffffff;
+    padding: 14px 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Título centrado */
+.header-pagina h1 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0;
+    color: #ffffff;
+    text-align: center;
+}
+
+
+.btn-volver {
+    position: absolute;
+    left: 16px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.btn-volver:hover {
+    opacity: 0.8;
 }

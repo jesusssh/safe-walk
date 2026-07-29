@@ -1,10 +1,5 @@
 const foto = document.getElementById("fotoPerfil");
 const input = document.getElementById("nuevaFoto");
-
-
-
-
-
 input.addEventListener("change", function(){
 
     const archivo = this.files[0];
@@ -36,3 +31,7 @@ document.getElementById("cancelar").addEventListener("click",()=>{
     window.location.href="miperfil.html";
 
 });
+
+
+
+
