@@ -52,23 +52,31 @@ let circulo;
 
 function mostrarMapa(){
 
-    setTimeout(() => {
-    mapa.invalidateSize();
-}, 100);
-
     document.getElementById("ubicacionActual").style.display = "none";
     document.getElementById("mapaContainer").style.display = "block";
 
-    if(mapa) return;
+    if(mapa){
+
+        setTimeout(() => {
+            mapa.invalidateSize();
+        },100);
+
+        return;
+    }
 
     navigator.geolocation.getCurrentPosition(pos => {
+
         const lat = pos.coords.latitude;
         const lng = pos.coords.longitude;
 
-       var map = L.map('map').setView([13.6929, -89.2182], 12);
-       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-       maxZoom: 19
-}).addTo(map);
+        mapa = L.map("mapaIncidente").setView([lat,lng],18);
+
+        L.tileLayer(
+            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            {
+                maxZoom:19
+            }
+        ).addTo(mapa);
 
         circulo = L.circle([lat,lng],{
             radius:100,
@@ -76,16 +84,16 @@ function mostrarMapa(){
         }).addTo(mapa);
 
         L.marker([lat,lng])
-        .addTo(mapa)
-        .bindPopup("Tu ubicación");
+         .addTo(mapa)
+         .bindPopup("Tu ubicación");
 
-        mapa.on("click", function(e){
+        mapa.on("click",function(e){
 
             const distancia =
-            mapa.distance(
-                [lat,lng],
-                e.latlng
-            );
+                mapa.distance(
+                    [lat,lng],
+                    e.latlng
+                );
 
             if(distancia > 100){
 
@@ -100,13 +108,14 @@ function mostrarMapa(){
                 mapa.removeLayer(marcador);
             }
 
-            marcador = L.marker(e.latlng)
-            .addTo(mapa);
+            marcador =
+                L.marker(e.latlng)
+                 .addTo(mapa);
 
             document.getElementById("ubicacion").value =
-            e.latlng.lat.toFixed(6) +
-            "," +
-            e.latlng.lng.toFixed(6);
+                e.latlng.lat.toFixed(6) +
+                ", " +
+                e.latlng.lng.toFixed(6);
 
         });
 
