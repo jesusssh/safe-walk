@@ -80,3 +80,59 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Al cargar la pantalla, revisamos qué tema está guardado actualmente
+    const temaGuardado = localStorage.getItem('temaApp') || 'claro';
+    
+    // Si estaba en oscuro, le aplicamos la clase al body
+    if (temaGuardado === 'oscuro') {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+
+    // Actualizamos el ícono y el texto del botón según el estado
+    actualizarBotonTema(temaGuardado === 'oscuro');
+
+    // 2. Le asignamos la función de clic al botón/fila de Tema
+    const btnCambiarTema = document.getElementById('btnCambiarTema');
+    if (btnCambiarTema) {
+        btnCambiarTema.addEventListener('click', () => {
+            // Comprobamos si la página está en modo oscuro actualmente
+            const esOscuroAhora = document.body.classList.contains('dark-mode');
+            
+            // Invertimos el estado (si es oscuro cambia a claro, y viceversa)
+            const nuevoEstadoOscuro = !esOscuroAhora;
+
+            if (nuevoEstadoOscuro) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('temaApp', 'oscuro');
+            } else {
+                document.body.classList.remove('dark-mode');
+                localStorage.setItem('temaApp', 'claro');
+            }
+
+            // Cambiamos el texto e ícono del botón
+            actualizarBotonTema(nuevoEstadoOscuro);
+        });
+    }
+});
+
+// Función auxiliar para cambiar el ícono (Luna/Sol) y el texto (Claro/Oscuro)
+function actualizarBotonTema(esOscuro) {
+    const iconoTema = document.getElementById('iconoTema');
+    const textoTemaEstado = document.getElementById('textoTemaEstado');
+
+    if (esOscuro) {
+        if (iconoTema) iconoTema.className = 'fa-solid fa-sun';      // Muestra Sol si ya está oscuro
+        if (textoTemaEstado) textoTemaEstado.innerText = 'Oscuro';
+    } else {
+        if (iconoTema) iconoTema.className = 'fa-solid fa-moon';     // Muestra Luna si está en claro
+        if (textoTemaEstado) textoTemaEstado.innerText = 'Claro';
+    }
+}
