@@ -1,137 +1,160 @@
-body{
-
-    margin:0;
-    font-family:Arial;
-    background:#f4f4f4;
-
+* {
+    font-family: 'Roboto', sans-serif;
 }
 
-header{
-
-    background:red;
-    color:white;
-    display:flex;
-    justify-content:space-between;
-    padding:15px;
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.volver,
+#btnSOS,
+header h2 {
+    font-family: 'Montserrat', sans-serif;
 }
 
-.contenedor{
-
-    text-align:center;
-    padding:20px;
-
+body {
+    margin: 0;
+    background: #f4f4f4;
+    color: #333333;
+    min-height: 100vh;
 }
 
-#btnSOS{
-
-    width:170px;
-    height:170px;
-    border-radius:50%;
-    border:none;
-    background:#ffe5d0;
-    color:red;
-    font-size:55px;
-    cursor:pointer;
-    transition:.3s;
-
+/* Encabezado */
+header {
+    background: red;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
 }
 
-#btnSOS:hover{
-
-    transform:scale(1.05);
-
+.volver {
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-#btnSOS h1{
-
-    margin:0;
-    font-size:35px;
-
+header h2 {
+    margin: 0;
+    flex: 1;
+    text-align: center;
 }
 
-.contenedor p{
-
-    font-weight:bold;
-
+header span {
+    font-size: 24px;
+    width: 28px;
+    text-align: center;
 }
 
-.contactos{
-
-    background:white;
-    width:90%;
-    margin:auto;
-    padding:10px;
-    border-radius:12px;
-    box-shadow:0 0 10px rgba(0,0,0,.2);
-
+/* Contenido Principal */
+.contenedor {
+    text-align: center;
+    padding: 20px;
 }
 
-.titulo{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
+.contenedor p {
+    font-weight: bold;
+    color: #333333;
 }
 
-.persona{
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-top:10px;
-
+/* Botón SOS */
+#btnSOS {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: none;
+    background: #ffe5d0;
+    color: red;
+    font-size: 55px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.persona img{
-
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    
-
+#btnSOS:hover {
+    transform: scale(1.05);
 }
 
-.llamar{
-
-    background:none;
-    border:none;
-    font-size:25px;
-    cursor:pointer;
-
+#btnSOS h1 {
+    margin: 0;
+    font-size: 35px;
 }
 
-#map{
-
-    height:300px;
-    margin-top:20px;
-
-}
-header{
-    background:red;
-    color:white;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:15px;
+/* Tarjeta de Contactos */
+.contactos {
+    background: white;
+    width: 90%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 }
 
-.volver{
-    color:white;
-    text-decoration:none;
-    font-size:28px;
-    font-weight:bold;
+.titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-header h2{
-    margin:0;
-    flex:1;
-    text-align:center;
+.persona {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
 }
 
-header span{
-    font-size:24px;
-    width:28px;
-    text-align:center;
+.persona img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.llamar {
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: #333333;
+}
+
+/* Mapa */
+#map {
+    height: 300px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+/* ==========================================
+   MODO OSCURO (Se activa en toda la app)
+   ========================================== */
+
+body.dark-mode {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+body.dark-mode .contenedor p {
+    color: #ffffff;
+}
+
+body.dark-mode .contactos {
+    background: #1e293b;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .persona,
+body.dark-mode .titulo h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .llamar {
+    color: #3b82f6;
+}
+
+body.dark-mode #btnSOS {
+    background: #3f1818;
+    color: #ff4d4d;
 }

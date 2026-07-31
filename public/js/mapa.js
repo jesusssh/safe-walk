@@ -45,3 +45,16 @@ L.marker([13.693,-89.218])
 L.marker([13.690,-89.214])
 .addTo(map)
 .bindPopup("<b>⚠️ Acoso reportado</b><br>Hace 5 minutos");
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const temaGuardado = localStorage.getItem('temaApp') || 'claro';
+    if (temaGuardado === 'oscuro') {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+});

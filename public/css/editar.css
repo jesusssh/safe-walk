@@ -1,64 +1,187 @@
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:#f4f4f4;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
-header{
-    background:red;
-    color:white;
-    text-align:center;
-    padding:15px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.header-pagina,
+.header-pagina h1,
+.grupo label,
+#guardar,
+#cancelar,
+button {
+    font-family: 'Montserrat', sans-serif;
 }
 
-.contenedor{
-    width:90%;
-    max-width:400px;
-    margin:25px auto;
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 3px 10px rgba(0,0,0,.2);
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(
+        135deg,
+        #111827,
+        #1e3a8a
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-label{
-    font-weight:bold;
-    display:block;
-    margin-top:10px;
+.card {
+    width: 500px;
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.15);
 }
 
-input{
-    width:100%;
-    padding:10px;
-    margin-top:5px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    box-sizing:border-box;
+.foto {
+    position: relative;
+    width: 150px;
+    margin: auto;
 }
 
-button{
-    width:100%;
-    margin-top:20px;
-    padding:12px;
-    background:red;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
+.foto img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #2EA3F2;
 }
 
-.volver{
-    display:block;
-    text-align:center;
-    margin-top:15px;
-    text-decoration:none;
-    color:red;
-    font-weight:bold;
+.camara {
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #2EA3F2;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
+h1 {
+    text-align: center;
+    margin: 25px 0;
+}
 
+.grupo {
+    margin-bottom: 18px;
+}
 
+.grupo label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
 
+.grupo input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
 
+.botones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
 
+#guardar {
+    background: #2EA3F2;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
 
+#cancelar {
+    background: #e53935;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button:hover {
+    opacity: .9;
+}
+
+/* Header con barra morada/azul oscura */
+.header-pagina {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #161233;
+    color: #ffffff;
+    padding: 14px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Título centrado */
+.header-pagina h1 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0;
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Botón con flecha de regreso */
+.btn-volver {
+    position: absolute;
+    left: 16px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.btn-volver:hover {
+    opacity: 0.8;
+}
+
+/* Colores normales (Modo Claro) */
+body {
+    background-color: #f4f6f9;
+    color: #333333;
+}
+
+/* Colores cuando se activa el Modo Oscuro */
+body.dark-mode {
+    background-color: #0f172a;
+    color: #ffffff;
+}
+
+body.dark-mode .contenedor,
+body.dark-mode .card,
+body.dark-mode .opcion {
+    background-color: #1e293b;
+    color: #ffffff;
+}

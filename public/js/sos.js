@@ -34,3 +34,20 @@ document.getElementById("btnSOS").addEventListener("click",function(){
     
 
 });
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Leer el tema guardado en la memoria local
+    const temaGuardado = localStorage.getItem('temaApp') || 'claro';
+
+    // 2. Aplicar o quitar la clase dark-mode al body
+    if (temaGuardado === 'oscuro') {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+});
