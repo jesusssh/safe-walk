@@ -2,71 +2,66 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body{
-    font-family: Arial, Helvetica, sans-serif;
-    background: #22195c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
-}
+    background: #21195b;
+    color: white;
 
-.app-conteniner{
-    width: 90%;
-    max-width: 350px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
 }
 
 h1{
-    color: white;
     font-size: 40px;
     margin-bottom: 5px;
-    text-align: center;
 }
 
 p{
-    color: white;
-    font-size: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-input,
-textarea{
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 2px solid white;
-    border-radius: 5px;
-    background: transparent;
-    color: white;
-    outline: none;
+    margin-bottom: 25px;
     font-size: 14px;
 }
 
-input::placeholder,
-textarea::placeholder{
-    color: #ddd;
+.input-box{
+    width: 100%;
+    height: 55px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px;
+    margin-bottom: 15px;
+    resize: none;
+    outline: none;
+    font-size: 13px;
+}
+
+.input-box::placeholder{
+    color: white;
+}
+
+.submit-btn{
+    width: 30%;
+    height: 45px;
+
+    background: #2c5be6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.submit-btn:hover{
+    background: #1f47bd;
 }
 
 .btn{
-    width: 70%;
-    padding: 12px;
+    background: transparent;
     border: none;
-    border-radius: 5px;
-    background: #3558d4;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    transition: .3s;
-    max-width: 220px;
-    display: block;
-    margin: 20px auto;
-}
-
-.btn:hover{
-    background: #2b49b5;
-  
+    color: antiquewhite;
+    width: 20px;
 }

@@ -97,3 +97,31 @@ window.onload = function(){
     );
 
 };
+const video = document.getElementById("video");
+const canvas = document.getElementById("canvas");
+const foto = document.getElementById("foto");
+const boton = document.getElementById("capturar");
+
+// Iniciar cámara
+navigator.mediaDevices.getUserMedia({
+    video: true
+})
+.then(stream => {
+    video.srcObject = stream;
+})
+.catch(error => {
+    console.error("No se pudo acceder a la cámara", error);
+});
+
+// Capturar imagen
+boton.addEventListener("click", () => {
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    const ctx = canvas.getContext("2d");
+
+    ctx.drawImage(video, 0, 0);
+
+    foto.src = canvas.toDataURL("image/png");
+});
