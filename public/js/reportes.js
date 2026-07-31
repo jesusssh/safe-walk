@@ -13,119 +13,87 @@ botones.forEach(btn => {
     });
 
 });
-
-function obtenerUbicacion(){
-
-    if(navigator.geolocation){
-
-        navigator.geolocation.getCurrentPosition(
-
-            function(posicion){
-
-                const lat = posicion.coords.latitude;
-                const lon = posicion.coords.longitude;
-
-                document.getElementById("ubicacion").value =
-                lat.toFixed(6) + ", " + lon.toFixed(6);
-
-            },
-
-            function(){
-
-                alert("No se pudo obtener la ubicación.");
-
-            }
-
-        );
-
-    }else{
-
-        alert("Tu navegador no soporta geolocalización.");
-
-    }
-
-}
-
 let mapa;
 let marcador;
 let circulo;
 
-function mostrarMapa(){
+window.onload = function(){
 
-    document.getElementById("ubicacionActual").style.display = "none";
-    document.getElementById("mapaContainer").style.display = "block";
+    navigator.geolocation.getCurrentPosition(
 
-    if(mapa){
+        function(pos){
 
-        setTimeout(() => {
-            mapa.invalidateSize();
-        },100);
+            const lat = pos.coords.latitude;
+            const lng = pos.coords.longitude;
 
-        return;
-    }
+            mapa = L.map("mapaIncidente")
+                .setView([lat,lng],18);
 
-    navigator.geolocation.getCurrentPosition(pos => {
+            L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+                    maxZoom:19
+                }
+            ).addTo(mapa);
 
-        const lat = pos.coords.latitude;
-        const lng = pos.coords.longitude;
+            L.marker([lat,lng])
+                .addTo(mapa)
+                .bindPopup("Tu ubicación")
+                .openPopup();
 
-        mapa = L.map("mapaIncidente").setView([lat,lng],18);
+            circulo = L.circle(
+                [lat,lng],
+                {
+                    radius:100,
+                    color:"#2563eb",
+                    fillColor:"#2563eb",
+                    fillOpacity:0.15
+                }
+            ).addTo(mapa);
 
-        L.tileLayer(
-            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-            {
-                maxZoom:19
-            }
-        ).addTo(mapa);
+            mapa.on("click", function(e){
 
-        circulo = L.circle([lat,lng],{
-            radius:100,
-            color:"#2563eb"
-        }).addTo(mapa);
+                const distancia =
+                    mapa.distance(
+                        [lat,lng],
+                        e.latlng
+                    );
 
-        L.marker([lat,lng])
-         .addTo(mapa)
-         .bindPopup("Tu ubicación");
+                if(distancia > 100){
 
-        mapa.on("click",function(e){
+                    alert(
+                        "Solo puedes reportar dentro de 100 metros de tu ubicación."
+                    );
 
-            const distancia =
-                mapa.distance(
-                    [lat,lng],
-                    e.latlng
-                );
+                    return;
+                }
 
-            if(distancia > 100){
+                if(marcador){
+                    mapa.removeLayer(marcador);
+                }
 
-                alert(
-                    "Solo puedes seleccionar dentro de 100 metros."
-                );
+                marcador =
+                    L.marker(e.latlng)
+                     .addTo(mapa);
 
-                return;
-            }
+                document.getElementById("latitud").value =
+                    e.latlng.lat;
 
-            if(marcador){
-                mapa.removeLayer(marcador);
-            }
+                document.getElementById("longitud").value =
+                    e.latlng.lng;
 
-            marcador =
-                L.marker(e.latlng)
-                 .addTo(mapa);
+            });
 
-            document.getElementById("ubicacion").value =
-                e.latlng.lat.toFixed(6) +
-                ", " +
-                e.latlng.lng.toFixed(6);
+        },
 
-        });
+        function(){
 
-    });
+            alert(
+                "No se pudo obtener tu ubicación."
+            );
 
-}
+        }
 
-function mostrarUbicacionActual(){
+    );
 
-    document.getElementById("ubicacionActual").style.display = "block";
-    document.getElementById("mapaContainer").style.display = "none";
-
-}
+};

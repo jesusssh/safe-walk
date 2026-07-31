@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SafeWalk - Nuevo Reporte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-     <link rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="css/reportes.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
 
@@ -21,83 +23,40 @@
 
         <div class="reporte-card">
 
-            <h5>Tipo de incidente</h5>
+            <h3>Tipo de incidente</h3>
 
             <div class="tipos">
 
                 <button type="button" class="tipo-btn">
-                    🚨 Robo
+                    <img src="img/mala-persona.png" class="tipo-icono">
+                    <span>Robo</span>
                 </button>
 
                 <button type="button" class="tipo-btn">
-                    ⚠️ Acoso
+                    <img src="img/excluir.png" class="tipo-icono">
+                    <span>Acoso</span>
                 </button>
 
                 <button type="button" class="tipo-btn">
-                    🌙 Calle Oscura
+                    <img src="img/mala-idea.png" class="tipo-icono">
+                    <span>Calle oscura</span>
                 </button>
 
                 <button type="button" class="tipo-btn">
-                    📍 Otro
+                    <img src="img/otro.png" class="tipo-icono">
+                    <span>Otro</span>
                 </button>
 
             </div>
 
-            <h5 class="mt-4">Ubicación del incidente</h5>
+            <h3 class="mt-4">Ubicación del incidente</h3>
+            <p class="texto-mapa">Selecciona el lugar donde ocurrió el incidente.</p>
 
-            <div class="opciones-ubicacion">
-
-            <label>
-            <input
-            type="radio"
-            name="ubicacionTipo"
-            checked
-            onclick="mostrarUbicacionActual()">
-
-        Mi ubicación actual
-    </label>
-
-    <label>
-        <input
-            type="radio"
-            name="ubicacionTipo"
-            onclick="mostrarMapa()">
-
-        Seleccionar en mapa
-    </label>
-
+<div id="mapaIncidente">
+    <input type="hidden" id="latitud">
+    <input type="hidden" id="longitud">
 </div>
-
-<div id="ubicacionActual">
-
-    <input
-        type="text"
-        id="ubicacion"
-        class="form-control"
-        placeholder="Ubicación actual">
-
-    <button
-        type="button"
-        class="btn-ubicacion"
-        onclick="obtenerUbicacion()">
-
-        📍 Obtener mi ubicación
-    </button>
-
-</div>
-
-<div id="mapaContainer" style="display:none;">
-
-    <div id="mapaIncidente"></div>
-
-    <small>
-        Solo puedes seleccionar dentro del radio permitido.
-    </small>
-
-</div>
-</div>
-
-            <h5 class="mt-4">Descripción (Opcional)</h5>
+            <h3 class="mt-4">Descripción (Opcional)</h3>
 
             <textarea
                 class="form-control"
@@ -110,7 +69,7 @@
                 <span id="contador">0</span>/200
             </div>
 
-            <h5 class="mt-4">Agregar foto</h5>
+            <h3 class="mt-4">Agregar foto</h3>
 
             <input
                 type="file"
@@ -121,10 +80,8 @@
             </button>
 
         </div>
-
     </div>
-
-    <script src="//unpkg.com/leaflet/dist/leaflet.js es.js"></script>
-    <script src="js/reportes.js"></script>
+    </div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="js/reportes.js"></script>
 </body>
 </html>
