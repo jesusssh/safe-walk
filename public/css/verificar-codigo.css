@@ -1,0 +1,152 @@
+body{
+    margin:0;
+    padding:0;
+    min-height:100vh;
+    background:linear-gradient(
+        135deg,
+        #111827,
+        #1e3a8a
+    );
+
+    font-family:'Roboto',sans-serif;
+}
+
+.recuperar-container{
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+.logo-section{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:2px;
+    margin-bottom:20px;
+}
+
+.logo-img{
+    width:180px;
+    margin:0;
+}
+
+.slogan{
+    color:#cbd5e1;
+    margin-top:-30px;
+    margin-bottom:0;
+}
+
+.recuperar-card{
+
+    width:100%;
+    max-width:500px;
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:35px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.25);
+
+    animation:aparecer .8s ease;
+}
+
+.recuperar-card h2{
+
+    font-family:'Montserrat',sans-serif;
+
+    margin-bottom:15px;
+}
+
+.mensaje{
+
+    color:#6b7280;
+
+    margin-bottom:25px;
+}
+
+.form-control{
+
+    border-radius:12px;
+
+    padding:12px;
+}
+
+.btn-recuperar{
+    width:90%;
+    display:block;
+    margin:25px auto 0 auto;
+
+    border:none;
+    border-radius:12px;
+    padding:14px;
+
+    background:#2563eb;
+    color:white;
+
+    transition:.3s;
+}
+
+.btn-recuperar:hover{
+
+    background:#1d4ed8;
+}
+.mb-3{
+    width:100%;
+    margin:0 auto;
+}
+.form-label{
+    display:block;
+    width:100%;
+    margin-bottom:8px;
+}
+.form-control{
+    width:100%;
+    border-radius:12px;
+    padding:12px;
+}
+.codigo-container{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:30px 0;
+}
+
+.codigo-input{
+    width:55px;
+    height:60px;
+
+    text-align:center;
+
+    font-size:1.5rem;
+    font-weight:600;
+
+    border:2px solid #d1d5db;
+    border-radius:12px;
+}
+
+.codigo-input:focus{
+    outline:none;
+
+    border-color:#2563eb;
+}
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
