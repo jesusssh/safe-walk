@@ -3,95 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Encuesta SafeWalk</title>
+<link rel="stylesheet" href="css/encuesta.css">
 <style>
-       /* Fondo general de la página */
-       body {
-           margin: 0;
-           padding: 0;
-           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-           background: linear-gradient(135deg, #0f172a, #1e293b);
-           height: 100vh;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-       }
-       /* Contenedor tipo "Card" (Aumenté el tamaño aquí) */
-       .card {
-           background-color: white;
-           width: 100%;
-           max-width: 700px; /* Tarjeta más ancha */
-           border-radius: 34px;
-           overflow: hidden;
-           box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-       }
-       /* Encabezado negro (Igual al de tu perfil) */
-       .card-header {
-           background-color: #000;
-           color: white;
-           padding: 30px 35px;
-           display: flex;
-           align-items: center;
-           font-weight: 600;
-           font-size: 1.2rem;
-       }
-       .back-btn {
-           background: none;
-           border: none;
-           color: white;
-           font-size: 1.5rem;
-           cursor: pointer;
-           margin-right: 20px;
-       }
-       /* Parte blanca (Aumenté el padding para que sea más grande) */
-       .card-body {
-           padding: 40px;
-           display: flex;
-           flex-direction: column;
-           gap: 45px;
-       }
-       /* Estilo de los campos de entrada */
-       input {
-           width: 100%;
-           padding: 16px;
-           border: 1px solid #d1d1d1;
-           border-radius: 10px;
-           box-sizing: border-box;
-           font-size: 1rem;
-           color: #333;
-       }
-       /* Botón de envío */
-       .btn-submit {
-           background-color: #007bff;
-           color: white;
-           border: none;
-           padding: 16px;
-           border-radius: 10px;
-           font-weight: bold;
-           font-size: 1rem;
-           cursor: pointer;
-           margin-top: 10px;
-           transition: background 0.3s;
-       }
-       .btn-submit:hover {
-           background-color: #0056b3;
-       }
+       
+      
 </style>
 </head>
 <body>
-<div class="card">
-<!-- Encabezado igual al de tu perfil -->
-<div class="card-header">
-<button class="back-btn">←</button>
-<span>Encuesta SafeWalk</span>
-</div>
-<!-- Parte blanca agrandada -->
-<div class="card-body">
-<input type="text" placeholder="¿Te sentiste más seguro/a al usar Safe Walk?">
-<input type="text" placeholder="¿Te fue de utilidad Safe Walk?">
-<input type="text" placeholder="¿Lo seguirías utilizando en tu día a día?">
-<input type="text" placeholder="¿Hubo alguna función que NO te sirvió para nada?">
-<button class="btn-submit">Enviar</button>
-</div>
-</div>
+
+<button class="btn">←</button>
+<h1>SafeWalk</h1>
+<p>Camina seguro. Llega seguro</p>
+
+<textarea class="input-box" placeholder="¿Te sentiste más seguro al usar SafeWalk?"></textarea>
+
+<textarea class="input-box" placeholder="¿Tu fase de utilidad SafeWalk?"></textarea>
+
+<textarea class="input-box" placeholder="¿Lo agregarías utilizando en tu día a día?"></textarea>
+
+<textarea class="input-box" placeholder="¿Hubo alguna función que NO te sirvió para nada?"></textarea>
+
+<button class="submit-btn">Enviar</button>
+
 </body>
 </html>
