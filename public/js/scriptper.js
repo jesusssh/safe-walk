@@ -111,3 +111,22 @@ function editarPerfil() {
 function volverPerfil() {
     window.location.href = "miperfil.html";
 }
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Leer qué tema está guardado (si no hay ninguno, usa 'claro' por defecto)
+    const temaGuardado = localStorage.getItem('temaApp') || 'claro';
+
+    // 2. Aplicar o quitar la clase dark-mode automáticamente
+    if (temaGuardado === 'oscuro') {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+});

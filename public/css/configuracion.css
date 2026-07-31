@@ -33,3 +33,24 @@ body.dark-mode .select-limpio option {
 body.dark-mode .derecha-info {
     color: #94a3b8;
 }
+
+
+
+/* Colores normales (Modo Claro) */
+body {
+    background-color: #f4f6f9;
+    color: #333333;
+}
+
+/* Colores cuando se activa el Modo Oscuro */
+body.dark-mode {
+    background-color: #0f172a;
+    color: #ffffff;
+}
+
+body.dark-mode .contenedor,
+body.dark-mode .card,
+body.dark-mode .opcion {
+    background-color: #1e293b;
+    color: #ffffff;
+}

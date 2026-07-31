@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encuesta SafeWalk</title>
+<style>
+       body {
+           margin: 0;
+           padding: 0;
+           font-family: Arial, sans-serif;
+           background-color: #061952;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           min-height: 100vh;
+           color: #ffffff; /* Blanco puro */
+       }
+       .back-btn {
+           position: absolute;
+           top: 20px;
+           left: 20px;
+           background: none;
+           border: none;
+           color: #ffffff;
+           font-size: 35px;
+           font-weight: bold; /* Flecha más gruesa */
+           cursor: pointer;
+           padding: 10px;
+       }
+       .main-container {
+           width: 92%;
+           max-width: 455px;
+           text-align: center;
+           padding: 20px;
+       }
+       h1 {
+           font-size: 2.8rem;
+           margin-bottom: 10px;
+           text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra para resaltar */
+       }
+       p {
+           margin-bottom: 30px;
+           font-size: 1.3rem;
+           font-weight: 500; /* Texto más sólido */
+       }
+       .input-box {
+           width: 90%;
+           padding: 20px;
+           margin-bottom: 10px;
+           background: #ffffff; /* Fondo blanco para las cajas */
+           border: 2px solid #ffffff;
+           border-radius: 10px;
+           color: #061952; /* Texto oscuro para contraste */
+           font-size: 1.1rem;
+           font-weight: bold; /* Letra bien marcada */
+           box-sizing: border-box;
+       }
+       /* Color del texto de ayuda dentro de las cajas */
+       ::placeholder {
+           color: #556080;
+           font-weight: bold;
+       }
+       .btn-enviar {
+           background-color: #ffffff; /* Botón blanco */
+           color: #061952; /* Texto azul oscuro */
+           border: none;
+           padding: 10px;
+           border-radius: 10px;
+           cursor: pointer;
+           font-weight: 752; /* Máximo grosor */
+           font-size: 1.3rem;
+           width: 80%;
+       }
+</style>
+</head>
+<body>
+<button class="back-btn" onclick="window.location.href='reportes.html'">
+&larr;
+</button>
+<div class="main-container">
+<h1>SafeWalk</h1>
+<p>Camina seguro. Llega seguro</p>
+<input type="text" class="input-box" placeholder="¿Te sentiste más seguro/a?">
+<input type="text" class="input-box" placeholder="¿Te fue de utilidad?">
+<input type="text" class="input-box" placeholder="¿Lo seguirías utilizando?">
+<input type="text" class="input-box" placeholder="¿Qué te gustó del diseño de la app?">
+<button class="btn-enviar">Enviar respuesta</button>
+</div>
+</body>
+</html>
