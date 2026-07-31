@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<!-- ESTA ES LA LÍNEA MÁGICA QUE SOLUCIONA EL PROBLEMA -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encuesta SafeWalk</title>
+<style>
+       body {
+           margin: 0;
+           padding: 0;
+           font-family: Arial, sans-serif;
+           background-color: #061952;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           min-height: 100vh;
+           color: white;
+       }
+       .back-btn {
+           position: absolute;
+           top: 20px;
+           left: 20px;
+           background: none;
+           border: none;
+           color: white;
+           font-size: 30px;
+           cursor: pointer;
+           padding: 10px;
+           transition: opacity 0.3s;
+       }
+       .back-btn:hover {
+           opacity: 0.7;
+       }
+       .main-container {
+           width: 90%; /* Un poco menos del 100% para dejar margen en celulares */
+           max-width: 600px;
+           text-align: center;
+           padding: 20px;
+       }
+       h1 { margin-bottom: 5px; }
+       p { margin-bottom: 30px; opacity: 0.8; }
+       .input-box {
+           width: 100%;
+           padding: 15px;
+           margin-bottom: 20px;
+           background: transparent;
+           border: 1px solid white;
+           border-radius: 5px;
+           color: white;
+           box-sizing: border-box; /* Esto evita que el padding deforme el ancho */
+       }
+       .btn-enviar {
+           background-color: #3b82f6;
+           color: white;
+           border: none;
+           padding: 12px 40px;
+           border-radius: 5px;
+           cursor: pointer;
+           font-weight: bold;
+           width: 100%; /* Botón grande para facilitar el toque en móviles */
+       }
+</style>
+</head>
+<body>
+<button class="back-btn" onclick="window.location.href='reportes.html'">
+&larr;
+</button>
+<div class="main-container">
+<h1>SafeWalk</h1>
+<p>Camina seguro. Llega seguro</p>
+<input type="text" class="input-box" placeholder="¿Te sentiste más seguro/a al usar Safe Walk?">
+<input type="text" class="input-box" placeholder="¿Te fue de utilidad Safe Walk?">
+<input type="text" class="input-box" placeholder="¿Lo seguirías utilizando en tu día a día?">
+<input type="text" class="input-box" placeholder="¿Qué es lo que más te gustó del diseño?">
+<button class="btn-enviar">Enviar</button>
+</div>
+</body>
+</html>
