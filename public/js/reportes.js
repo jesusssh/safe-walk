@@ -97,6 +97,7 @@ window.onload = function(){
     );
 
 };
+
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
 const foto = document.getElementById("foto");
@@ -146,8 +147,8 @@ botonCamara.onclick = () => {
 botonCapturar.onclick = () => {
     if (!camaraEncendida) return;
 
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
+
+
 
     const ctx = canvas.getContext("2d");
     ctx.drawImage(video, 0, 0);
@@ -155,4 +156,5 @@ botonCapturar.onclick = () => {
     foto.src = canvas.toDataURL("image/png");
 };
 
-iniciarCamara();
+iniciarCamara()
+
