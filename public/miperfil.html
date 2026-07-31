@@ -22,133 +22,103 @@
     <button class="btn-volver" onclick="window.location.href='mp.html'">
         <i class="fa-solid fa-arrow-left"></i>
     </button>
-    <h1>Mi perfil</h1>
+    <h1 id="lblTituloPerfil">Mi Perfil</h1>
 </header>
 
         
-        <section class="perfil">
+       <section class="perfil">
 
-            <div class="foto-perfil">
+    <div class="foto-perfil">
 
-                <img id="perfil" src="img/avatar.png" alt="Foto de Perfil">
+        <img id="perfil" src="img/avatar.png" alt="Foto de Perfil">
 
-                <label for="subirFoto" class="camara">
-                    <i class="fa-solid fa-camera"></i>
-                </label>
+        <label for="subirFoto" class="camara">
+            <i class="fa-solid fa-camera"></i>
+        </label>
 
-                <input
-                    type="file"
-                    id="subirFoto"
-                    accept="image/*"
-                    hidden>
+        <input
+            type="file"
+            id="subirFoto"
+            accept="image/*"
+            hidden>
 
-            </div>
+    </div>
 
-            <div class="datos-usuario">
+    <div class="datos-usuario">
 
-                <h1 id="nombreUsuario">
-                    Nombre Completo
-                </h1>
+        <h1 id="nombreUsuario">
+            Nombre Completo
+        </h1>
 
-                <p id="correoUsuario">
-                    correo@ejemplo.com
-                </p>
+        <p id="correoUsuario">
+            correo@ejemplo.com
+        </p>
 
-            </div>
+    </div>
 
-        </section>
+</section>
 
 
-        <section class="estadisticas">
+<section class="estadisticas">
 
-            <div class="card">
+    <div class="card">
 
-                <h2 id="cantidadReportes">0</h2>
+        <h2 id="cantidadReportes">0</h2>
 
-                <p>Reportes</p>
+        <p id="lblEstadisticaReportes">Reportes</p>
 
-            </div>
+    </div>
 
-            <div class="card">
+    <div class="card">
 
-                <h2 id="cantidadContactos">0</h2>
+        <h2 id="cantidadContactos">0</h2>
 
-                <p>Contactos</p>
+        <p id="lblEstadisticaContactos">Contactos</p>
 
-            </div>
+    </div>
 
-        </section>
+</section>
 
-      
+
+
+
 
         <section class="opciones">
 
-            <button id="btnReportes" class="opcion">
-
-                <div class="izquierda">
-
-                    <i class="fa-solid fa-file-lines"></i>
-
-                    <span>Mis Reportes</span>
-
-                </div>
-
-                <i class="fa-solid fa-chevron-right"></i>
-
-            </button>
-
-            <button id="btnEditar" class="opcion">
-
-                <div class="izquierda">
-
-                    <i class="fa-solid fa-user-pen"></i>
-
-                    <span>Editar Perfil</span>
-
-                </div>
-
-                <i class="fa-solid fa-chevron-right"></i>
-
-            </button>
-
-           <button id="btnContactos" class="opcion" onclick="window.location.href='contac.html'">
+            <!-- Botones y Opciones -->
+<div id="btnReportes" class="opcion">
     <div class="izquierda">
-        <i class="fa-solid fa-address-book"></i>
-        <span>Contactos de Emergencia</span>
+        <i class="fa-solid fa-file-lines"></i>
+        <span id="lblMisReportes">Mis Reportes</span>
     </div>
     <i class="fa-solid fa-chevron-right"></i>
-</button>
+</div>
+
+<div id="btnEditar" class="opcion">
+    <div class="izquierda">
+        <i class="fa-solid fa-user-pen"></i>
+        <span id="lblEditarPerfil">Editar Perfil</span>
+    </div>
+    <i class="fa-solid fa-chevron-right"></i>
+</div>
+
+<div id="btnContactos" class="opcion">
+    <div class="izquierda">
+        <i class="fa-solid fa-address-book"></i>
+        <span id="lblContactos">Contactos de Emergencia</span>
+    </div>
+    <i class="fa-solid fa-chevron-right"></i>
+</div>
+
+<div id="btnConfiguracion" class="opcion">
+    <div class="izquierda">
+        <i class="fa-solid fa-gear"></i>
+        <span id="lblConfiguracion">Configuración</span>
+    </div>
+    <i class="fa-solid fa-chevron-right"></i>
+</div>
 
 
-
-            <button id="btnConfiguracion" class="opcion">
-
-                <div class="izquierda">
-
-                    <i class="fa-solid fa-gear"></i>
-
-                    <span>Configuración</span>
-
-                </div>
-
-                <i class="fa-solid fa-chevron-right"></i>
-
-            </button>
-
-        </section>
-
-
-        <section class="salir">
-
-            <button id="btnCerrar" class="cerrar">
-
-                <i class="fa-solid fa-right-from-bracket"></i>
-
-                Cerrar Sesión
-
-            </button>
-
-            
 
     </main>
 

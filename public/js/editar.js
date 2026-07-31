@@ -35,3 +35,7 @@ document.getElementById("guardar").addEventListener("click", function () {
 
     window.location.href = "sos.html"; 
 });
+
+
+
+

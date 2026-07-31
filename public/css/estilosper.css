@@ -1,241 +1,188 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
- 
- 
- 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #111827, #1e3a8a);
+    font-family: 'Segoe UI', sans-serif;
 }
- 
-body{
-    margin:0;
-    padding:0;
-    min-height:100vh;
-    background:linear-gradient(
-        135deg,
-        #111827,
-        #1e3a8a
-    );
-    font-family:'Segoe UI',sans-serif;
+
+.header {
+    width: 100%;
+    background: #2C3E50;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
 }
- 
- 
- 
-.header{
-    width:100%;
-    background:#2C3E50;
-    color:white;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 40px;
+
+.logo h2 {
+    color: #4FC3F7;
 }
- 
-.logo h2{
-    color:#4FC3F7;
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 25px;
 }
- 
-.menu{
-    list-style:none;
-    display:flex;
-    gap:25px;
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: .3s;
 }
- 
-.menu li a{
-    text-decoration:none;
-    color:white;
-    font-weight:bold;
-    transition:.3s;
-}
- 
+
 .menu li a:hover,
-.menu li a.activo{
-    color:#4FC3F7;
+.menu li a.activo {
+    color: #4FC3F7;
 }
- 
- 
- 
-.contenedor{
-    width:90%;
-    max-width:900px;
-    margin:40px auto;
-    background:white;
-    border-radius:15px;
-    box-shadow:0 5px 15px rgba(0,0,0,.15);
-    padding:35px;
-}
- 
- 
- 
-.perfil{
-    display:flex;
-    align-items:center;
-    gap:35px;
-    border-bottom:1px solid #ddd;
-    padding-bottom:25px;
-}
- 
-.foto-perfil{
-    position:relative;
-}
- 
-.foto-perfil img{
-    width:150px;
-    height:150px;
-    border-radius:50%;
-    object-fit:cover;
-    border:5px solid #4FC3F7;
-}
- 
-.camara{
-    position:absolute;
-    bottom:5px;
-    right:5px;
-    background:#4FC3F7;
-    color:white;
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    cursor:pointer;
-    font-size:18px;
-}
- 
-.datos-usuario h1{
-    font-size:30px;
-    margin-bottom:10px;
-}
- 
-.datos-usuario p{
-    color:#777;
-    font-size:17px;
-}
- 
- 
-.estadisticas{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    margin:35px 0;
-}
- 
-.card{
-    width:180px;
-    text-align:center;
-    padding:20px;
-    background:#F8F9FA;
-    border-radius:10px;
-    box-shadow:0 3px 10px rgba(0,0,0,.1);
-}
- 
-.card h2{
-    color:#2196F3;
-    margin-bottom:8px;
-    font-size:30px;
-}
- 
-.card p{
-    color:#666;
-}
- 
- 
- 
-.opciones{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-}
- 
-.opcion{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    width:100%;
-    border:none;
-    background:#fff;
-    padding:18px;
-    border-radius:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,.1);
-    cursor:pointer;
-    transition:.3s;
-    font-size:16px;
-}
- 
-.opcion:hover{
-    background:#E3F2FD;
-    transform:translateX(5px);
-}
- 
-.izquierda{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
- 
-.izquierda i{
-    color:#2196F3;
-    font-size:20px;
-}
- 
- 
- 
-.salir{
-    margin-top:30px;
-    text-align:center;
-}
- 
-.cerrar{
-    background:#E53935;
-    color:white;
-    border:none;
-    padding:15px 35px;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:16px;
-    transition:.3s;
-}
- 
-.cerrar:hover{
-    background:#C62828;
-}
- 
- 
- 
-@media(max-width:768px){
- 
-    .header{
-        flex-direction:column;
-        gap:15px;
-        padding:20px;
-    }
- 
-    .menu{
-        flex-wrap:wrap;
-        justify-content:center;
-    }
- 
-    .perfil{
-        flex-direction:column;
-        text-align:center;
-    }
- 
-    .estadisticas{
-        flex-direction:column;
-        align-items:center;
-    }
- 
-    .card{
-        width:100%;
-        max-width:250px;
-    }
- 
-}
- 
 
+.contenedor {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.15);
+    padding: 35px;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 25px;
+}
+
+.foto-perfil {
+    position: relative;
+}
+
+.foto-perfil img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #4FC3F7;
+}
+
+.camara {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: #4FC3F7;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.datos-usuario h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.datos-usuario p {
+    color: #777;
+    font-size: 17px;
+}
+
+.estadisticas {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 35px 0;
+}
+
+.card {
+    width: 180px;
+    text-align: center;
+    padding: 20px;
+    background: #F8F9FA;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.1);
+}
+
+.card h2 {
+    color: #2196F3;
+    margin-bottom: 8px;
+    font-size: 30px;
+}
+
+.card p {
+    color: #666;
+}
+
+.opciones {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.opcion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: none;
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+    cursor: pointer;
+    transition: .3s;
+    font-size: 16px;
+}
+
+.opcion:hover {
+    background: #E3F2FD;
+    transform: translateX(5px);
+}
+
+.izquierda {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.izquierda i {
+    color: #2196F3;
+    font-size: 20px;
+}
+
+.salir {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.cerrar {
+    background: #E53935;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.cerrar:hover {
+    background: #C62828;
+}
 
 /* Header con barra morada/azul oscura */
 .header-pagina {
@@ -243,16 +190,15 @@ body{
     align-items: center;
     justify-content: center;
     position: relative;
-    background-color: #161233; /* El color exacto de tu barra */
+    background-color: #161233;
     color: #ffffff;
     padding: 14px 20px;
-    border-radius: 10px; /* Bordes redondeados */
+    border-radius: 10px;
     margin-bottom: 20px;
     width: 100%;
     box-sizing: border-box;
 }
 
-/* Título centrado */
 .header-pagina h1 {
     font-size: 1.15rem;
     font-weight: 600;
@@ -260,7 +206,6 @@ body{
     color: #ffffff;
     text-align: center;
 }
-
 
 .btn-volver {
     position: absolute;
@@ -280,4 +225,82 @@ body{
     opacity: 0.8;
 }
 
+/* ==========================================
+   ESTILOS PARA MODO OSCURO (dark-mode)
+   ========================================== */
 
+body.dark-mode {
+    background: #0f172a;
+    color: #ffffff;
+}
+
+body.dark-mode .contenedor,
+body.dark-mode .card,
+body.dark-mode .card-contacto,
+body.dark-mode .opcion {
+    background-color: #1e293b;
+    color: #ffffff;
+    border-color: #334155;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .opcion:hover {
+    background-color: #334155;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+    color: #ffffff;
+}
+
+body.dark-mode p,
+body.dark-mode label,
+body.dark-mode span,
+body.dark-mode i {
+    color: #ffffff;
+}
+
+body.dark-mode .datos-usuario p,
+body.dark-mode .card p {
+    color: #94a3b8;
+}
+
+body.dark-mode input,
+body.dark-mode select {
+    background-color: #334155;
+    color: #ffffff;
+    border: 1px solid #475569;
+}
+
+body.dark-mode input::placeholder {
+    color: #94a3b8;
+}
+
+@media(max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .perfil {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .estadisticas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 250px;
+    }
+}
