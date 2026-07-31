@@ -100,28 +100,59 @@ window.onload = function(){
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
 const foto = document.getElementById("foto");
-const boton = document.getElementById("capturar");
+const botonCapturar = document.getElementById("capturar");
+const botonCamara = document.getElementById("apagar");
 
-// Iniciar cámara
-navigator.mediaDevices.getUserMedia({
-    video: true
-})
-.then(stream => {
-    video.srcObject = stream;
-})
-.catch(error => {
-    console.error("No se pudo acceder a la cámara", error);
-});
+let stream = null;
+let camaraEncendida = false;
 
-// Capturar imagen
-boton.addEventListener("click", () => {
+async function iniciarCamara() {
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({
+            video: true
+        });
+
+        video.srcObject = stream;
+        await video.play();
+
+        camaraEncendida = true;
+        botonCamara.textContent = "Desactivar cámara";
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+function detenerCamara() {
+
+    if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+    }
+
+    video.srcObject = null;
+    stream = null;
+    camaraEncendida = false;
+    botonCamara.textContent = "Activar cámara";
+}
+
+botonCamara.onclick = () => {
+    if (camaraEncendida) {
+        detenerCamara();
+    } else {
+        iniciarCamara();
+    }
+};
+
+botonCapturar.onclick = () => {
+    if (!camaraEncendida) return;
 
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
 
     const ctx = canvas.getContext("2d");
-
     ctx.drawImage(video, 0, 0);
 
     foto.src = canvas.toDataURL("image/png");
-});
+};
+
+iniciarCamara();

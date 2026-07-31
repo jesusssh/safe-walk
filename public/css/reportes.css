@@ -195,13 +195,40 @@ h6,
 #video{
     width: 100%;
     max-width: 400px;
-    border: 2px solid white;
     border-radius: 10px;
+    display: block;
+    margin: auto;
 }
 
-#foto{
-    width: 100%;
-    max-width: 400px;
+.botones-camara{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
     margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#capturar,
+#apagar{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+}
+
+#capturar{
+    background: #2563eb;
+}
+
+#apagar{
+    background: #dc2626;
+}
+#foto{
+    width: 200px; /* Cambia este valor */
+    height: auto;
+    display: block;
+    margin: 15px auto;
     border-radius: 10px;
 }
