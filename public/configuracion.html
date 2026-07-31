@@ -26,7 +26,7 @@
             <button class="opcion">
                 <div class="izquierda">
                     <i class="fa-solid fa-ruler"></i>
-                    <span>Unidades de distancia</span>
+                   <span id="lblUnidades">Unidades de distancia</span>
                 </div>
                 <div class="derecha">
                     <span class="valor-opcion">Km</span>
@@ -37,18 +37,23 @@
             <button class="opcion">
                 <div class="izquierda">
                     <i class="fa-solid fa-globe"></i>
-                    <span>Idioma</span>
+                   <span id="lblIdioma">Idioma</span>
                 </div>
                 <div class="derecha">
-                    <span class="valor-opcion">Español</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
+                   <select id="selectIdioma" class="selector-opcion" onchange="cambiarIdioma(this.value)">
+            <option value="Español" selected>Español</option>
+            <option value="English">English</option>
+        
+        </select>
+        <i class="fa-solid fa-chevron-right"></i>
+    </div>
+</div>
             </button>
 
             <button class="opcion">
                 <div class="izquierda">
                     <i class="fa-solid fa-sun"></i>
-                    <span>Tema</span>
+                    <span id="lblTema">Tema</span>
                 </div>
                 <div class="derecha">
                     <span class="valor-opcion">Claro</span>
@@ -59,7 +64,7 @@
             <button class="opcion">
                 <div class="izquierda">
                     <i class="fa-solid fa-circle-question"></i>
-                    <span>Ayuda y soporte</span>
+                   <span id="lblAyuda">Ayuda y soporte</span>
                 </div>
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
@@ -67,7 +72,7 @@
             <button class="opcion">
                 <div class="izquierda">
                     <i class="fa-solid fa-circle-info"></i>
-                    <span>Acerca de SafeWalk</span>
+                    <span id="lblAcerca">Acerca de SafeWalk</span>
                 </div>
                 <div class="derecha">
                     <span class="valor-opcion">V1.0.0</span>
@@ -79,13 +84,20 @@
 
         
         <section class="salir">
-            <button id="btnCerrar" class="cerrar">
+            <button id="btnCerrarSesion" class="cerrar">
+ 
                 <i class="fa-solid fa-right-from-bracket"></i>
                 Cerrar Sesión
             </button>
         </section>
 
+
+
+
+
+
     </main>
+    
 
     <script src="js/configuracion.js"></script>
 

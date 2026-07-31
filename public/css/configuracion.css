@@ -38,3 +38,25 @@
     color: #888888;
     font-size: 0.9rem;
 }
+
+
+
+
+
+.selector-opcion {
+    border: none;
+    background: transparent;
+    font-size: 0.95rem;
+    color: #666666;
+    font-weight: 500;
+    cursor: pointer;
+    outline: none;
+    text-align: right;
+    padding-right: 4px;
+    font-family: inherit;
+}
+
+.selector-opcion option {
+    color: #161233;
+    background-color: #ffffff;
+}

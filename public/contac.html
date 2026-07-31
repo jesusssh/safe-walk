@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactos de Emergencia - SafeWalk</title>
 
-    <!-- Usamos el mismo CSS general -->
     <link rel="stylesheet" href="css/contac.css">
     <link rel="stylesheet" href="css/estilosper.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -16,22 +15,20 @@
 
     <main class="contenedor">
 
-  
         <header class="header-pagina">
             <button id="btnVolver" class="btn-volver" onclick="volverPerfil()">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
-            <h1>Contactos de Emergencia</h1>
+            <h1 id="lblTituloContactos">Contactos de Emergencia</h1>
         </header>
 
-       
         <section class="lista-contactos">
 
             <div class="card-contacto">
                 <div class="info-contacto">
                     <img src="img/avatar.png" alt="Foto Mamá" class="avatar-contacto">
                     <div class="datos">
-                        <h3>Mamá</h3>
+                        <h3 id="lblContactoMama">Mamá</h3>
                         <p>+52 55 1234 5678</p>
                     </div>
                 </div>
@@ -44,7 +41,7 @@
                 <div class="info-contacto">
                     <img src="img/avatar.png" alt="Foto Papá" class="avatar-contacto">
                     <div class="datos">
-                        <h3>Papá</h3>
+                        <h3 id="lblContactoPapa">Papá</h3>
                         <p>+52 55 8765 4321</p>
                     </div>
                 </div>
@@ -57,7 +54,7 @@
                 <div class="info-contacto">
                     <img src="img/avatar.png" alt="Foto Mejor Amiga" class="avatar-contacto">
                     <div class="datos">
-                        <h3>Mejor Amiga</h3>
+                        <h3 id="lblContactoAmiga">Mejor Amiga</h3>
                         <p>+52 55 1122 3444</p>
                     </div>
                 </div>
@@ -68,11 +65,10 @@
 
         </section>
 
-        
         <section class="acciones-contacto">
             <button class="btn-agregar" onclick="agregarContacto()">
                 <i class="fa-solid fa-user-plus"></i>
-                Agregar Nuevo Contacto
+                <span id="lblBtnAgregar">Agregar Nuevo Contacto</span>
             </button>
         </section>
 
