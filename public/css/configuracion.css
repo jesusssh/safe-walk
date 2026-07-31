@@ -1,62 +1,35 @@
-
-.header-pagina {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background-color: #1a1040; /* Ajusta a tu color azul principal */
-    color: #ffffff;
-    padding: 16px;
-    border-radius: 12px 12px 0 0;
-    margin-bottom: 20px;
-}
-
-.header-pagina h1 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 0;
-}
-
-.btn-volver {
-    position: absolute;
-    left: 16px;
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
-
-
-.opcion .derecha {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.valor-opcion {
-    color: #888888;
-    font-size: 0.9rem;
-}
-
-
-
-
-
-.selector-opcion {
-    border: none;
+.select-limpio {
     background: transparent;
-    font-size: 0.95rem;
-    color: #666666;
+    border: none;
+    color: #4b5563;
+    font-size: 16px;
     font-weight: 500;
     cursor: pointer;
     outline: none;
+    padding: 5px 10px;
     text-align: right;
-    padding-right: 4px;
-    font-family: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
-.selector-opcion option {
-    color: #161233;
-    background-color: #ffffff;
+body.dark-mode .select-limpio,
+body.dark-mode .estado-texto {
+    color: #94a3b8;
+}
+
+body.dark-mode .select-limpio option {
+    background-color: #1e293b;
+    color: #ffffff;
+}
+
+.derecha-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #666;
+}
+
+body.dark-mode .derecha-info {
+    color: #94a3b8;
 }

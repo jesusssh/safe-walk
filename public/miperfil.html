@@ -1,90 +1,90 @@
 <!DOCTYPE html>
 <html lang="es">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Mi Perfil</title>
-
+ 
     <link rel="stylesheet" href="css/estilosper.css">
     
    
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-
+ 
 <body>
     
-
+ 
     <main class="contenedor">
-
+ 
         <header class="header-pagina">
     <button class="btn-volver" onclick="window.location.href='mp.html'">
         <i class="fa-solid fa-arrow-left"></i>
     </button>
     <h1 id="lblTituloPerfil">Mi Perfil</h1>
 </header>
-
+ 
         
        <section class="perfil">
-
+ 
     <div class="foto-perfil">
-
+ 
         <img id="perfil" src="img/avatar.png" alt="Foto de Perfil">
-
+ 
         <label for="subirFoto" class="camara">
             <i class="fa-solid fa-camera"></i>
         </label>
-
+ 
         <input
             type="file"
             id="subirFoto"
             accept="image/*"
             hidden>
-
+ 
     </div>
-
+ 
     <div class="datos-usuario">
-
+ 
         <h1 id="nombreUsuario">
             Nombre Completo
         </h1>
-
+ 
         <p id="correoUsuario">
             correo@ejemplo.com
         </p>
-
+ 
     </div>
-
+ 
 </section>
-
-
+ 
+ 
 <section class="estadisticas">
-
+ 
     <div class="card">
-
+ 
         <h2 id="cantidadReportes">0</h2>
-
+ 
         <p id="lblEstadisticaReportes">Reportes</p>
-
+ 
     </div>
-
+ 
     <div class="card">
-
+ 
         <h2 id="cantidadContactos">0</h2>
-
+ 
         <p id="lblEstadisticaContactos">Contactos</p>
-
+ 
     </div>
-
+ 
 </section>
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
         <section class="opciones">
-
+ 
             <!-- Botones y Opciones -->
 <div id="btnReportes" class="opcion">
     <div class="izquierda">
@@ -93,7 +93,7 @@
     </div>
     <i class="fa-solid fa-chevron-right"></i>
 </div>
-
+ 
 <div id="btnEditar" class="opcion">
     <div class="izquierda">
         <i class="fa-solid fa-user-pen"></i>
@@ -101,7 +101,7 @@
     </div>
     <i class="fa-solid fa-chevron-right"></i>
 </div>
-
+ 
 <div id="btnContactos" class="opcion">
     <div class="izquierda">
         <i class="fa-solid fa-address-book"></i>
@@ -109,7 +109,7 @@
     </div>
     <i class="fa-solid fa-chevron-right"></i>
 </div>
-
+ 
 <div id="btnConfiguracion" class="opcion">
     <div class="izquierda">
         <i class="fa-solid fa-gear"></i>
@@ -117,14 +117,14 @@
     </div>
     <i class="fa-solid fa-chevron-right"></i>
 </div>
-
-
-
+ 
+ 
+ 
     </main>
-
+ 
     <script src="js/contac.js"></script>
- <script src="js/configuracion.js"></script>
- <script src="js/scriptper.js"></script>
+<script src="js/configuracion.js"></script>
+<script src="js/scriptper.js"></script>
 </body>
-
+ 
 </html>
