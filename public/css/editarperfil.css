@@ -1,182 +1,128 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
-body{
-margin:0;
-    padding:0;
-    background:linear-gradient(
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.header-pagina,
+.header-pagina h1,
+.grupo label,
+#guardar,
+#cancelar,
+button {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(
         135deg,
         #111827,
         #1e3a8a
     );
-    font-family:'Segoe UI',sans-serif;
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    min-height:100vh;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-
-.card{
-
-    width:500px;
-
-    background:white;
-
-    padding:35px;
-
-    border-radius:20px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
-
+.card {
+    width: 500px;
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.15);
 }
 
-.foto{
-
-    position:relative;
-
-    width:150px;
-
-    margin:auto;
-
+.foto {
+    position: relative;
+    width: 150px;
+    margin: auto;
 }
 
-.foto img{
-
-    width:150px;
-
-    height:150px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
-    border:4px solid #2EA3F2;
-
+.foto img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #2EA3F2;
 }
 
-.camara{
-
-    position:absolute;
-
-    bottom:10px;
-
-    right:5px;
-
-    width:38px;
-
-    height:38px;
-
-    border-radius:50%;
-
-    background:#2EA3F2;
-
-    color:white;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    cursor:pointer;
-
+.camara {
+    position: absolute;
+    bottom: 10px;
+    right: 5px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #2EA3F2;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-h1{
-
-    text-align:center;
-
-    margin:25px 0;
-
+h1 {
+    text-align: center;
+    margin: 25px 0;
 }
 
-.grupo{
-
-    margin-bottom:18px;
-
+.grupo {
+    margin-bottom: 18px;
 }
 
-.grupo label{
-
-    display:block;
-
-    margin-bottom:6px;
-
-    font-weight:bold;
-
+.grupo label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
 }
 
-.grupo input{
-
-    width:100%;
-
-    padding:12px;
-
-    border:1px solid #ccc;
-
-    border-radius:8px;
-
-    font-size:15px;
-
+.grupo input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
 }
 
-.botones{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    margin-top:25px;
-
+.botones {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
 }
 
-#guardar{
-
-    background:#2EA3F2;
-
-    color:white;
-
-    border:none;
-
-    padding:12px 25px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
+#guardar {
+    background: #2EA3F2;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
 }
 
-#cancelar{
-
-    background:#e53935;
-
-    color:white;
-
-    border:none;
-
-    padding:12px 25px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
+#cancelar {
+    background: #e53935;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
 }
 
-button:hover{
-
-    opacity:.9;
-
+button:hover {
+    opacity: .9;
 }
-
 
 /* Header con barra morada/azul oscura */
 .header-pagina {
@@ -184,10 +130,10 @@ button:hover{
     align-items: center;
     justify-content: center;
     position: relative;
-    background-color: #161233; /* El color exacto de tu barra */
+    background-color: #161233;
     color: #ffffff;
     padding: 14px 20px;
-    border-radius: 10px; /* Bordes redondeados */
+    border-radius: 10px;
     margin-bottom: 20px;
     width: 100%;
     box-sizing: border-box;
@@ -221,10 +167,6 @@ button:hover{
     opacity: 0.8;
 }
 
-
-
-
-
 /* Colores normales (Modo Claro) */
 body {
     background-color: #f4f6f9;
@@ -243,4 +185,3 @@ body.dark-mode .opcion {
     background-color: #1e293b;
     color: #ffffff;
 }
-

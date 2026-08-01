@@ -38,4 +38,11 @@ document.getElementById("guardar").addEventListener("click", function () {
 
 
 
-
+document.addEventListener('DOMContentLoaded', () => {
+    const temaGuardado = localStorage.getItem('temaApp') || 'claro';
+    if (temaGuardado === 'oscuro') {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+});
