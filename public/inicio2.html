@@ -28,16 +28,17 @@
 <div class="card login-card shadow-lg">
 
     <h2 class="text-center mb-4">Iniciar Sesión</h2>
-
-    <form action="inicio.html" method="POST">
+      
+    <form id="formLogin">
 
         <div class="mb-3">
             <label class="form-label">Correo Electrónico</label>
             <input
-                type="email"
-                class="form-control"
-                placeholder="correo@ejemplo.com"
-                required>
+               type="email"
+               class="form-control"
+               id="correo"
+               placeholder="correo@ejemplo.com"
+            required>
         </div>
 
         <div class="mb-3">
@@ -52,17 +53,21 @@
                     required>
             </div>
         </div>
-
+r
         <div class="text-end mb-3">
             <a href="recuperar_contraseña.html" class="forgot-password-link">
                 ¿Olvidaste tu contraseña?
             </a>
         </div>
 
+        <p style="color: red" id="mensaje"></p>
+
         <button
-            type="submit"
-            class="btn btn-primary w-100 login-btn" onclick="window.location.href='mp.html'">
-            Iniciar Sesión
+           type="submit"
+           class="btn btn-primary w-100 login-btn">
+
+           Iniciar Sesión
+
         </button>
 
     </form>
@@ -74,5 +79,6 @@
         </a>
     </div>
 </div>
+<script src="js/inicioSesion.js"></script>
 </body>
 </html>
