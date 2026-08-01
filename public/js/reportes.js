@@ -151,7 +151,7 @@ botonCapturar.onclick = () => {
 
 
     const ctx = canvas.getContext("2d");
-    ctx.drawImage(video, 0, 0);
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
     foto.src = canvas.toDataURL("image/png");
 };
