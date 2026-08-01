@@ -9,59 +9,72 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-
 <link rel="stylesheet" href="css/editar.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-<header>
-    <h2>Editar Contactos</h2>
-</header>
-
 <div class="contenedor">
+    <header>
+        <h2 id="lblTituloEditar" data-es="Editar Contactos" data-en="Edit Contacts">Editar Contactos</h2>
+    </header>
 
-    <label>Nombre 1</label>
-    <input type="text" id="nombre1">
+    <div class="grupo">
+        <label id="lblNom1" data-es="Nombre 1" data-en="Name 1">Nombre 1</label>
+        <input type="text" id="nombre1">
+    </div>
 
-    <label>Parentesco</label>
-    <input type="text" id="parentesco1">
+    <div class="grupo">
+        <label id="lblPar1" data-es="Parentesco" data-en="Relationship">Parentesco</label>
+        <input type="text" id="parentesco1">
+    </div>
 
-    <label>Teléfono</label>
-    <input  type="text"
-    id="telefono1"
-    maxlength="8"
-    inputmode="numeric"
-    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-    placeholder="0000000">
+    <div class="grupo">
+        <label id="lblTel1" data-es="Teléfono" data-en="Phone">Teléfono</label>
+        <input type="text"
+            id="telefono1"
+            maxlength="8"
+            inputmode="numeric"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            placeholder="00000000">
+    </div>
 
-     <label>Correo</label>
-    <input type="email" id="correo1" placeholder="correo@ejemplo.com">
+    <div class="grupo">
+        <label id="lblCor1" data-es="Correo" data-en="Email">Correo</label>
+        <input type="email" id="correo1" placeholder="correo@ejemplo.com">
+    </div>
 
     <hr>
 
-    <label>Nombre 2</label>
-    <input type="text" id="nombre2">
+    <div class="grupo">
+        <label id="lblNom2" data-es="Nombre 2" data-en="Name 2">Nombre 2</label>
+        <input type="text" id="nombre2">
+    </div>
 
-    <label>Parentesco</label>
-    <input type="text" id="parentesco2">
+    <div class="grupo">
+        <label id="lblPar2" data-es="Parentesco" data-en="Relationship">Parentesco</label>
+        <input type="text" id="parentesco2">
+    </div>
 
-    <label>Teléfono</label>
-    <input     
-    type="text"
-    id="telefono2"
-    maxlength="8"
-    inputmode="numeric"
-    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-    placeholder="0000000">
+    <div class="grupo">
+        <label id="lblTel2" data-es="Teléfono" data-en="Phone">Teléfono</label>
+        <input type="text"
+            id="telefono2"
+            maxlength="8"
+            inputmode="numeric"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            placeholder="00000000">
+    </div>
 
-    <label>Correo</label>
-    <input type="email" id="correo2" placeholder="correo@ejemplo.com">
+    <div class="grupo">
+        <label id="lblCor2" data-es="Correo" data-en="Email">Correo</label>
+        <input type="email" id="correo2" placeholder="correo@ejemplo.com">
+    </div>
 
-    <button onclick="window.location.href='sos.html'" id="guardar">Guardar</button>
-
-    <a href="sos.html" class="volver">Volver</a>
-
+    <div class="botones">
+        <button id="guardar" data-es="Guardar" data-en="Save">Guardar</button>
+        <a href="sos.html" class="volver" id="lblVolver" data-es="Volver" data-en="Back">Volver</a>
+    </div>
 </div>
 
 <script src="js/editar.js"></script>

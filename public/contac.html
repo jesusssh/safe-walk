@@ -7,8 +7,8 @@
     <title>Contactos de Emergencia - SafeWalk</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/contac.css">
     <link rel="stylesheet" href="css/estilosper.css">
@@ -23,7 +23,7 @@
             <button id="btnVolver" class="btn-volver" onclick="volverPerfil()">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
-            <h1 id="lblTituloContactos">Contactos de Emergencia</h1>
+            <h1 id="lblTituloContactos" data-es="Contactos de Emergencia" data-en="Emergency Contacts">Contactos de Emergencia</h1>
         </header>
 
         <section class="lista-contactos">
@@ -32,7 +32,7 @@
                 <div class="info-contacto">
                     <img src="img/avatar.png" alt="Foto Mamá" class="avatar-contacto">
                     <div class="datos">
-                        <h3 id="lblContactoMama">Mamá</h3>
+                        <h3 id="lblContactoMama" data-es="Mamá" data-en="Mom">Mamá</h3>
                         <p>+52 55 1234 5678</p>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                 <div class="info-contacto">
                     <img src="img/avatar.png" alt="Foto Papá" class="avatar-contacto">
                     <div class="datos">
-                        <h3 id="lblContactoPapa">Papá</h3>
+                        <h3 id="lblContactoPapa" data-es="Papá" data-en="Dad">Papá</h3>
                         <p>+52 55 8765 4321</p>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="info-contacto">
                     <img src="img/avatar.png" alt="Foto Mejor Amiga" class="avatar-contacto">
                     <div class="datos">
-                        <h3 id="lblContactoAmiga">Mejor Amiga</h3>
+                        <h3 id="lblContactoAmiga" data-es="Mejor Amiga" data-en="Best Friend">Mejor Amiga</h3>
                         <p>+52 55 1122 3444</p>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
         <section class="acciones-contacto">
             <button class="btn-agregar" onclick="agregarContacto()">
                 <i class="fa-solid fa-user-plus"></i>
-                <span id="lblBtnAgregar">Agregar Nuevo Contacto</span>
+                <span id="lblBtnAgregar" data-es="Agregar Nuevo Contacto" data-en="Add New Contact">Agregar Nuevo Contacto</span>
             </button>
         </section>
 

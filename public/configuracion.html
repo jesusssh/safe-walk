@@ -5,72 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuración - SafeWalk</title>
-
+ 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/configuracion.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-   <link rel="stylesheet" href="css/estilosper.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/estilosper.css">
 </head>
  
 <body>
  
     <main class="contenedor">
  
-       
         <header class="header-pagina">
             <button id="btnVolver" class="btn-volver" onclick="volverPerfil()">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
-            <h1>Configuración</h1>
+            <h1 id="lblTituloConfig" data-es="Configuración" data-en="Settings">Configuración</h1>
         </header>
+ 
+        <section class="lista-opciones">
  
             <button class="opcion">
                 <div class="izquierda">
                     <i class="fa-solid fa-ruler"></i>
-                   <span id="lblUnidades">Unidades de distancia</span>
+                    <span id="lblUnidades" data-es="Unidades de distancia" data-en="Distance Units">Unidades de distancia</span>
                 </div>
                 <div class="derecha">
-                    <span class="valor-opcion">Km</span>
-                    <i class="fa-solid fa-chevron-right"></i>
+                    <select id="selectUnidades" class="selector-opcion" onchange="cambiarUnidad(this.value)">
+                        <option value="km">Km</option>
+                        <option value="mi" id="optMillas">Millas</option>
+                    </select>
                 </div>
             </button>
  
             <button class="opcion">
                 <div class="izquierda">
                     <i class="fa-solid fa-globe"></i>
-                   <span id="lblIdioma">Idioma</span>
+                    <span id="lblIdioma" data-es="Idioma" data-en="Language">Idioma</span>
                 </div>
                 <div class="derecha">
-                   <select id="selectIdioma" class="selector-opcion" onchange="cambiarIdioma(this.value)">
-            <option value="Español" selected>Español</option>
-            <option value="English">English</option>
-        
-        </select>
-        <i class="fa-solid fa-chevron-right"></i>
-    </div>
-</div>
+                    <select id="selectIdioma" class="selector-opcion" onchange="cambiarIdioma(this.value)">
+                        <option value="Español">Español</option>
+                        <option value="English">English</option>
+                    </select>
+                </div>
             </button>
  
-            <button class="opcion">
-               <div id="btnCambiarTema" class="opcion opcion-click">
-    <div class="izquierda">
-        <i id="iconoTema" class="fa-solid fa-moon"></i>
-        <span id="lblTema">Tema</span>
-    </div>
-    <div class="derecha">
-        <span id="textoTemaEstado" class="estado-texto">Claro</span>
-    </div>
-</div>
-            </button>
+            <!-- Fila de Tema limpia sin el <button> duplicado externo -->
+            <div id="btnCambiarTema" class="opcion opcion-click" style="cursor: pointer;">
+                <div class="izquierda">
+                    <i id="iconoTema" class="fa-solid fa-moon"></i>
+                    <span id="lblTema" data-es="Tema" data-en="Theme">Tema</span>
+                </div>
+                <div class="derecha">
+                    <span id="textoTemaEstado" class="estado-texto" data-es="Claro" data-en="Light">Claro</span>
+                </div>
+            </div>
  
             <button class="opcion">
                 <div class="izquierda">
                     <i class="fa-solid fa-circle-question"></i>
-                   <span id="lblAyuda">Ayuda y soporte</span>
+                    <span id="lblAyuda" data-es="Ayuda y soporte" data-en="Help & Support">Ayuda y soporte</span>
                 </div>
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
@@ -78,7 +77,7 @@
             <button class="opcion">
                 <div class="izquierda">
                     <i class="fa-solid fa-circle-info"></i>
-                    <span id="lblAcerca">Acerca de SafeWalk</span>
+                    <span id="lblAcerca" data-es="Acerca de SafeWalk" data-en="About SafeWalk">Acerca de SafeWalk</span>
                 </div>
                 <div class="derecha">
                     <span class="valor-opcion">V1.0.0</span>
@@ -88,22 +87,14 @@
  
         </section>
  
-        
         <section class="salir">
             <button id="btnCerrarSesion" class="cerrar">
- 
                 <i class="fa-solid fa-right-from-bracket"></i>
-                Cerrar Sesión
+                <span id="lblCerrarSesion" data-es="Cerrar Sesión" data-en="Log Out">Cerrar Sesión</span>
             </button>
         </section>
  
- 
- 
- 
- 
- 
     </main>
-    
  
     <script src="js/configuracion.js"></script>
  

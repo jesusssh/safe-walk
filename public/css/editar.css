@@ -5,17 +5,11 @@
     font-family: 'Roboto', sans-serif;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
+h1, h2, h3, h4, h5, h6,
 .header-pagina,
-.header-pagina h1,
-.grupo label,
 #guardar,
 #cancelar,
+.volver,
 button {
     font-family: 'Montserrat', sans-serif;
 }
@@ -23,165 +17,131 @@ button {
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(
-        135deg,
-        #111827,
-        #1e3a8a
-    );
+    background-color: #f4f6f9;
+    color: #333333;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
 
-.card {
-    width: 500px;
-    background: white;
-    padding: 35px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,.15);
+/* Tarjeta Principal */
+.contenedor {
+    width: 90%;
+    max-width: 480px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    margin: 20px auto;
 }
 
-.foto {
-    position: relative;
-    width: 150px;
-    margin: auto;
-}
-
-.foto img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #2EA3F2;
-}
-
-.camara {
-    position: absolute;
-    bottom: 10px;
-    right: 5px;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #2EA3F2;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-h1 {
-    text-align: center;
-    margin: 25px 0;
-}
-
-.grupo {
-    margin-bottom: 18px;
-}
-
-.grupo label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: bold;
-}
-
-.grupo input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 15px;
-}
-
-.botones {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 25px;
-}
-
-#guardar {
-    background: #2EA3F2;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-#cancelar {
-    background: #e53935;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-button:hover {
-    opacity: .9;
-}
-
-/* Header con barra morada/azul oscura */
-.header-pagina {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background-color: #161233;
+/* Encabezado con Rojo SOS */
+header {
+    background-color: #ff0000; /* Rojo SOS */
     color: #ffffff;
     padding: 14px 20px;
     border-radius: 10px;
     margin-bottom: 20px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-/* Título centrado */
-.header-pagina h1 {
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin: 0;
-    color: #ffffff;
     text-align: center;
 }
 
-/* Botón con flecha de regreso */
-.btn-volver {
-    position: absolute;
-    left: 16px;
-    background: none;
-    border: none;
+header h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
     color: #ffffff;
-    font-size: 1.1rem;
-    cursor: pointer;
+}
+
+/* Labels e Inputs */
+.grupo {
+    margin-bottom: 12px;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #444444;
+}
+
+input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: #ff0000;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #e0e0e0;
+    margin: 18px 0;
+}
+
+/* Botones */
+.botones {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px;
+    gap: 12px;
+    margin-top: 20px;
 }
 
-.btn-volver:hover {
-    opacity: 0.8;
+#guardar {
+    flex: 1;
+    background-color: #ff0000; /* Botón Rojo SOS */
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: opacity 0.2s;
 }
 
-/* Colores normales (Modo Claro) */
-body {
-    background-color: #f4f6f9;
-    color: #333333;
+.volver {
+    flex: 1;
+    background-color: #6c757d; /* Gris secundario para regresar */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+    display: inline-block;
+    transition: opacity 0.2s;
 }
 
-/* Colores cuando se activa el Modo Oscuro */
+button:hover, .volver:hover {
+    opacity: 0.88;
+}
+
+/* Modo Oscuro (se sincroniza cuando activas dark-mode) */
 body.dark-mode {
     background-color: #0f172a;
     color: #ffffff;
 }
 
-body.dark-mode .contenedor,
-body.dark-mode .card,
-body.dark-mode .opcion {
+body.dark-mode .contenedor {
     background-color: #1e293b;
     color: #ffffff;
+}
+
+body.dark-mode label {
+    color: #cbd5e1;
+}
+
+body.dark-mode input {
+    background-color: #334155;
+    color: #ffffff;
+    border-color: #475569;
 }

@@ -4,131 +4,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Mi Perfil</title>
+    <title>Mi Perfil</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
  
     <link rel="stylesheet" href="css/estilosper.css">
     
-   
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
  
 <body>
     
- 
     <main class="contenedor">
  
         <header class="header-pagina">
-    <button class="btn-volver" onclick="window.location.href='mp.html'">
-        <i class="fa-solid fa-arrow-left"></i>
-    </button>
-    <h1 id="lblTituloPerfil">Mi Perfil</h1>
-</header>
- 
+            <button class="btn-volver" onclick="window.location.href='mp.html'">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <h1 id="lblTituloPerfil" data-es="Mi Perfil" data-en="My Profile">Mi Perfil</h1>
+        </header>
         
-       <section class="perfil">
+        <section class="perfil">
  
-    <div class="foto-perfil">
+            <div class="foto-perfil">
+                <img id="perfil" src="img/avatar.png" alt="Foto de Perfil">
+                <label for="subirFoto" class="camara">
+                    <i class="fa-solid fa-camera"></i>
+                </label>
+                <input type="file" id="subirFoto" accept="image/*" hidden>
+            </div>
  
-        <img id="perfil" src="img/avatar.png" alt="Foto de Perfil">
+            <div class="datos-usuario">
+                <h1 id="nombreUsuario">Nombre Completo</h1>
+                <p id="correoUsuario">correo@ejemplo.com</p>
+            </div>
  
-        <label for="subirFoto" class="camara">
-            <i class="fa-solid fa-camera"></i>
-        </label>
+        </section>
  
-        <input
-            type="file"
-            id="subirFoto"
-            accept="image/*"
-            hidden>
+        <section class="estadisticas">
  
-    </div>
+            <div class="card">
+                <h2 id="cantidadReportes">0</h2>
+                <p id="lblEstadisticaReportes" data-es="Reportes" data-en="Reports">Reportes</p>
+            </div>
  
-    <div class="datos-usuario">
+            <div class="card">
+                <h2 id="cantidadContactos">0</h2>
+                <p id="lblEstadisticaContactos" data-es="Contactos" data-en="Contacts">Contactos</p>
+            </div>
  
-        <h1 id="nombreUsuario">
-            Nombre Completo
-        </h1>
- 
-        <p id="correoUsuario">
-            correo@ejemplo.com
-        </p>
- 
-    </div>
- 
-</section>
- 
- 
-<section class="estadisticas">
- 
-    <div class="card">
- 
-        <h2 id="cantidadReportes">0</h2>
- 
-        <p id="lblEstadisticaReportes">Reportes</p>
- 
-    </div>
- 
-    <div class="card">
- 
-        <h2 id="cantidadContactos">0</h2>
- 
-        <p id="lblEstadisticaContactos">Contactos</p>
- 
-    </div>
- 
-</section>
- 
- 
- 
- 
+        </section>
  
         <section class="opciones">
  
-            <!-- Botones y Opciones -->
-<div id="btnReportes" class="opcion">
-    <div class="izquierda">
-        <i class="fa-solid fa-file-lines"></i>
-        <span id="lblMisReportes">Mis Reportes</span>
-    </div>
-    <i class="fa-solid fa-chevron-right"></i>
-</div>
+            <div id="btnReportes" class="opcion">
+                <div class="izquierda">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span id="lblMisReportes" data-es="Mis Reportes" data-en="My Reports">Mis Reportes</span>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
  
-<div id="btnEditar" class="opcion">
-    <div class="izquierda">
-        <i class="fa-solid fa-user-pen"></i>
-        <span id="lblEditarPerfil">Editar Perfil</span>
-    </div>
-    <i class="fa-solid fa-chevron-right"></i>
-</div>
+            <div id="btnEditar" class="opcion">
+                <div class="izquierda">
+                    <i class="fa-solid fa-user-pen"></i>
+                    <span id="lblEditarPerfil" data-es="Editar Perfil" data-en="Edit Profile">Editar Perfil</span>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
  
-<div id="btnContactos" class="opcion">
-    <div class="izquierda">
-        <i class="fa-solid fa-address-book"></i>
-        <span id="lblContactos">Contactos de Emergencia</span>
-    </div>
-    <i class="fa-solid fa-chevron-right"></i>
-</div>
+            <div id="btnContactos" class="opcion">
+                <div class="izquierda">
+                    <i class="fa-solid fa-address-book"></i>
+                    <span id="lblContactos" data-es="Contactos de Emergencia" data-en="Emergency Contacts">Contactos de Emergencia</span>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
  
-<div id="btnConfiguracion" class="opcion">
-    <div class="izquierda">
-        <i class="fa-solid fa-gear"></i>
-        <span id="lblConfiguracion">Configuración</span>
-    </div>
-    <i class="fa-solid fa-chevron-right"></i>
-</div>
- 
- 
+            <div id="btnConfiguracion" class="opcion">
+                <div class="izquierda">
+                    <i class="fa-solid fa-gear"></i>
+                    <span id="lblConfiguracion" data-es="Configuración" data-en="Settings">Configuración</span>
+                </div>
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+
+        </section>
  
     </main>
  
-    <script src="js/contac.js"></script>
-<script src="js/configuracion.js"></script>
-<script src="js/scriptper.js"></script>
+    <script src="js/scriptper.js"></script>
 </body>
  
 </html>

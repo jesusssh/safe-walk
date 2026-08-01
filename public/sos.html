@@ -1,88 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emergencia SOS</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergencia SOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/sos.css">
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/sos.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
 <header>
-    <a href="mp.html" class="volver">❮</a>
-    <h2>Emergencia SOS</h2>
-    <span>!</span>
+<a href="mp.html" class="volver">❮</a>
+<h2 id="lblTituloSOS" data-es="Emergencia SOS" data-en="SOS Emergency">Emergencia SOS</h2>
+<span>!</span>
 </header>
 
-
 <div class="contenedor">
-
-    <button id="btnSOS">
-        🔔
-        <h1>SOS</h1>
-    </button>
-
-    <p>
-        Tu ubicación será enviada a tus contactos de emergencia
-        y a usuarios cercanos.
-    </p>
-
+<button id="btnSOS">
+🔔
+<h1>SOS</h1>
+</button>
+<p id="lblTextoUbicacion" data-es="Tu ubicación será enviada a tus contactos de emergencia y a usuarios cercanos." data-en="Your location will be sent to your emergency contacts and nearby users.">
+Tu ubicación será enviada a tus contactos de emergencia
+y a usuarios cercanos.
+</p>
 </div>
 
 <div class="contactos">
-
-    <div class="titulo">
-        <h3>Contactos de Emergencia</h3>
-       <a href="editar.html" class="editar">Editar</a>
-    </div>
-
-    <div class="persona">
-
-       <div class="persona">
-
-    <img id="perfil" src="img/avatar.png" alt="Foto de Perfil">
-
-   <div>
-    <strong id="nombre1">María</strong><br>
-    <small id="parentesco1">Papá</small><br>
-    <small id="telefono1">+503 7777-1111</small><br>
-    <small id="correo1">maria@gmail.com</small>
-    
-</div>
-    <button class="llamar">📞</button>
-
+<div class="titulo">
+<h3 id="lblTituloContactos" data-es="Contactos de Emergencia" data-en="Emergency Contacts">Contactos de Emergencia</h3>
+<a href="editar.html" class="editar" id="lblBtnEditar" data-es="Editar" data-en="Edit">Editar</a>
 </div>
 
 <div class="persona">
-
-    <img id="perfil" src="img/avatar.png" alt="Foto de Perfil">
-
-   <div>
-    <strong id="nombre2">Ana</strong><br>
-    <small id="parentesco2">Mamá</small><br>
-    <small id="telefono2">+503 7777-2222</small><br>
-    <small id="correo2">ana@gmail.com</small>
+<div class="persona">
+<img id="perfil1" src="img/avatar.png" alt="Foto de Perfil">
+<div>
+<strong id="nombre1">Juan</strong><br>
+<small id="parentesco1" data-es="Papá" data-en="Dad">Papá</small><br>
+<small id="telefono1">+503 7777-1111</small><br>
+<small id="correo1">Juan@gmail.com</small>
+</div>
+<button class="llamar">📞</button>
 </div>
 
-    <button class="llamar">📞</button>
-
+<div class="persona">
+<img id="perfil2" src="img/avatar.png" alt="Foto de Perfil">
+<div>
+<strong id="nombre2">Ana</strong><br>
+<small id="parentesco2" data-es="Mamá" data-en="Mom">Mamá</small><br>
+<small id="telefono2">+503 7777-2222</small><br>
+<small id="correo2">ana@gmail.com</small>
 </div>
-
+<button class="llamar">📞</button>
+</div>
 </div>
 
 <div id="map"></div>
-<script>document.getElementById("nombre1").textContent =
-localStorage.getItem("nombre1") || "María";
 
-document.getElementById("parentesco1").textContent =
-localStorage.getItem("parentesco1") || "Papá";
+<script>
+const lang = localStorage.getItem("idioma") || "es";
+const esIngles = (lang === "en" || lang === "English");
+
+document.getElementById("nombre1").textContent =
+localStorage.getItem("nombre1") || "Juan";
+
+const parentesco1Guardado = localStorage.getItem("parentesco1");
+if (parentesco1Guardado) {
+    document.getElementById("parentesco1").textContent = parentesco1Guardado;
+} else {
+    document.getElementById("parentesco1").textContent = esIngles ? "Dad" : "Papá";
+}
 
 document.getElementById("telefono1").textContent =
 localStorage.getItem("telefono1") || "+503 7777-1111";
@@ -90,20 +81,22 @@ localStorage.getItem("telefono1") || "+503 7777-1111";
 document.getElementById("nombre2").textContent =
 localStorage.getItem("nombre2") || "Ana";
 
-document.getElementById("parentesco2").textContent =
-localStorage.getItem("parentesco2") || "Mamá";
+const parentesco2Guardado = localStorage.getItem("parentesco2");
+if (parentesco2Guardado) {
+    document.getElementById("parentesco2").textContent = parentesco2Guardado;
+} else {
+    document.getElementById("parentesco2").textContent = esIngles ? "Mom" : "Mamá";
+}
 
 document.getElementById("telefono2").textContent =
 localStorage.getItem("telefono2") || "+503 7777-2222";
 document.getElementById("correo1").textContent =
-localStorage.getItem("correo1") || "maria@gmail.com";
-
+localStorage.getItem("correo1") || "juan@gmail.com";
 document.getElementById("correo2").textContent =
 localStorage.getItem("correo2") || "ana@gmail.com";
 </script>
 
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 <script src="js/sos.js"></script>
-
 </body>
 </html>

@@ -64,3 +64,27 @@ body.dark-mode .opcion {
     background-color: #1e293b;
     color: #ffffff;
 }
+
+
+
+
+
+
+
+/* Estilo limpio para el selector de idioma */
+.selector-opcion {
+    background: transparent;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+    padding-right: 5px;
+    text-align: right;
+}
+
+body.dark-mode .selector-opcion {
+    background-color: #1e293b;
+    color: #ffffff;
+}
