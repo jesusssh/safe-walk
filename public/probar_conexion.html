@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Prueba de Conexión BD</title>
+</head>
+<body>
+<h2>Verificación de Conexión a Base de Datos</h2>
+<button id="btnProbar">Probar Conexión</button>
+<div id="resultado" style="margin-top: 15px; font-weight: bold;"></div>
+<script>
+document.getElementById('btnProbar').addEventListener('click', probarConexion);
+async function probarConexion() {
+const resultadoDiv = document.getElementById('resultado');
+resultadoDiv.style.color = "black";
+resultadoDiv.textContent = "Probando conexión...";
+try {
+// Hacer la petición al archivo PHP
+const response = await fetch('../config/prueba_conexion.php');
+const data = await response.json();
+// Verificar si la propiedad 'success' devuelta por PHP es verdadera
+if (data.success) {
+resultadoDiv.style.color = "green";
+resultadoDiv.textContent = " ✅ " + data.message;
+} else {
+resultadoDiv.style.color = "red";
+resultadoDiv.textContent = " ❌ " + data.message + " (" + data.error_details + ")";
+
+}
+} catch (error) {
+// Captura errores de red o si la respuesta no es un JSON válido
+resultadoDiv.style.color = "red";
+resultadoDiv.textContent = "Error en la petición Fetch: Servidor no disponible o ruta incorrecta."
+console.error("Error en Fetch:", error);
+}
+}
+</script>
+</body>
+</html>
