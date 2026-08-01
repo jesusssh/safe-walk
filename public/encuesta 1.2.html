@@ -4,8 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Encuesta SafeWalk</title>
+<link rel="stylesheet" href="css/encuesta.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
-       body {
+    body {
            margin: 0;
            padding: 0;
            font-family: Arial, sans-serif;
@@ -14,7 +16,7 @@
            justify-content: center;
            align-items: center;
            min-height: 100vh;
-           color: #ffffff; /* Blanco puro */
+           color: #ffffff; 
        }
        .back-btn {
            position: absolute;
@@ -24,7 +26,7 @@
            border: none;
            color: #ffffff;
            font-size: 35px;
-           font-weight: bold; /* Flecha más gruesa */
+           font-weight: bold; 
            cursor: pointer;
            padding: 10px;
        }
@@ -37,45 +39,46 @@
        h1 {
            font-size: 2.8rem;
            margin-bottom: 10px;
-           text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra para resaltar */
+           text-shadow: 2px 2px 4px rgba(0,0,0,0.3); 
        }
        p {
            margin-bottom: 30px;
            font-size: 1.3rem;
-           font-weight: 500; /* Texto más sólido */
+           font-weight: 500; 
        }
        .input-box {
            width: 90%;
            padding: 20px;
            margin-bottom: 10px;
-           background: #ffffff; /* Fondo blanco para las cajas */
+           background: #ffffff; 
            border: 2px solid #ffffff;
            border-radius: 10px;
-           color: #061952; /* Texto oscuro para contraste */
+           color: #061952; 
            font-size: 1.1rem;
-           font-weight: bold; /* Letra bien marcada */
+           font-weight: bold; 
            box-sizing: border-box;
        }
-       /* Color del texto de ayuda dentro de las cajas */
+       
        ::placeholder {
            color: #556080;
            font-weight: bold;
        }
        .btn-enviar {
-           background-color: #ffffff; /* Botón blanco */
-           color: #061952; /* Texto azul oscuro */
+           background-color: #ffffff; 
+           color: #061952; 
            border: none;
            padding: 10px;
            border-radius: 10px;
            cursor: pointer;
-           font-weight: 752; /* Máximo grosor */
+           font-weight: 752; 
            font-size: 1.3rem;
            width: 80%;
        }
 </style>
 </head>
+
 <body>
-<button class="back-btn" onclick="window.location.href='reportes.html'">
+<button class="back-btn" onclick="window.location.href='mp.html'">
 &larr;
 </button>
 <div class="main-container">
@@ -87,5 +90,6 @@
 <input type="text" class="input-box" placeholder="¿Qué te gustó del diseño de la app?">
 <button class="btn-enviar">Enviar respuesta</button>
 </div>
+
 </body>
 </html>

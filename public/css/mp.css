@@ -23,7 +23,7 @@ body {
     color: #333333;
 }
 
-/* Encabezado */
+
 header {
     height: 60px;
     background: #29235c;
@@ -46,13 +46,13 @@ header {
     justify-content: end;
 }
 
-/* Mapa */
+
 #map {
     width: 100%;
     height: 84vh;
 }
 
-/* Menú inferior de navegación */
+
 .menu {
     height: 40px;
     background: white;
@@ -63,8 +63,8 @@ header {
 }
 
 .menu img {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 25x;
 }
 
 .menu button {
@@ -73,9 +73,7 @@ header {
     cursor: pointer;
 }
 
-/* ==========================================
-   MODO OSCURO (Con alerta roja protegida)
-   ========================================== */
+
 
 body.dark-mode {
     background: #0f172a;
@@ -91,7 +89,7 @@ body.dark-mode .menu {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, .5);
 }
 
-/* Invierte a blanco TODOS los íconos EXCEPTO el que tenga la clase .icono-alerta (o id #btnAlerta) */
+
 body.dark-mode .menu img:not(.icono-alerta) {
     filter: brightness(0) invert(1);
 }
