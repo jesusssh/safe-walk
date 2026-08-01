@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
  
             const respuesta = confirm(mensaje);
             if (respuesta) {
-                window.location.href = "index.html";
+                window.location.href = "inicio2.html";
             }
         });
     }
