@@ -11,18 +11,17 @@ body{
     font-family:'Roboto',sans-serif;
 }
 
-.recuperar-container{
+.verificar-container{
     min-height:100vh;
-
     display:flex;
     flex-direction:column;
-
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
-    padding:20px;
+    gap:10px;
+
+    transform:translateY(-50px);
 }
-
 .logo-section{
     display:flex;
     flex-direction:column;
@@ -33,19 +32,21 @@ body{
 
 .logo-img{
     width:180px;
+    height:auto;
     margin:0;
 }
 
 .slogan{
     color:#cbd5e1;
+    text-align:center;
     margin-top:-30px;
     margin-bottom:0;
 }
 
-.recuperar-card{
+.verificar-card{
 
     width:100%;
-    max-width:500px;
+    max-width:550px;
 
     background:white;
 
@@ -59,7 +60,7 @@ body{
     animation:aparecer .8s ease;
 }
 
-.recuperar-card h2{
+.verificar-card h2{
 
     font-family:'Montserrat',sans-serif;
 
@@ -73,54 +74,19 @@ body{
     margin-bottom:25px;
 }
 
-.form-control{
-
-    border-radius:12px;
-
-    padding:12px;
-}
-
-.btn-recuperar{
-    width:90%;
-    display:block;
-    margin:25px auto 0 auto;
-
-    border:none;
-    border-radius:12px;
-    padding:14px;
-
-    background:#2563eb;
-    color:white;
-
-    transition:.3s;
-}
-
-.btn-recuperar:hover{
-
-    background:#1d4ed8;
-}
-.mb-3{
-    width:100%;
-    margin:0 auto;
-}
-.form-label{
-    display:block;
-    width:100%;
-    margin-bottom:8px;
-}
-.form-control{
-    width:100%;
-    border-radius:12px;
-    padding:12px;
-}
 .codigo-container{
+
     display:flex;
+
     justify-content:center;
+
     gap:10px;
+
     margin:30px 0;
 }
 
 .codigo-input{
+
     width:55px;
     height:60px;
 
@@ -130,14 +96,70 @@ body{
     font-weight:600;
 
     border:2px solid #d1d5db;
+
     border-radius:12px;
 }
 
 .codigo-input:focus{
+
     outline:none;
 
     border-color:#2563eb;
 }
+
+.btn-verificar{
+
+    width:90%;
+
+    display:block;
+
+    margin:25px auto 0 auto;
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-family:'Montserrat',sans-serif;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.btn-verificar:hover{
+
+    background:#1d4ed8;
+}
+
+.reenviar{
+
+    text-align:center;
+
+    margin-top:20px;
+
+    color:#6b7280;
+}
+
+.reenviar a{
+
+    color:#2563eb;
+
+    text-decoration:none;
+
+    font-weight:600;
+}
+
+.reenviar a:hover{
+
+    text-decoration:underline;
+}
+
 @keyframes aparecer{
 
     from{
@@ -148,5 +170,23 @@ body{
     to{
         opacity:1;
         transform:translateY(0);
+    }
+
+}
+
+@media(max-width:576px){
+
+    .verificar-card{
+        padding:25px;
+    }
+
+    .codigo-input{
+        width:45px;
+        height:50px;
+        font-size:1.2rem;
+    }
+
+    .logo-img{
+        width:150px;
     }
 }
