@@ -4,7 +4,7 @@ body{
     min-height:100vh;
     background:linear-gradient(
         135deg,
-        #111827,
+        #111827, 
         #1e3a8a
     );
 }
@@ -12,15 +12,10 @@ body{
     font-family:'Roboto', sans-serif;
 }
 h1,
-
 h2,
-
 h3,
-
 h4,
-
 h5,
-
 h6,
 
 .tipo-btn,
