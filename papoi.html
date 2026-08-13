@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="texto">soy un h1</h1>
+    <script>
+//Declarar las variables
+        let número1, número2, sum;
+        //Solicitar y guardar el valor en las variables
+        número1 = Number( prompt("Ingrese el número1: ") );
+        número2 = Number( prompt("Ingrese el número2: ") );
+    //Sumar y guardar en la variable sum
+      sum = número1 + número2;
+      //Meter el resultado en nuestro h1
+      document.getElementById("texto").innerHTML = sum;
+    </script>
