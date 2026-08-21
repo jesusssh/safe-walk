@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/rutas_seguras.css">
+    <script src="js/rutas_seguras.js"></script>
+</head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+<body>
+    <div class="rutas-container">
+
+    <div class="header-rutas">
+
+        <link href="mp.html" class="volver">
+            ←
+        </a>
+
+        <h2>Rutas Seguras</h2>
+
+    </div>
+
+    <div class="rutas-card">
+
+        <h5>Tu ubicación</h5>
+
+        <input
+            type="text"
+            id="ubicacionActual"
+            class="form-control"
+            readonly
+            placeholder="Detectando ubicación...">
+
+        <h5 class="mt-4">Destino</h5>
+
+        <p class="texto-ayuda">
+            Selecciona tu destino directamente en el mapa.
+        </p>
+
+        <div id="mapaRutas"></div>
+
+        <div class="info-ruta">
+
+            <p>
+                <strong>Distancia:</strong>
+                <span id="distancia">--</span>
+            </p>
+
+            <p>
+                <strong>Tiempo estimado:</strong>
+                <span id="tiempo">--</span>
+            </p>
+
+            <p>
+                <strong>Nivel de seguridad:</strong>
+                <span id="seguridad">--</span>
+            </p>
+
+            <p>
+                <strong>Reportes cercanos:</strong>
+                <span id="reportesEncontrados">0</span>
+            </p>
+
+            <p>
+                <strong>Riesgos detectados:</strong>
+            </p>
+
+            <ul id="listaRiesgos"></ul>
+
+        </div>
+
+        <button class="btn-ruta">
+            Buscar Ruta Segura
+        </button>
+
+    </div>
+
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+</body>
+</html>
