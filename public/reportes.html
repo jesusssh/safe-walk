@@ -56,14 +56,15 @@
     <input type="hidden" id="latitud">
     <input type="hidden" id="longitud">
 </div>
-            <h3 class="mt-4">Descripción (Opcional)</h3>
+            <h3 class="mt-4">Descripción</h3>
 
-            <textarea
-                class="form-control"
-                id="descripcion"
-                rows="4"
-                maxlength="200"
-                placeholder="Cuenta lo que sucedió..."></textarea>
+           <textarea
+              class="form-control"
+              id="descripcion"
+              rows="4"
+              maxlength="200"
+               required
+               placeholder="Cuenta lo que sucedió..."></textarea>
 
             <div class="contador">
                 <span id="contador">0</span>/200
@@ -84,11 +85,15 @@
 
 
 
-
-
-            <button class="btn-enviar">
-                Enviar Reporte
-            </button>
+               <div id="mensajeReporte" class="mt-3"></div>
+              <button type="button" class="btn-enviar" id="btnEnviar">
+                 Enviar Reporte
+              </button>
+            <button type="button" class="tipo-btn" data-id="1">
+            <button type="button" class="tipo-btn" data-id="2">
+            <button type="button" class="tipo-btn" data-id="3">
+            <button type="button" class="tipo-btn" data-id="4">
+            
 
         </div>
     </div>
