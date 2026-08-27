@@ -108,7 +108,7 @@ window.addEventListener("load", function(){
                 L.latLng(origenLat, origenLng),
                 L.latLng(destinoLat, destinoLng)
             ],
-            router: L.Routing.osrmv1(),
+            router: L.Routing.osrmv1({profile: 'foot'}),
             routeWhileDragging: false,
             show: false,
             addWaypoints: false,
@@ -118,9 +118,10 @@ window.addEventListener("load", function(){
                 return null;
             }
         }).addTo(mapa);
+
         function calcularRiesgoRuta(){
 
-    let riesgo = 0;
+            let riesgo = 0;
 
     cantidadReportesDetectados = 0;
     riesgosDetectados = [];
