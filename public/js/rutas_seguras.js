@@ -81,9 +81,11 @@ navigator.geolocation.getCurrentPosition(
             );
 
         });
-
+    },
+    function(error) {
+        console.error("No se pudo obtener la ubicación:", error);
     }
-});
+);
 
 window.addEventListener("load", function(){
 
@@ -92,134 +94,208 @@ window.addEventListener("load", function(){
 
     console.log(botonRuta);
 
+    function calcularRiesgoRuta(){
+
+        let riesgo = 0;
+
+        cantidadReportesDetectados = 0;
+        riesgosDetectados = [];
+        resumenRiesgos = {};
+
+        coordenadasRuta.forEach(punto => {
+
+            reportesPrueba.forEach(reporte => {
+
+                const distancia = mapa.distance(
+                    [punto.lat, punto.lng],
+                    [reporte.lat, reporte.lng]
+                );
+
+                if(distancia <= 50){
+
+                    riesgo += reporte.puntaje;
+
+                    cantidadReportesDetectados++;
+
+                    riesgosDetectados.push(
+                        reporte.tipo
+                    );
+
+                    if(resumenRiesgos[reporte.tipo]){
+
+                        resumenRiesgos[reporte.tipo]++;
+
+                    }
+                    else{
+
+                        resumenRiesgos[reporte.tipo] = 1;
+
+                    }
+
+                }
+
+            });
+
+        });
+
+        return riesgo;
+
+    }
+
     botonRuta.addEventListener("click", function(){
 
         if(!destinoLat){
-            alert("Selecciona un destino primero.");
+
+            alert(
+                "Selecciona un destino primero."
+            );
+
             return;
+
         }
 
         if(rutaControl){
-            mapa.removeControl(rutaControl);
+
+            mapa.removeControl(
+                rutaControl
+            );
+
         }
 
         rutaControl = L.Routing.control({
+
             waypoints: [
-                L.latLng(origenLat, origenLng),
-                L.latLng(destinoLat, destinoLng)
+
+                L.latLng(
+                    origenLat,
+                    origenLng
+                ),
+
+                L.latLng(
+                    destinoLat,
+                    destinoLng
+                )
+
             ],
-            router: L.Routing.osrmv1({profile: 'foot'}),
+
+            router: L.Routing.osrmv1({
+                profile: 'foot'
+            }),
+
             routeWhileDragging: false,
+
             show: false,
+
             addWaypoints: false,
+
             draggableWaypoints: false,
+
             showAlternatives: false,
+
             createMarker: function(){
+
                 return null;
+
             }
+
         }).addTo(mapa);
 
-        function calcularRiesgoRuta(){
+        rutaControl.on(
+            "routesfound",
+            function(e){
 
-            let riesgo = 0;
+                const ruta =
+                    e.routes[0];
 
-    cantidadReportesDetectados = 0;
-    riesgosDetectados = [];
-    resumenRiesgos = {};
+                coordenadasRuta =
+                    ruta.coordinates;
 
-    coordenadasRuta.forEach(punto => {
+                let riesgoFinal =
+                    calcularRiesgoRuta();
 
-        reportesPrueba.forEach(reporte => {
-
-            const distancia = mapa.distance(
-                [punto.lat, punto.lng],
-                [reporte.lat, reporte.lng]
-            );
-
-            if(distancia <= 50){
-
-                riesgo += reporte.puntaje;
-
-                cantidadReportesDetectados++;
-
-                riesgosDetectados.push(reporte.tipo);
-                if(resumenRiesgos[reporte.tipo]){
-
-                    resumenRiesgos[reporte.tipo]++;
-                }
-                else{
-                    resumenRiesgos[reporte.tipo] = 1;
-                }
-            }
-
-        });
-
-    });
-
-    return riesgo;
-}
-
-        rutaControl.on('routesfound', function(e){
-            const ruta = e.routes[0];
-            coordenadasRuta = ruta.coordinates;
-            let riesgoFinal = calcularRiesgoRuta();
-            console.log(ruta.coordinates);
-            console.log( "Cantidad de puntos:", coordenadasRuta.length);
-
-
-
-
-            const distanciaKm =
-                (ruta.summary.totalDistance / 1000)
-                .toFixed(2);
-
-            const tiempoMin =
-                Math.round(
-                    ruta.summary.totalTime / 60
+                console.log(
+                    ruta.coordinates
                 );
 
-            document.getElementById(
-                "distancia"
-            ).textContent =
-                distanciaKm + " km";
+                console.log(
+                    "Cantidad de puntos:",
+                    coordenadasRuta.length
+                );
 
-            document.getElementById(
-                "tiempo"
-            ).textContent =
-                tiempoMin + " min";
+                const distanciaKm =
+                    (
+                        ruta.summary.totalDistance
+                        / 1000
+                    ).toFixed(2);
 
+                const tiempoMin =
+                    Math.round(
+                        ruta.summary.totalTime
+                        / 60
+                    );
 
-let nivelSeguridad = "";
+                document.getElementById(
+                    "distancia"
+                ).textContent =
+                    distanciaKm + " km";
 
-if(riesgoFinal <= 15){
+                document.getElementById(
+                    "tiempo"
+                ).textContent =
+                    tiempoMin + " min";
 
-    nivelSeguridad = "🟢 Alta";
+                let nivelSeguridad = "";
 
-}
-else if(riesgoFinal <= 40){
+                if(riesgoFinal <= 15){
 
-    nivelSeguridad = "🟡 Media";
+                    nivelSeguridad =
+                        "🟢 Alta";
 
-}
-else{
+                }
+                else if(riesgoFinal <= 40){
 
-    nivelSeguridad = "🔴 Baja";
+                    nivelSeguridad =
+                        "🟡 Media";
 
-}
-            document.getElementById("seguridad").textContent = nivelSeguridad;
-            document.getElementById("reportesEncontrados").textContent = cantidadReportesDetectados;
-const listaRiesgos =
-    document.getElementById("listaRiesgos");
+                }
+                else{
 
-listaRiesgos.innerHTML = "";
+                    nivelSeguridad =
+                        "🔴 Baja";
 
-for(const tipo in resumenRiesgos){
+                }
 
-    listaRiesgos.innerHTML +=
-        `<li>⚠️ ${tipo}: ${resumenRiesgos[tipo]}</li>`;
+                document.getElementById(
+                    "seguridad"
+                ).textContent =
+                    nivelSeguridad;
 
-}
+                document.getElementById(
+                    "reportesEncontrados"
+                ).textContent =
+                    cantidadReportesDetectados;
 
-        });
+                const listaRiesgos =
+                    document.getElementById(
+                        "listaRiesgos"
+                    );
+
+                listaRiesgos.innerHTML = "";
+
+                for(
+                    const tipo
+                    in resumenRiesgos
+                ){
+
+                    listaRiesgos.innerHTML +=
+                        `<li>⚠️ ${tipo}: ${resumenRiesgos[tipo]}</li>`;
+
+                }
+
+            }
+
+        );
+
     });
+
 });
