@@ -116,6 +116,37 @@ function inicializarEventos() {
     }
 }
 
+//NUEVA PARTE AGREGADA
+document.addEventListener('DOMContentLoaded', () => {
+    // Consultamos la sesión activa en PHP desde Laragon
+    fetch('../auth/session.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const usuario = data.usuario;
+
+                // Cambia estos IDs por los que tengas en tu miperfil.html
+                const lblNombre = document.getElementById('lblNombreUsuario');
+                const lblCorreo = document.getElementById('lblCorreoUsuario');
+                const lblUsername = document.getElementById('lblUsername');
+
+                if (lblNombre) lblNombre.textContent = usuario.nombre;
+                if (lblCorreo) lblCorreo.textContent = usuario.correo;
+                if (lblUsername) lblUsername.textContent = `@${usuario.usuario}`;
+
+            } else {
+                // Si no hay sesión iniciada, manda al login
+                window.location.href = 'inicio de sesion.html';
+            }
+        })
+        .catch(error => {
+            console.error('Error al verificar la sesión:', error);
+        });
+});
+
+
+
+
 // --- FUNCIONES GLOBALES ---
 function editarPerfil() {
     window.location.href = "editarperfil.html";

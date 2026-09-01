@@ -14,6 +14,7 @@ if(isset($_SESSION["id_usuario"])){
         "usuario"=>[
             "id_usuario"=>$_SESSION["id_usuario"],
             "nombre"=>$_SESSION["nombre"],
+            "apellido"=>$_SESSION["apellido"],
             "usuario"=>$_SESSION["usuario"],
             "correo"=>$_SESSION["correo"]
         ]
