@@ -106,6 +106,7 @@ try {
 
     $_SESSION["id_usuario"] = $usuario["id_usuario"];
     $_SESSION["nombre"] = $usuario["nombre"];
+    $_SESSION["apellido"] = $usuario["apellido"];
     $_SESSION["usuario"] = $usuario["usuario"];
     $_SESSION["correo"] = $usuario["correo"];
 
