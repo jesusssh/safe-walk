@@ -68,11 +68,11 @@ navigator.geolocation.getCurrentPosition(
             destinoLng = e.latlng.lng;
 
             if(marcadorDestino){
-                mapa.removeLayer(
-                    marcadorDestino
-                );
-            }
+                    mapa.removeLayer(
+                        marcadorDestino
+    );
 
+}
             marcadorDestino =
             L.marker(e.latlng)
             .addTo(mapa)
@@ -96,51 +96,58 @@ window.addEventListener("load", function(){
 
     function calcularRiesgoRuta(){
 
-        let riesgo = 0;
+    let riesgo = 0;
 
-        cantidadReportesDetectados = 0;
-        riesgosDetectados = [];
-        resumenRiesgos = {};
+    cantidadReportesDetectados = 0;
+    riesgosDetectados = [];
+    resumenRiesgos = {};
 
-        coordenadasRuta.forEach(punto => {
+    const reportesContados = new Set();
 
-            reportesPrueba.forEach(reporte => {
+    coordenadasRuta.forEach(punto => {
 
-                const distancia = mapa.distance(
-                    [punto.lat, punto.lng],
-                    [reporte.lat, reporte.lng]
+        reportesPrueba.forEach((reporte, indice) => {
+
+            const distancia = mapa.distance(
+                [punto.lat, punto.lng],
+                [reporte.lat, reporte.lng]
+            );
+
+            if(
+                distancia <= 50 &&
+                !reportesContados.has(indice)
+            ){
+
+                reportesContados.add(indice);
+
+                riesgo += reporte.puntaje;
+
+                cantidadReportesDetectados++;
+
+                riesgosDetectados.push(
+                    reporte.tipo
                 );
 
-                if(distancia <= 50){
+                if(resumenRiesgos[reporte.tipo]){
 
-                    riesgo += reporte.puntaje;
+                    resumenRiesgos[reporte.tipo]++;
 
-                    cantidadReportesDetectados++;
+                }
+                else{
 
-                    riesgosDetectados.push(
-                        reporte.tipo
-                    );
-
-                    if(resumenRiesgos[reporte.tipo]){
-
-                        resumenRiesgos[reporte.tipo]++;
-
-                    }
-                    else{
-
-                        resumenRiesgos[reporte.tipo] = 1;
-
-                    }
+                    resumenRiesgos[reporte.tipo] = 1;
 
                 }
 
-            });
+            }
 
         });
 
-        return riesgo;
+    });
 
-    }
+    return riesgo;
+
+}
 
     botonRuta.addEventListener("click", function(){
 
@@ -161,52 +168,60 @@ window.addEventListener("load", function(){
             );
 
         }
+rutaControl = L.Routing.control({
+    waypoints: [
+        L.latLng(
+            origenLat,
+            origenLng
+        ),
+        L.latLng(
+            destinoLat,
+            destinoLng
+        )
+    ],
 
-        rutaControl = L.Routing.control({
+    router: L.Routing.osrmv1({
+        profile: 'foot'
+    }),
 
-            waypoints: [
+    showAlternatives: true,
 
-                L.latLng(
-                    origenLat,
-                    origenLng
-                ),
-
-                L.latLng(
-                    destinoLat,
-                    destinoLng
-                )
-
-            ],
-
-            router: L.Routing.osrmv1({
-                profile: 'foot'
-            }),
-
-            routeWhileDragging: false,
-
-            show: false,
-
-            addWaypoints: false,
-
-            draggableWaypoints: false,
-
-            showAlternatives: false,
-
-            createMarker: function(){
-
-                return null;
-
+    lineOptions:{
+        styles:[
+            {
+                color:'#22c55e',
+                opacity:0.9,
+                weight:6
             }
+        ]
+    },
 
-        }).addTo(mapa);
+    altLineOptions:{
+        styles:[
+            {
+                color:'#6b7280',
+                opacity:0.7,
+                weight:5
+            }
+        ]
+    },
+    routeWhileDragging:false,
+    show:false,
+    addWaypoints:false,
+    draggableWaypoints:false,
 
-        rutaControl.on(
-            "routesfound",
-            function(e){
+    createMarker:function(){
+        return null;
+    }
+}).addTo(mapa);
+
+        rutaControl.on("routesfound",function(e){
 
                 const ruta =
                     e.routes[0];
 
+                    console.log("Cantidad de rutas:",e.routes.length);
+                    
                 coordenadasRuta =
                     ruta.coordinates;
 
