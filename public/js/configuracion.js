@@ -97,8 +97,23 @@ function aplicarTema(tema) {
         if (textoEstado) textoEstado.textContent = esIngles ? 'Light' : 'Claro';
         if (icono) icono.className = 'fa-solid fa-moon';
     }
+    document.addEventListener("DOMContentLoaded", function() {
+
+    const btnCerrarSesion = document.getElementById("btnCerrarSesion");
+
+    if (btnCerrarSesion) {
+
+        btnCerrarSesion.addEventListener("click", function() {
+
+            window.location.href = "../auth/logout.php";
+
+        });
+
+    }
+
+});
 }
 
-function volverPerfil() {
-    window.location.href = 'miperfil.html';
-}
+
+
+
