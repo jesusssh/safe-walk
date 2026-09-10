@@ -83,17 +83,23 @@
                     <span class="valor-opcion">V1.0.0</span>
                     <i class="fa-solid fa-chevron-right"></i>
                 </div>
-            </button>
- 
-        </section>
- 
-        <section class="salir">
-            <button id="btnCerrarSesion" class="cerrar">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span id="lblCerrarSesion" data-es="Cerrar Sesión" data-en="Log Out">Cerrar Sesión</span>
-            </button>
-        </section>
- 
+
+           <section class="salir">
+    <button id="btnCerrarSesion" class="cerrar" type="button"
+        onclick="cerrarSesion()">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Cerrar Sesión</span>
+    </button>
+</section>
+
+<script>
+function cerrarSesion() {
+    alert("Cerrando sesión...");
+
+    window.location.href = "../auth/logout.php";
+}
+</script>
+
     </main>
  
     <script src="js/configuracion.js"></script>
@@ -101,3 +107,5 @@
 </body>
  
 </html>
+
+
