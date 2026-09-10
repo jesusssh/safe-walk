@@ -121,3 +121,13 @@ descripcion VARCHAR(255) NULL
 
 
 
+INSERT INTO tipos_riesgo
+(nombre_tipo, descripcion)
+
+VALUES
+('Robo','Robo reportado'),
+('Acoso','Acoso reportado'),
+('Calle Oscura','Zona con poca iluminación'),
+('Otro','Otro incidente');
+
+SELECT * FROM tipos_riesgo;
