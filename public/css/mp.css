@@ -45,7 +45,6 @@ header {
     display: flex;
     justify-content: end;
 }
-
 #map {
     width: 100%;
     height: 84vh;

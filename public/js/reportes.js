@@ -22,9 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const mensaje = document.getElementById("mensajeReporte");
 
 
-    // ==========================================
-    // TIPOS DE INCIDENTE
-    // ==========================================
 
     function seleccionarTipo() {
 
@@ -33,10 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
             boton.addEventListener("click", () => {
 
                 botonesTipo.forEach(btn => {
-                    btn.classList.remove("seleccionado");
+                    btn.classList.remove("activo");``
                 });
 
-                boton.classList.add("seleccionado");
+                boton.classList.add("activo");
 
                 tipoSeleccionado = boton.dataset.id;
             });
@@ -45,9 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ==========================================
-    // CONTADOR DE DESCRIPCIÓN
-    // ==========================================
 
     function contadorDescripcion() {
 
@@ -58,10 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
-    // ==========================================
-    // MAPA
-    // ==========================================
 
     function iniciarMapa() {
 
@@ -94,9 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ==========================================
-    // ACTIVAR CÁMARA
-    // ==========================================
 
     async function activarCamara() {
 
@@ -120,10 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-
-    // ==========================================
-    // CAPTURAR FOTO
-    // ==========================================
 
     function capturarFoto() {
 
@@ -161,9 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ==========================================
-    // APAGAR CÁMARA
-    // ==========================================
 
     function apagarCamara() {
 
@@ -184,9 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ==========================================
-    // MOSTRAR MENSAJES
-    // ==========================================
 
     function mostrarMensaje(texto, tipo) {
 
@@ -198,17 +175,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ==========================================
-    // ENVIAR REPORTE
-    // ==========================================
-
     async function enviarReporte() {
 
         try {
 
             mensaje.innerHTML = "";
 
-            // Validar tipo
+
             if (!tipoSeleccionado) {
 
                 mostrarMensaje(
@@ -220,7 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            // Validar descripción
             const textoDescripcion = descripcion.value.trim();
 
             if (textoDescripcion === "") {
@@ -235,8 +207,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-
-            // Validar ubicación
             if (
                 latitudInput.value === "" ||
                 longitudInput.value === ""
@@ -250,8 +220,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-
-            // Preparar datos
             const datos = {
 
                 id_tipo_riesgo: tipoSeleccionado,
@@ -270,12 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             botonEnviar.textContent = "Enviando...";
 
-
-            // ==================================
-            // FETCH
-            // ==================================
-
-            const respuesta = await fetch("../reportes/create.php", {
+            const respuesta = await fetch("../auth/reportes/create.php", {
 
                 method: "POST",
 
@@ -335,10 +298,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // ==========================================
-    // LIMPIAR FORMULARIO
-    // ==========================================
-
     function limpiarFormulario() {
 
         tipoSeleccionado = null;
@@ -364,11 +323,6 @@ document.addEventListener("DOMContentLoaded", () => {
         foto.src = "";
         foto.style.display = "none";
     }
-
-
-    // ==========================================
-    // EVENTOS
-    // ==========================================
 
     seleccionarTipo();
 
