@@ -1,4 +1,4 @@
-// --- DICCIONARIO DE TRADUCCIONES ---
+/// --- DICCIONARIO DE TRADUCCIONES ---
 const traduccionesPerfil = {
     es: {
         titulo: "Mi Perfil",
@@ -26,7 +26,7 @@ const traduccionesPerfil = {
     }
 };
 
-// --- CARGA DE LA PÁGINA (TEMA E IDIOMA) ---
+// --- CARGA DE LA PÁGINA (TEMA, IDIOMA Y DATOS REALES DE SESIÓN) ---
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Aplicar Tema Guardado
     const temaGuardado = localStorage.getItem('temaApp') || 'claro';
@@ -47,12 +47,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Traducción por objeto JS
+    // Traducción inicial por objeto JS
     aplicarTraduccionPerfil(claveIdioma);
 
-    // 3. Inicializar eventos de fotos y botones
+    // 3. Obtener Datos Reales de la Sesión desde PHP
+    cargarDatosSesion();
+
+    // 4. Inicializar eventos de fotos y botones
     inicializarEventos();
 });
+
+// --- CONSULTA DE SESIÓN A PHP ---
+function cargarDatosSesion() {
+    fetch('auth/session.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.success && data.usuario) {
+                const u = data.usuario;
+
+                // Mostramos nombre completo o combinamos nombre + apellido
+                const elNombre = document.getElementById('nombreUsuario');
+                const elCorreo = document.getElementById('correoUsuario');
+                const elUsername = document.getElementById('lblUsername');
+                const imgPerfil = document.getElementById('perfil');
+
+                if (elNombre) elNombre.textContent = `${u.nombre} ${u.apellido || ''}`.trim();
+                if (elCorreo) elCorreo.textContent = u.correo;
+                if (elUsername) elUsername.textContent = `@${u.usuario}`;
+                if (imgPerfil && u.foto_perfil_url) imgPerfil.src = u.foto_perfil_url;
+
+            } else {
+                // Si no hay sesión iniciada, redirigir al login
+                window.location.href = 'inicio de sesion.html';
+            }
+        })
+        .catch(error => {
+            console.error('Error al verificar la sesión:', error);
+        });
+}
 
 // --- FUNCIÓN DE TRADUCCIÓN ---
 function aplicarTraduccionPerfil(idioma) {
@@ -60,8 +92,6 @@ function aplicarTraduccionPerfil(idioma) {
     if (!t) return;
 
     if (document.getElementById('lblTituloPerfil')) document.getElementById('lblTituloPerfil').innerText = t.titulo;
-    if (document.getElementById('nombreUsuario')) document.getElementById('nombreUsuario').innerText = t.nombre;
-    if (document.getElementById('correoUsuario')) document.getElementById('correoUsuario').innerText = t.correo;
 
     if (document.getElementById('lblEstadisticaReportes')) document.getElementById('lblEstadisticaReportes').innerText = t.lblReportes;
     if (document.getElementById('lblEstadisticaContactos')) document.getElementById('lblEstadisticaContactos').innerText = t.lblContactos;
@@ -75,7 +105,7 @@ function aplicarTraduccionPerfil(idioma) {
 
 // --- EVENTOS DE INTERFAZ Y NAVEGACIÓN ---
 function inicializarEventos() {
-    // Cambiar Foto de Perfil
+    // Cambiar Foto de Perfil (Vista previa)
     const inputFoto = document.getElementById("subirFoto");
     const imagenPerfil = document.getElementById("perfil");
 
@@ -110,7 +140,8 @@ function inicializarEventos() {
             const lang = localStorage.getItem('idioma') || 'es';
             const msg = (lang === 'en' || lang === 'English') ? "Do you want to log out?" : "¿Deseas cerrar sesión?";
             if (confirm(msg)) {
-                window.location.href = "inicio2.html";
+                // Redirigir a cerrar sesión en PHP para destruir la sesión activa
+                window.location.href = "auth/logout.php";
             }
         });
     }

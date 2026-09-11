@@ -1,160 +1,350 @@
-const botones = document.querySelectorAll(".tipo-btn");
+document.addEventListener("DOMContentLoaded", () => {
 
-botones.forEach(btn => {
+    let tipoSeleccionado = null;
+    let mapa = null;
+    let marcador = null;
+    let stream = null;
 
-    btn.addEventListener("click", () => {
+    const botonesTipo = document.querySelectorAll(".tipo-btn");
+    const latitudInput = document.getElementById("latitud");
+    const longitudInput = document.getElementById("longitud");
+    const descripcion = document.getElementById("descripcion");
+    const contador = document.getElementById("contador");
 
-        botones.forEach(b => {
-            b.classList.remove("activo");
+    const video = document.getElementById("video");
+    const canvas = document.getElementById("canvas");
+    const foto = document.getElementById("foto");
+
+    const botonCapturar = document.getElementById("capturar");
+    const botonApagar = document.getElementById("apagar");
+    const botonEnviar = document.getElementById("btnEnviar");
+
+    const mensaje = document.getElementById("mensajeReporte");
+
+
+
+    function seleccionarTipo() {
+
+        botonesTipo.forEach(boton => {
+
+            boton.addEventListener("click", () => {
+
+                botonesTipo.forEach(btn => {
+                    btn.classList.remove("activo");``
+                });
+
+                boton.classList.add("activo");
+
+                tipoSeleccionado = boton.dataset.id;
+            });
+
         });
+    }
 
-        btn.classList.add("activo");
 
-    });
 
-});
-let mapa;
-let marcador;
-let circulo;
+    function contadorDescripcion() {
 
-window.onload = function(){
+        descripcion.addEventListener("input", () => {
 
-    navigator.geolocation.getCurrentPosition(
+            contador.textContent = descripcion.value.length;
 
-        function(pos){
+        });
+    }
 
-            const lat = pos.coords.latitude;
-            const lng = pos.coords.longitude;
 
-            mapa = L.map("mapaIncidente")
-                .setView([lat,lng],18);
+    function iniciarMapa() {
 
-            L.tileLayer(
-                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {
-                    maxZoom:19
-                }
-            ).addTo(mapa);
+        mapa = L.map("mapaIncidente").setView([13.6929, -89.2182], 13);
 
-            L.marker([lat,lng])
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution: "&copy; OpenStreetMap"
+        }).addTo(mapa);
+
+
+        mapa.on("click", function (evento) {
+
+            const lat = evento.latlng.lat;
+            const lng = evento.latlng.lng;
+
+            latitudInput.value = lat;
+            longitudInput.value = lng;
+
+            if (marcador) {
+                mapa.removeLayer(marcador);
+            }
+
+            marcador = L.marker([lat, lng])
                 .addTo(mapa)
-                .bindPopup("Tu ubicación")
+                .bindPopup("Ubicación del incidente")
                 .openPopup();
 
-            circulo = L.circle(
-                [lat,lng],
-                {
-                    radius:100,
-                    color:"#2563eb",
-                    fillColor:"#2563eb",
-                    fillOpacity:0.15
-                }
-            ).addTo(mapa);
+        });
+    }
 
-            mapa.on("click", function(e){
 
-                const distancia =
-                    mapa.distance(
-                        [lat,lng],
-                        e.latlng
-                    );
 
-                if(distancia > 100){
+    async function activarCamara() {
 
-                    alert(
-                        "Solo puedes reportar dentro de 100 metros de tu ubicación."
-                    );
+        try {
 
-                    return;
-                }
+            stream = await navigator.mediaDevices.getUserMedia({
+                video: true,
+                audio: false
+            });
 
-                if(marcador){
-                    mapa.removeLayer(marcador);
-                }
+            video.srcObject = stream;
 
-                marcador =
-                    L.marker(e.latlng)
-                     .addTo(mapa);
+        } catch (error) {
 
-                document.getElementById("latitud").value =
-                    e.latlng.lat;
+            mostrarMensaje(
+                "No se pudo acceder a la cámara.",
+                "danger"
+            );
 
-                document.getElementById("longitud").value =
-                    e.latlng.lng;
+            console.error(error);
+        }
+    }
+
+
+    function capturarFoto() {
+
+        if (!stream) {
+
+            mostrarMensaje(
+                "Primero debes activar la cámara.",
+                "warning"
+            );
+
+            return;
+        }
+
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        const contexto = canvas.getContext("2d");
+
+        contexto.drawImage(
+            video,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        foto.src = canvas.toDataURL("image/jpeg", 0.8);
+
+        foto.style.display = "block";
+
+        mostrarMensaje(
+            "Fotografía tomada correctamente.",
+            "success"
+        );
+    }
+
+
+
+    function apagarCamara() {
+
+        if (stream) {
+
+            stream.getTracks().forEach(track => {
+                track.stop();
+            });
+
+            stream = null;
+            video.srcObject = null;
+
+            mostrarMensaje(
+                "Cámara desactivada.",
+                "success"
+            );
+        }
+    }
+
+
+
+    function mostrarMensaje(texto, tipo) {
+
+        mensaje.innerHTML = `
+            <div class="alert alert-${tipo}" role="alert">
+                ${texto}
+            </div>
+        `;
+    }
+
+
+    async function enviarReporte() {
+
+        try {
+
+            mensaje.innerHTML = "";
+
+
+            if (!tipoSeleccionado) {
+
+                mostrarMensaje(
+                    "Debes seleccionar un tipo de incidente.",
+                    "warning"
+                );
+
+                return;
+            }
+
+
+            const textoDescripcion = descripcion.value.trim();
+
+            if (textoDescripcion === "") {
+
+                mostrarMensaje(
+                    "Debes escribir una descripción.",
+                    "warning"
+                );
+
+                descripcion.focus();
+
+                return;
+            }
+
+            if (
+                latitudInput.value === "" ||
+                longitudInput.value === ""
+            ) {
+
+                mostrarMensaje(
+                    "Debes seleccionar la ubicación del incidente en el mapa.",
+                    "warning"
+                );
+
+                return;
+            }
+
+            const datos = {
+
+                id_tipo_riesgo: tipoSeleccionado,
+
+                descripcion: textoDescripcion,
+
+                latitud: latitudInput.value,
+
+                longitud: longitudInput.value,
+
+                imagen: foto.src || null
+            };
+
+
+            botonEnviar.disabled = true;
+
+            botonEnviar.textContent = "Enviando...";
+
+            const respuesta = await fetch("../auth/reportes/create.php", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(datos)
 
             });
 
-        },
 
-        function(){
+            if (!respuesta.ok) {
 
-            alert(
-                "No se pudo obtener tu ubicación."
+                throw new Error(
+                    "El servidor respondió con un error."
+                );
+            }
+
+
+            const resultado = await respuesta.json();
+
+
+            if (resultado.success) {
+
+                mostrarMensaje(
+                    resultado.message,
+                    "success"
+                );
+
+                limpiarFormulario();
+
+            } else {
+
+                mostrarMensaje(
+                    resultado.message,
+                    "danger"
+                );
+            }
+
+
+        } catch (error) {
+
+            console.log(error);
+
+            mostrarMensaje(
+                "No se pudo enviar el reporte. Intenta nuevamente.",
+                "danger"
             );
 
+        } finally {
+
+            botonEnviar.disabled = false;
+
+            botonEnviar.textContent = "Enviar Reporte";
         }
+    }
 
-    );
 
-};
+    function limpiarFormulario() {
 
-const video = document.getElementById("video");
-const canvas = document.getElementById("canvas");
-const foto = document.getElementById("foto");
-const botonCapturar = document.getElementById("capturar");
-const botonCamara = document.getElementById("apagar");
+        tipoSeleccionado = null;
 
-let stream = null;
-let camaraEncendida = false;
-
-async function iniciarCamara() {
-    try {
-        stream = await navigator.mediaDevices.getUserMedia({
-            video: true
+        botonesTipo.forEach(boton => {
+            boton.classList.remove("seleccionado");
         });
 
-        video.srcObject = stream;
-        await video.play();
+        descripcion.value = "";
 
-        camaraEncendida = true;
-        botonCamara.textContent = "Desactivar cámara";
+        contador.textContent = "0";
 
-    } catch (error) {
-        console.error(error);
+        latitudInput.value = "";
+        longitudInput.value = "";
+
+        if (marcador) {
+
+            mapa.removeLayer(marcador);
+
+            marcador = null;
+        }
+
+        foto.src = "";
+        foto.style.display = "none";
     }
-}
 
-function detenerCamara() {
+    seleccionarTipo();
 
-    if (stream) {
-        stream.getTracks().forEach(track => track.stop());
-    }
+    contadorDescripcion();
 
-    video.srcObject = null;
-    stream = null;
-    camaraEncendida = false;
-    botonCamara.textContent = "Activar cámara";
-}
+    iniciarMapa();
 
-botonCamara.onclick = () => {
-    if (camaraEncendida) {
-        detenerCamara();
-    } else {
-        iniciarCamara();
-    }
-};
+    activarCamara();
 
-botonCapturar.onclick = () => {
-    if (!camaraEncendida) return;
+    botonCapturar.addEventListener(
+        "click",
+        capturarFoto
+    );
 
+    botonApagar.addEventListener(
+        "click",
+        apagarCamara
+    );
 
+    botonEnviar.addEventListener(
+        "click",
+        enviarReporte
+    );
 
-
-    const ctx = canvas.getContext("2d");
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-    foto.src = canvas.toDataURL("image/png");
-};
-
-iniciarCamara()
-
+});

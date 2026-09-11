@@ -27,6 +27,22 @@ parentesco VARCHAR(50) NULL,
 FOREIGN KEY(id_usuario) REFERENCES usuarios(id_usuario)
 );
 
+
+CREATE TABLE IF NOT EXISTS tipos_riesgo (
+    id_tipo_riesgo INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL UNIQUE
+    INSERT INTO tipos_riesgo (nombre) VALUES
+    ('Robo'),
+    ('Acoso'),
+    ('Calle oscura'),
+    ('Otro');
+    ALTER TABLE reportes
+    ADD CONSTRAINT fk_reportes_tipo_riesgo
+    FOREIGN KEY (id_tipo_riesgo)
+    REFERENCES tipos_riesgo(id_tipo_riesgo);
+);
+
+
 CREATE TABLE IF NOT EXISTS reportes(
 
 id_reporte INT AUTO_INCREMENT PRIMARY KEY,
@@ -105,3 +121,13 @@ descripcion VARCHAR(255) NULL
 
 
 
+INSERT INTO tipos_riesgo
+(nombre_tipo, descripcion)
+
+VALUES
+('Robo','Robo reportado'),
+('Acoso','Acoso reportado'),
+('Calle Oscura','Zona con poca iluminación'),
+('Otro','Otro incidente');
+
+SELECT * FROM tipos_riesgo;
