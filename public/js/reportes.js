@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             botonEnviar.textContent = "Enviando...";
 
-            const respuesta = await fetch("../auth/reportes/create.php", {
+            const respuesta = await fetch("reportes/create.php", {
 
                 method: "POST",
 
