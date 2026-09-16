@@ -17,8 +17,52 @@ try{
             true
         );
 
-    $id_tipo_riesgo =
-        $datos["id_tipo_riesgo"] ?? null;
+$id_tipo_riesgo =
+    $datos["id_tipo_riesgo"] ?? null;
+
+$fechaExpiracion = null;
+
+switch($id_tipo_riesgo){
+
+    case 1: // Robo
+
+        $fechaExpiracion =
+            date(
+                "Y-m-d H:i:s",
+                strtotime("+1 minute")
+            );
+
+    break;
+
+    case 2: // Acoso
+
+        $fechaExpiracion =
+            date(
+                "Y-m-d H:i:s",
+                strtotime("+1 minute")
+            );
+
+    break;
+
+    case 3: // Calle Oscura
+
+        $fechaExpiracion =
+            date(
+                "Y-m-d H:i:s",
+                strtotime("+30 days")
+            );
+
+    break;
+
+    default:
+
+        $fechaExpiracion =
+            date(
+                "Y-m-d H:i:s",
+                strtotime("+24 hours")
+            );
+
+}
 
     $descripcion =
         trim(
@@ -51,24 +95,27 @@ try{
     }
 
     $sql = "
-        INSERT INTO reportes
-        (
-            id_usuario,
-            id_tipo_riesgo,
-            titulo,
-            descripcion,
-            latitud,
-            longitud
-        )
-        VALUES
-        (
-            :id_usuario,
-            :id_tipo_riesgo,
-            :titulo,
-            :descripcion,
-            :latitud,
-            :longitud
-        )
+INSERT INTO reportes
+(
+    id_usuario,
+    id_tipo_riesgo,
+    titulo,
+    descripcion,
+    latitud,
+    longitud,
+    fecha_expiracion
+)
+VALUES
+(
+    :id_usuario,
+    :id_tipo_riesgo,
+    :titulo,
+    :descripcion,
+    :latitud,
+    :longitud,
+    :fecha_expiracion
+)
+`
     ";
 
     $stmt =
@@ -91,7 +138,10 @@ try{
             $latitud,
 
         ":longitud" =>
-            $longitud
+            $longitud,
+
+        ":fecha_expiracion" =>
+        $fechaExpiracion
 
     ]);
 

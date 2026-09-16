@@ -44,6 +44,26 @@ navigator.geolocation.watchPosition(
     }
 
 );
+function esHorarioNocturno(){
+
+    const ahora = new Date();
+
+    const hora =
+        ahora.getHours();
+
+    const minuto =
+        ahora.getMinutes();
+
+    const horaDecimal =
+        hora + (minuto / 60);
+
+    return (
+        horaDecimal >= 17.5 ||
+        horaDecimal < 5.5
+    );
+
+}
+
 
 async function cargarReportes(){
 
@@ -71,6 +91,15 @@ async function cargarReportes(){
 
         datos.reportes.forEach(
             reporte => {
+                if(
+    reporte.nombre_tipo ===
+    "Calle Oscura" &&
+    !esHorarioNocturno()
+){
+
+    return;
+
+}
 
                 L.marker([
                     parseFloat(

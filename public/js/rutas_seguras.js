@@ -6,28 +6,7 @@ let origenLng;
 let destinoLat;
 let destinoLng;
 let coordenadasRuta = [];
-let reportesPrueba = [
-    {
-        tipo:"Robo",
-        lat:13.6745,
-        lng:-89.2512,
-        puntaje:10
-    },
-
-    {
-        tipo:"Acoso",
-        lat:13.6760,
-        lng:-89.2495,
-        puntaje:7
-    },
-
-    {
-        tipo:"Calle Oscura",
-        lat:13.6752,
-        lng:-89.2505,
-        puntaje:5
-    }
-];
+let reportesReales = [];
 let cantidadReportesDetectados = 0;
 let riesgosDetectados = [];
 let resumenRiesgos = {};
@@ -86,9 +65,130 @@ navigator.geolocation.getCurrentPosition(
         console.error("No se pudo obtener la ubicación:", error);
     }
 );
+function esHorarioNocturno(){
+
+    const ahora = new Date();
+
+    const hora =
+        ahora.getHours();
+
+    const minuto =
+        ahora.getMinutes();
+
+    const horaDecimal =
+        hora + (minuto / 60);
+
+    return (
+        horaDecimal >= 17.5 ||
+        horaDecimal < 5.5
+    );
+
+}
+async function cargarReportesReales(){
+
+    try{
+
+        const respuesta =
+            await fetch(
+                "/safe-walk/reportes/obtener_reportes.php"
+            );
+
+        const datos =
+            await respuesta.json();
+
+        if(!datos.success){
+
+            console.log(
+                datos.message
+            );
+
+            return;
+
+        }
+
+        reportesReales =
+
+            datos.reportes
+
+            .map(reporte => {
+
+                if(
+                    reporte.nombre_tipo ===
+                    "Calle Oscura"
+                    &&
+                    !esHorarioNocturno()
+                ){
+
+                    return null;
+
+                }
+
+                let puntaje = 5;
+
+                if(
+                    reporte.nombre_tipo ===
+                    "Robo"
+                ){
+                    puntaje = 10;
+                }
+
+                if(
+                    reporte.nombre_tipo ===
+                    "Acoso"
+                ){
+                    puntaje = 7;
+                }
+
+                if(
+                    reporte.nombre_tipo ===
+                    "Calle Oscura"
+                ){
+                    puntaje = 5;
+                }
+
+                return{
+
+                    tipo:
+                        reporte.nombre_tipo,
+
+                    lat:
+                        parseFloat(
+                            reporte.latitud
+                        ),
+
+                    lng:
+                        parseFloat(
+                            reporte.longitud
+                        ),
+
+                    puntaje:
+                        puntaje
+
+                };
+
+            })
+
+            .filter(
+                reporte =>
+                reporte !== null
+            );
+
+        console.log(
+            "Reportes reales:",
+            reportesReales
+        );
+
+    }
+    catch(error){
+
+        console.log(error);
+
+    }
+
+}
 
 window.addEventListener("load", function(){
-
+    cargarReportesReales();
     const botonRuta =
         document.querySelector(".btn-ruta");
 
@@ -106,7 +206,7 @@ window.addEventListener("load", function(){
 
     coordenadasRuta.forEach(punto => {
 
-        reportesPrueba.forEach((reporte, indice) => {
+        reportesReales.forEach((reporte, indice) => {
 
             const distancia = mapa.distance(
                 [punto.lat, punto.lng],
@@ -261,13 +361,13 @@ rutaControl = L.Routing.control({
 
                 let nivelSeguridad = "";
 
-                if(riesgoFinal <= 15){
+                if(riesgoFinal <= 5){
 
                     nivelSeguridad =
                         "🟢 Alta";
 
                 }
-                else if(riesgoFinal <= 40){
+                else if(riesgoFinal <= 15){
 
                     nivelSeguridad =
                         "🟡 Media";

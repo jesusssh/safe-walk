@@ -173,7 +173,26 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
     }
+function esHorarioNocturno(){
 
+    const ahora = new Date();
+
+    const hora =
+        ahora.getHours();
+
+    const minuto =
+        ahora.getMinutes();
+
+    const horaDecimal =
+        hora + (minuto / 60);
+
+    return (
+        horaDecimal >= 17.5 ||
+        horaDecimal < 5.5
+    );
+
+}
+``
 
     async function enviarReporte() {
 
@@ -191,8 +210,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 return;
             }
+            if(
+    tipoSeleccionado == 3 &&
+    !esHorarioNocturno()
+){
 
+    mostrarMensaje(
+        "Los reportes de Calle Oscura solo pueden realizarse entre las 5:30 PM y las 5:30 AM.",
+        "warning"
+    );
 
+    return;
+
+}
             const textoDescripcion = descripcion.value.trim();
 
             if (textoDescripcion === "") {
@@ -238,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             botonEnviar.textContent = "Enviando...";
 
-            const respuesta = await fetch("reportes/create.php", {
+            const respuesta = await fetch("../reportes/create.php", {
 
                 method: "POST",
 

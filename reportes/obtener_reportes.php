@@ -9,18 +9,25 @@ $db = $database->getConnection();
 
 try{
 
-    $sql = "
-        SELECT
-            r.id_reporte,
-            r.descripcion,
-            r.latitud,
-            r.longitud,
-            t.nombre_tipo
-        FROM reportes r
-        INNER JOIN tipos_riesgo t
-        ON r.id_tipo_riesgo = t.id_tipo_riesgo
-        WHERE r.estado_reporte = 'activo'
-    ";
+$sql = "
+    SELECT
+        r.id_reporte,
+        r.descripcion,
+        r.latitud,
+        r.longitud,
+        t.nombre_tipo
+    FROM reportes r
+    INNER JOIN tipos_riesgo t
+    ON r.id_tipo_riesgo = t.id_tipo_riesgo
+
+    WHERE r.estado_reporte = 'activo'
+
+    AND (
+        r.fecha_expiracion IS NULL
+        OR
+        r.fecha_expiracion > NOW()
+    )
+";
 
     $stmt = $db->prepare($sql);
 
