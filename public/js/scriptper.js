@@ -25,7 +25,7 @@ const traduccionesPerfil = {
         cerrarSesion: "Log Out"
     }
 };
-
+ 
 // --- CARGA DE LA PÁGINA (TEMA, IDIOMA Y DATOS REALES DE SESIÓN) ---
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Aplicar Tema Guardado
@@ -35,28 +35,28 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         document.body.classList.remove('dark-mode');
     }
-
+ 
     // 2. Aplicar Idioma Guardado (Acepta 'es' / 'en' o 'Español' / 'English')
     const idiomaGuardado = localStorage.getItem('idioma') || 'es';
     const claveIdioma = (idiomaGuardado === 'English' || idiomaGuardado === 'en') ? 'en' : 'es';
-    
+   
     // Traducción por HTML attributes (data-es / data-en)
     document.querySelectorAll('[data-es]').forEach(elem => {
         if (elem.dataset[claveIdioma]) {
             elem.textContent = elem.dataset[claveIdioma];
         }
     });
-
+ 
     // Traducción inicial por objeto JS
     aplicarTraduccionPerfil(claveIdioma);
-
+ 
     // 3. Obtener Datos Reales de la Sesión desde PHP
     cargarDatosSesion();
-
+ 
     // 4. Inicializar eventos de fotos y botones
     inicializarEventos();
 });
-
+ 
 // --- CONSULTA DE SESIÓN A PHP ---
 function cargarDatosSesion() {
     fetch('auth/session.php')
@@ -64,18 +64,18 @@ function cargarDatosSesion() {
         .then(data => {
             if (data.success && data.usuario) {
                 const u = data.usuario;
-
+ 
                 // Mostramos nombre completo o combinamos nombre + apellido
                 const elNombre = document.getElementById('nombreUsuario');
                 const elCorreo = document.getElementById('correoUsuario');
                 const elUsername = document.getElementById('lblUsername');
                 const imgPerfil = document.getElementById('perfil');
-
+ 
                 if (elNombre) elNombre.textContent = `${u.nombre} ${u.apellido || ''}`.trim();
                 if (elCorreo) elCorreo.textContent = u.correo;
                 if (elUsername) elUsername.textContent = `@${u.usuario}`;
                 if (imgPerfil && u.foto_perfil_url) imgPerfil.src = u.foto_perfil_url;
-
+ 
             } else {
                 // Si no hay sesión iniciada, redirigir al login
                 window.location.href = 'inicio de sesion.html';
@@ -85,30 +85,30 @@ function cargarDatosSesion() {
             console.error('Error al verificar la sesión:', error);
         });
 }
-
+ 
 // --- FUNCIÓN DE TRADUCCIÓN ---
 function aplicarTraduccionPerfil(idioma) {
     const t = traduccionesPerfil[idioma];
     if (!t) return;
-
+ 
     if (document.getElementById('lblTituloPerfil')) document.getElementById('lblTituloPerfil').innerText = t.titulo;
-
+ 
     if (document.getElementById('lblEstadisticaReportes')) document.getElementById('lblEstadisticaReportes').innerText = t.lblReportes;
     if (document.getElementById('lblEstadisticaContactos')) document.getElementById('lblEstadisticaContactos').innerText = t.lblContactos;
-
+ 
     if (document.getElementById('lblMisReportes')) document.getElementById('lblMisReportes').innerText = t.reportes;
     if (document.getElementById('lblEditarPerfil')) document.getElementById('lblEditarPerfil').innerText = t.editar;
     if (document.getElementById('lblContactos')) document.getElementById('lblContactos').innerText = t.contactos;
     if (document.getElementById('lblConfiguracion')) document.getElementById('lblConfiguracion').innerText = t.configuracion;
     if (document.getElementById('lblCerrarSesion')) document.getElementById('lblCerrarSesion').innerText = t.cerrarSesion;
 }
-
+ 
 // --- EVENTOS DE INTERFAZ Y NAVEGACIÓN ---
 function inicializarEventos() {
     // Cambiar Foto de Perfil (Vista previa)
     const inputFoto = document.getElementById("subirFoto");
     const imagenPerfil = document.getElementById("perfil");
-
+ 
     if (inputFoto && imagenPerfil) {
         inputFoto.addEventListener("change", function () {
             const archivo = this.files[0];
@@ -119,7 +119,7 @@ function inicializarEventos() {
             }
         });
     }
-
+ 
     // Botones de Navegación
     const btnVolver = document.getElementById("btnVolver");
     const btnReportes = document.getElementById("btnReportes");
@@ -127,13 +127,13 @@ function inicializarEventos() {
     const btnContactos = document.getElementById("btnContactos");
     const btnConfiguracion = document.getElementById("btnConfiguracion");
     const btnCerrar = document.getElementById("btnCerrar");
-
+ 
     if (btnVolver) btnVolver.addEventListener("click", () => window.location.href = "mp.html");
     if (btnReportes) btnReportes.addEventListener("click", () => window.location.href = "misReportes.html");
     if (btnEditar) btnEditar.addEventListener("click", () => window.location.href = "editarperfil.html");
     if (btnContactos) btnContactos.addEventListener("click", () => window.location.href = "contac.html");
     if (btnConfiguracion) btnConfiguracion.addEventListener("click", () => window.location.href = "configuracion.html");
-
+ 
     // Cerrar Sesión
     if (btnCerrar) {
         btnCerrar.addEventListener("click", () => {
@@ -146,12 +146,12 @@ function inicializarEventos() {
         });
     }
 }
-
+ 
 // --- FUNCIONES GLOBALES ---
 function editarPerfil() {
     window.location.href = "editarperfil.html";
 }
-
+ 
 function volverPerfil() {
     window.location.href = "miperfil.html";
 }
