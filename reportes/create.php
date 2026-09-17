@@ -2,6 +2,10 @@
 
 header("Content-Type: application/json");
 
+date_default_timezone_set(
+    "America/El_Salvador"
+);
+
 require_once("../config/conexion.php");
 
 $database = new Database();
@@ -29,7 +33,7 @@ switch($id_tipo_riesgo){
         $fechaExpiracion =
             date(
                 "Y-m-d H:i:s",
-                strtotime("+1 minute")
+                strtotime("+12 hours")
             );
 
     break;
@@ -39,7 +43,7 @@ switch($id_tipo_riesgo){
         $fechaExpiracion =
             date(
                 "Y-m-d H:i:s",
-                strtotime("+1 minute")
+                strtotime("+6 hours")
             );
 
     break;
@@ -115,11 +119,11 @@ VALUES
     :longitud,
     :fecha_expiracion
 )
-`
     ";
 
     $stmt =
         $db->prepare($sql);
+
 
     $stmt->execute([
 

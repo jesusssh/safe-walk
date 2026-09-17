@@ -1,3 +1,7 @@
+let reportesMapa = [];
+
+const reportesNotificados = new Set();
+
 var map = L.map('map').setView([13.6929, -89.2182], 12);
 
 L.tileLayer(
@@ -31,6 +35,11 @@ navigator.geolocation.watchPosition(
         marcador.setLatLng([lat,lng]);
 
         map.setView([lat,lng],17);
+
+        revisarProximidad(
+    lat,
+    lng
+);
 
     },
 
@@ -89,33 +98,51 @@ async function cargarReportes(){
 
         }
 
-        datos.reportes.forEach(
-            reporte => {
-                if(
-    reporte.nombre_tipo ===
-    "Calle Oscura" &&
-    !esHorarioNocturno()
-){
+datos.reportes.forEach(
+    reporte => {
 
-    return;
+        if(
+            reporte.nombre_tipo ===
+            "Calle Oscura" &&
+            !esHorarioNocturno()
+        ){
 
-}
+            return;
 
-                L.marker([
-                    parseFloat(
-                        reporte.latitud
-                    ),
-                    parseFloat(
-                        reporte.longitud
-                    )
-                ])
-                .addTo(map)
-                .bindPopup(
-                    `<b>${reporte.nombre_tipo}</b><br>${reporte.descripcion}`
-                );
+        }
 
-            }
+        reportesMapa.push({
+
+            id: reporte.id_reporte,
+
+            tipo: reporte.nombre_tipo,
+
+            lat: parseFloat(
+                reporte.latitud
+            ),
+
+            lng: parseFloat(
+                reporte.longitud
+            )
+
+        });
+
+        L.marker([
+            parseFloat(
+                reporte.latitud
+            ),
+            parseFloat(
+                reporte.longitud
+            )
+        ])
+        .addTo(map)
+        .bindPopup(
+            `<b>${reporte.nombre_tipo}</b><br>${reporte.descripcion}`
         );
+
+    }
+);
+
 
     }
     catch(error){
@@ -127,6 +154,89 @@ async function cargarReportes(){
 }
 
 cargarReportes();
+function revisarProximidad(lat,lng){
+    console.log("REVISANDO");
+
+console.log(reportesMapa);
+
+    reportesMapa.forEach(reporte => {
+
+        let radio = 50;
+
+        if(reporte.tipo === "Robo"){
+            radio = 100;
+        }
+
+        if(reporte.tipo === "Acoso"){
+            radio = 75;
+        }
+
+        if(reporte.tipo === "Calle Oscura"){
+            radio = 50;
+        }
+
+        const distancia = map.distance(
+            console.log(
+    reporte.tipo,
+    distancia)
+            [lat,lng],
+            [reporte.lat,reporte.lng]
+        );
+
+        if(
+            distancia <= radio &&
+            !reportesNotificados.has(reporte.id)
+        ){
+
+            reportesNotificados.add(
+                reporte.id
+            );
+
+            mostrarAlerta(
+                reporte.tipo,
+                Math.round(distancia)
+            );
+
+        }
+
+    });
+
+}
+function mostrarAlerta(tipo, distancia){
+
+    const alerta = document.createElement("div");
+
+    alerta.innerHTML =
+    `
+    ⚠️ Te aproximas a una zona con reporte de <strong>${tipo}</strong>
+    <br>
+    Distancia: ${distancia} metros
+    `;
+
+    alerta.style.position = "fixed";
+    alerta.style.top = "20px";
+    alerta.style.left = "50%";
+    alerta.style.transform = "translateX(-50%)";
+
+    alerta.style.background = "#f59e0b";
+    alerta.style.color = "white";
+    alerta.style.padding = "15px";
+    alerta.style.borderRadius = "12px";
+
+    alerta.style.zIndex = "9999";
+
+    document.body.appendChild(
+        alerta
+    );
+
+    setTimeout(() => {
+
+        alerta.remove();
+
+    },5000);
+
+}
+
 
 document.addEventListener(
     'DOMContentLoaded',
