@@ -206,13 +206,31 @@ function mostrarAlerta(tipo, distancia){
     alerta.style.left = "50%";
     alerta.style.transform = "translateX(-50%)";
 
-    alerta.style.background = "#f59e0b";
+let color = "#f59e0b";
+
+if(tipo === "Robo"){
+    color = "#dc2626";
+}
+
+if(tipo === "Acoso"){
+    color = "#ea580c";
+}
+
+if(tipo === "Calle Oscura"){
+    color = "#2563eb";
+}
+
+if(tipo === "Otro"){
+    color = "#ca8a04";
+}
+
+alerta.style.background = color;
     alerta.style.color = "white";
     alerta.style.padding = "15px";
     alerta.style.borderRadius = "12px";
 
     alerta.style.zIndex = "9999";
-    
+
     let historial =
     JSON.parse(
         localStorage.getItem(

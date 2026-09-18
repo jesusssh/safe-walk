@@ -42,6 +42,25 @@ navigator.geolocation.getCurrentPosition(
         .addTo(mapa)
         .bindPopup("Tu ubicación");
 
+        cargarReportesReales()
+.then(() => {
+
+    reportesReales.forEach(reporte => {
+
+        L.marker([
+            reporte.lat,
+            reporte.lng
+        ])
+        .addTo(mapa)
+        .bindPopup(
+            `⚠️ ${reporte.tipo}`
+        );
+
+    });
+
+});
+``
+
         mapa.on("click",function(e){
             destinoLat = e.latlng.lat;
             destinoLng = e.latlng.lng;
@@ -177,7 +196,6 @@ async function cargarReportesReales(){
             "Reportes reales:",
             reportesReales
         );
-
     }
     catch(error){
 

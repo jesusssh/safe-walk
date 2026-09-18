@@ -118,30 +118,56 @@ else{
 
     historial.forEach(
         alerta => {
+                let colorFondo = "bg-yellow-50";
 
+let colorTexto = "text-yellow-700";
+
+if(alerta.tipo === "Robo"){
+
+    colorFondo = "bg-red-50";
+
+    colorTexto = "text-red-700";
+
+}
+
+if(alerta.tipo === "Acoso"){
+
+    colorFondo = "bg-orange-50";
+
+    colorTexto = "text-orange-700";
+
+}
+
+if(alerta.tipo === "Calle Oscura"){
+
+    colorFondo = "bg-blue-50";
+
+    colorTexto = "text-blue-700";
+
+}
             contenedor.innerHTML +=
-
             `
-            <div
-            class="
-            border
-            border-gray-100
-            rounded-2xl
-            p-4
-            flex
-            justify-between
-            items-center
-            hover:bg-gray-50
-            transition
-            ">
+<div
+class="
+${colorFondo}
+border
+border-gray-100
+rounded-2xl
+p-4
+flex
+justify-between
+items-center
+hover:bg-gray-50
+transition
+">
 
                 <div>
 
-                    <p
-                    class="
-                    font-bold
-                    text-gray-900
-                    ">
+                        <p
+                        class="
+                        font-bold
+                        ${colorTexto}
+                        ">
 
                         ⚠️ ${alerta.tipo}
 
