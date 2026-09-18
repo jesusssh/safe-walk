@@ -1,6 +1,5 @@
+console.log("🔥 ESTE ES EL SOS.JS NUEVO");
 document.addEventListener('DOMContentLoaded', () => {
-
-
 
 
 const temaGuardado = localStorage.getItem('temaApp') || 'claro';
@@ -20,14 +19,6 @@ const lang = (idiomaGuardado === 'English' || idiomaGuardado === 'en')
     ? 'en'
     : 'es';
 
-document.querySelectorAll('[data-es]').forEach(elem => {
-
-    if (elem.dataset[lang]) {
-        elem.textContent = elem.dataset[lang];
-    }
-
-});
-
 
 var map = L.map('map').setView([13.6929, -89.2182], 14);
 
@@ -36,8 +27,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 
-// Círculo de ubicación
-
 var circulo = L.circle([0, 0], {
     radius: 40,
     color: "blue",
@@ -45,8 +34,6 @@ var circulo = L.circle([0, 0], {
     fillOpacity: 0.4
 }).addTo(map);
 
-
-// Marcador
 
 var marcador = L.marker([0, 0]).addTo(map);
 
@@ -71,13 +58,28 @@ btnSOS.addEventListener("click", function () {
     }
 
 
-    // Evitar varios clics mientras se envía
+    // Obtener los correos guardados
+    const correo1 = localStorage.getItem("correo1") || "";
+    const correo2 = localStorage.getItem("correo2") || "";
+
+
+    // Comprobar que exista al menos un correo
+    if (!correo1 && !correo2) {
+
+        alert(
+            "⚠️ No tienes ningún correo de emergencia configurado."
+        );
+
+        return;
+
+    }
+
 
     btnSOS.disabled = true;
-    btnSOS.textContent = "Enviando SOS...";
+    btnSOS.querySelector("h1").textContent = "Enviando...";
 
 
-   
+ 
 
     navigator.geolocation.getCurrentPosition(
 
@@ -87,7 +89,7 @@ btnSOS.addEventListener("click", function () {
             const lng = pos.coords.longitude;
 
 
-          
+            // Actualizar mapa
 
             marcador.setLatLng([lat, lng]);
 
@@ -96,7 +98,13 @@ btnSOS.addEventListener("click", function () {
             map.setView([lat, lng], 18);
 
 
-        
+           
+
+           console.log("🚨 LLEGÓ AL FETCH");
+           console.log("URL:", "../sos/enviar_sos.php");
+           console.log("Latitud:", lat);
+           console.log("Longitud:", lng);
+
             fetch("../sos/enviar_sos.php", {
 
                 method: "POST",
@@ -108,9 +116,17 @@ btnSOS.addEventListener("click", function () {
                 credentials: "include",
 
                 body: JSON.stringify({
+
                     latitud: lat,
+
                     longitud: lng,
-                    mensaje: "Necesito ayuda"
+
+                    mensaje: "Necesito ayuda",
+
+                    correo1: correo1,
+
+                    correo2: correo2
+
                 })
 
             })
@@ -119,7 +135,10 @@ btnSOS.addEventListener("click", function () {
 
                 const texto = await response.text();
 
-                console.log("Respuesta del servidor:", texto);
+                console.log(
+                    "Respuesta del servidor:",
+                    texto
+                );
 
                 try {
 
@@ -128,7 +147,8 @@ btnSOS.addEventListener("click", function () {
                 } catch (error) {
 
                     throw new Error(
-                        "El servidor no devolvió JSON válido: " + texto
+                        "El servidor no devolvió JSON válido: " +
+                        texto
                     );
 
                 }
@@ -137,13 +157,17 @@ btnSOS.addEventListener("click", function () {
 
             .then(data => {
 
-                console.log("Respuesta SOS:", data);
+                console.log(
+                    "Respuesta SOS:",
+                    data
+                );
 
 
                 if (data.success) {
 
                     alert(
                         "🚨 SOS enviado correctamente.\n\n" +
+                        "La alerta fue enviada a tus contactos de emergencia.\n\n" +
                         "Ubicación:\n" +
                         lat + ", " + lng
                     );
@@ -161,7 +185,10 @@ btnSOS.addEventListener("click", function () {
 
             .catch(error => {
 
-                console.error("Error al enviar SOS:", error);
+                console.error(
+                    "Error al enviar SOS:",
+                    error
+                );
 
                 alert(
                     "⚠️ Ocurrió un error al enviar la alerta SOS.\n\n" +
@@ -173,7 +200,8 @@ btnSOS.addEventListener("click", function () {
             .finally(() => {
 
                 btnSOS.disabled = false;
-                btnSOS.textContent = "SOS";
+
+                btnSOS.querySelector("h1").textContent = "SOS";
 
             });
 
@@ -182,7 +210,11 @@ btnSOS.addEventListener("click", function () {
 
         function (error) {
 
-            console.error("Error de geolocalización:", error);
+            console.error(
+                "Error de geolocalización:",
+                error
+            );
+
 
             alert(
                 "⚠️ No se pudo obtener la ubicación.\n\n" +
@@ -190,8 +222,10 @@ btnSOS.addEventListener("click", function () {
                 "Error: " + error.message
             );
 
+
             btnSOS.disabled = false;
-            btnSOS.textContent = "SOS";
+
+            btnSOS.querySelector("h1").textContent = "SOS";
 
         },
 

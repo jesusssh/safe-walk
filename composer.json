@@ -1,0 +1,7 @@
+{
+    "name": "estudiantes/safe-walk",
+    "description": "safewalk/app",
+    "require": {
+        "phpmailer/phpmailer": "^7.1"
+    }
+}

@@ -5,28 +5,30 @@ use PHPMailer\PHPMailer\Exception;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-function enviarCorreoSOS($latitud, $longitud, $mensaje)
+function enviarCorreoSOS($latitud, $longitud, $mensaje, $correos)
 {
     $mail = new PHPMailer(true);
 
     try {
 
-        // Configuración SMTP
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'TU_CORREO@gmail.com';
-        $mail->Password   = 'TU_CONTRASEÑA_DE_APLICACION';
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+
+        $mail->Username = 'urjesus749@gmail.com';
+
+        // PON AQUÍ TU CONTRASEÑA DE APLICACIÓN
+        $mail->Password = 'Tqygfbjrpietuniow';
+
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+        $mail->Port = 587;
 
-        // Remitente
-        $mail->setFrom('TU_CORREO@gmail.com', 'SafeWalk');
+        $mail->setFrom('urjesus749@gmail.com', 'safe-walk');
 
-        // Correo que recibirá la alerta
-        $mail->addAddress('CORREO_DEL_CONTACTO@gmail.com');
+        foreach ($correos as $correo) {
+            $mail->addAddress($correo);
+        }
 
-        // Convertir coordenadas en enlace de Google Maps
         $mapa = "https://www.google.com/maps?q=$latitud,$longitud";
 
         $mail->isHTML(true);
@@ -34,11 +36,9 @@ function enviarCorreoSOS($latitud, $longitud, $mensaje)
 
         $mail->Body = "
             <h2>🚨 Alerta SOS</h2>
-
             <p>Se ha enviado una alerta de emergencia desde SafeWalk.</p>
 
             <p><strong>Mensaje:</strong> $mensaje</p>
-
             <p><strong>Latitud:</strong> $latitud</p>
             <p><strong>Longitud:</strong> $longitud</p>
 
@@ -55,6 +55,8 @@ function enviarCorreoSOS($latitud, $longitud, $mensaje)
 
     } catch (Exception $e) {
 
-        return false;
+        // MOSTRAR EL ERROR REAL
+        return "ERROR PHPMailer: " . $mail->ErrorInfo;
     }
 }
+?>
