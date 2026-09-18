@@ -42,7 +42,6 @@ navigator.geolocation.watchPosition(
 );
 
     },
-
     function(error){
 
         console.log(
@@ -56,40 +55,29 @@ navigator.geolocation.watchPosition(
 function esHorarioNocturno(){
 
     const ahora = new Date();
-
     const hora =
         ahora.getHours();
-
     const minuto =
         ahora.getMinutes();
-
     const horaDecimal =
         hora + (minuto / 60);
-
     return (
         horaDecimal >= 17.5 ||
         horaDecimal < 5.5
     );
-
 }
 
-
 async function cargarReportes(){
-
     try{
-
         console.log(
             "CARGANDO REPORTES..."
         );
-
         const respuesta =
             await fetch(
                 "/safe-walk/reportes/obtener_reportes.php"
             );
-
         const datos =
             await respuesta.json();
-
         console.log(datos);
 
         if(!datos.success){
@@ -176,12 +164,12 @@ console.log(reportesMapa);
         }
 
         const distancia = map.distance(
-            console.log(
-    reporte.tipo,
-    distancia)
             [lat,lng],
             [reporte.lat,reporte.lng]
         );
+                    console.log(
+    reporte.tipo,
+    distancia)
 
         if(
             distancia <= radio &&
@@ -224,6 +212,35 @@ function mostrarAlerta(tipo, distancia){
     alerta.style.borderRadius = "12px";
 
     alerta.style.zIndex = "9999";
+    
+    let historial =
+    JSON.parse(
+        localStorage.getItem(
+            "notificacionesSafeWalk"
+        )
+    ) || [];
+
+historial.unshift({
+
+    tipo: tipo,
+
+    distancia: distancia,
+
+    fecha:
+        new Date()
+        .toLocaleString()
+
+});
+
+localStorage.setItem(
+
+    "notificacionesSafeWalk",
+
+    JSON.stringify(
+        historial
+    )
+
+);
 
     document.body.appendChild(
         alerta
