@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let mapa = null;
     let marcador = null;
     let stream = null;
+    let latUsuario = null;
+    let lngUsuario = null;
 
     const botonesTipo = document.querySelectorAll(".tipo-btn");
     const latitudInput = document.getElementById("latitud");
@@ -61,26 +63,102 @@ document.addEventListener("DOMContentLoaded", () => {
             maxZoom: 19,
             attribution: "&copy; OpenStreetMap"
         }).addTo(mapa);
+        navigator.geolocation.getCurrentPosition(
+    function(posicion){
+
+        latUsuario =
+            posicion.coords.latitude;
+
+        lngUsuario =
+            posicion.coords.longitude;
+
+        mapa.setView(
+            [latUsuario, lngUsuario],
+            17
+        );
+
+        L.marker([
+            latUsuario,
+            lngUsuario
+        ])
+        .addTo(mapa)
+        .bindPopup(
+            "Tu ubicación"
+        );
+
+        L.circle([
+            latUsuario,
+            lngUsuario
+        ],
+        {
+            radius: 100,
+
+            color: "#22c55e",
+
+            fillColor: "#22c55e",
+
+            fillOpacity: 0.15
+
+        })
+        .addTo(mapa);
+
+    }
+);
 
 
-        mapa.on("click", function (evento) {
+mapa.on("click", function (evento) {
 
-            const lat = evento.latlng.lat;
-            const lng = evento.latlng.lng;
+    const lat = evento.latlng.lat;
+    const lng = evento.latlng.lng;
 
-            latitudInput.value = lat;
-            longitudInput.value = lng;
+    const distancia =
+        mapa.distance(
 
-            if (marcador) {
-                mapa.removeLayer(marcador);
-            }
+            [latUsuario, lngUsuario],
 
-            marcador = L.marker([lat, lng])
-                .addTo(mapa)
-                .bindPopup("Ubicación del incidente")
-                .openPopup();
+            [lat, lng]
 
-        });
+        );
+
+    if(distancia > 100){
+
+        mostrarMensaje(
+
+            "Solo puedes reportar incidentes dentro de un radio de 100 metros de tu ubicación.",
+
+            "warning"
+
+        );
+
+        return;
+
+    }
+
+    latitudInput.value = lat;
+
+    longitudInput.value = lng;
+
+    if (marcador) {
+
+        mapa.removeLayer(
+            marcador
+        );
+
+    }
+
+    marcador =
+
+    L.marker([lat, lng])
+
+    .addTo(mapa)
+
+    .bindPopup(
+        "Ubicación del incidente"
+    )
+
+    .openPopup();
+
+});
     }
 
 
