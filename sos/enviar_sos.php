@@ -2,6 +2,12 @@
 
 session_start();
 
+file_put_contents(
+    __DIR__ . '/prueba_php.txt',
+    "ESTE PHP SE ESTÁ EJECUTANDO - " . date('Y-m-d H:i:s') . PHP_EOL,
+    FILE_APPEND
+);
+
 require_once __DIR__ . '/../config/conexion.php';
 require_once __DIR__ . '/../config/correo.php';
 
@@ -148,6 +154,12 @@ try {
         $mensaje,
         $correos
     );
+
+    file_put_contents(
+    __DIR__ . '/error_correo.txt',
+    print_r($resultadoCorreo, true) . PHP_EOL,
+    FILE_APPEND
+);
 
 
     // Si el correo se envió correctamente

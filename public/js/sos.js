@@ -162,24 +162,26 @@ btnSOS.addEventListener("click", function () {
                     data
                 );
 
+          if (data.success) {
 
-                if (data.success) {
+    alert(
+        data.message + "\n\n" +
+        "La alerta fue enviada a tus contactos de emergencia.\n\n" +
+        "Ubicación:\n" +
+        lat + ", " + lng
+    );
 
-                    alert(
-                        "🚨 SOS enviado correctamente.\n\n" +
-                        "La alerta fue enviada a tus contactos de emergencia.\n\n" +
-                        "Ubicación:\n" +
-                        lat + ", " + lng
-                    );
+        } else {
 
-                } else {
+    console.log("🚨 RESPUESTA COMPLETA:", data);
+    console.log("🚨 ERROR PHPMailer:", data.error_correo);
 
-                    alert(
-                        "⚠️ No se pudo enviar el SOS.\n\n" +
-                        data.message
-                    );
+    alert(
+        "ERROR PHPMailer:\n\n" +
+        data.error_correo
+    );
 
-                }
+}
 
             })
 

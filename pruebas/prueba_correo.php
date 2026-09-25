@@ -16,7 +16,7 @@ try {
     $mail->Username = 'urjesus749@gmail.com';
 
     // PON TU CONTRASEÑA DE APLICACIÓN AQUÍ
-    $mail->Password = 'qygfbjrpietuniow';
+    $mail->Password = 'tpwgewmqaamsitnn';
 
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 587;

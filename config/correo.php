@@ -18,7 +18,7 @@ function enviarCorreoSOS($latitud, $longitud, $mensaje, $correos)
         $mail->Username = 'urjesus749@gmail.com';
 
         // PON AQUÍ TU CONTRASEÑA DE APLICACIÓN
-        $mail->Password = 'Tqygfbjrpietuniow';
+        $mail->Password = 'tpwgewmqaamsitnn';
 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
