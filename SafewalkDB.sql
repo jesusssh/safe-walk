@@ -28,19 +28,12 @@ FOREIGN KEY(id_usuario) REFERENCES usuarios(id_usuario)
 );
 
 
-CREATE TABLE IF NOT EXISTS tipos_riesgo (
+/* CREATE TABLE IF NOT EXISTS tipos_riesgo (
     id_tipo_riesgo INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL UNIQUE
-    INSERT INTO tipos_riesgo (nombre) VALUES
-    ('Robo'),
-    ('Acoso'),
-    ('Calle oscura'),
-    ('Otro');
-    ALTER TABLE reportes
-    ADD CONSTRAINT fk_reportes_tipo_riesgo
-    FOREIGN KEY (id_tipo_riesgo)
-    REFERENCES tipos_riesgo(id_tipo_riesgo);
-);
+    
+    
+); */
 
 
 CREATE TABLE IF NOT EXISTS reportes(
@@ -131,3 +124,8 @@ VALUES
 ('Otro','Otro incidente');
 
 SELECT * FROM tipos_riesgo;
+
+ALTER TABLE reportes
+    ADD CONSTRAINT fk_reportes_tipo_riesgo
+    FOREIGN KEY (id_tipo_riesgo)
+    REFERENCES tipos_riesgo(id_tipo_riesgo);
