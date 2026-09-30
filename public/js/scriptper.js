@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- CONSULTA DE SESIÓN A PHP ---
+// --- CONSULTA DE SESIÓN A PHP ---
 function cargarDatosSesion() {
     fetch('../config/obtener_perfil.php')
         .then(response => {
@@ -67,8 +68,9 @@ function cargarDatosSesion() {
             return response.json();
         })
         .then(data => {
-            if (data.success && data.usuario) {
-                const u = data.usuario;
+            // Verificamos si la respuesta fue exitosa y trae los datos dentro de 'data'
+            if (data.success && data.data) {
+                const u = data.data; // <--- AQUÍ ESTABA EL ERROR (era data.data, no data.usuario)
 
                 // Mostramos nombre completo o combinamos nombre + apellido
                 const elNombre = document.getElementById('nombreUsuario');
@@ -83,7 +85,7 @@ function cargarDatosSesion() {
 
             } else {
                 // Si no hay sesión iniciada, redirigir al login
-                window.location.href = 'iniciosesion.html';
+                window.location.href = 'index.html';
             }
         })
         .catch(error => {
