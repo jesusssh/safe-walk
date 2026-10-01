@@ -9,6 +9,33 @@ body{
     );
     font-family:'Roboto',sans-serif;
 }
+.btn-ubicacion{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#22c55e;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:default;
+
+}
+
+.btn-ubicacion:hover{
+
+    background:#1d4ed8;
+
+}
 
 .rutas-container{
     min-height:100vh;
@@ -17,6 +44,50 @@ body{
     align-items:center;
     justify-content:center;
     padding:20px;
+}
+
+.ubicacion-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    background:#eef4ff;
+
+    border-left:5px solid #2563eb;
+
+    padding:15px;
+
+    margin-bottom:25px;
+
+    border-radius:14px;
+
+}
+
+.ubicacion-icono{
+
+    font-size:28px;
+
+}
+
+.ubicacion-info strong{
+
+    display:block;
+
+    color:#1e3a8a;
+
+    margin-bottom:4px;
+
+}
+
+.ubicacion-info p{
+
+    margin:0;
+
+    color:#4b5563;
+
 }
 
 .header-rutas{

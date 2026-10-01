@@ -52,7 +52,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Obtener Datos Reales de la Sesión desde PHP
     cargarDatosSesion();
+    function cargarCantidadReportes(){
 
+    fetch("../reportes/mis_reportes.php")
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        if(data.success){
+
+            const contador =
+                document.getElementById(
+                    "cantidadReportes"
+                );
+
+            if(contador){
+
+                contador.textContent =
+                    data.reportes.length;
+
+            }
+
+        }
+
+    })
+
+    .catch(error => {
+
+        console.log(error);
+
+    });
+
+}
+    cargarCantidadReportes();
     // 4. Inicializar eventos de fotos y botones
     inicializarEventos();
 });

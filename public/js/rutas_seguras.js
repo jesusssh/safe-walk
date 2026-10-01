@@ -10,23 +10,20 @@ let reportesReales = [];
 let cantidadReportesDetectados = 0;
 let riesgosDetectados = [];
 let resumenRiesgos = {};
-
 navigator.geolocation.getCurrentPosition(
 
     function(pos){
 
         const lat = pos.coords.latitude;
         const lng = pos.coords.longitude;
+
         origenLat = lat;
         origenLng = lng;
-
 
         document.getElementById(
             "ubicacionActual"
         ).value =
-        lat.toFixed(6) +
-        ", " +
-        lng.toFixed(6);
+        `${lat}, ${lng}`;
 
         mapa = L.map("mapaRutas")
         .setView([lat,lng],16);
@@ -39,49 +36,75 @@ navigator.geolocation.getCurrentPosition(
         ).addTo(mapa);
 
         L.marker([lat,lng])
-        .addTo(mapa)
-        .bindPopup("Tu ubicación");
+        .addTo(mapa);
 
         cargarReportesReales()
-.then(() => {
+        .then(() => {
 
-    reportesReales.forEach(reporte => {
+            reportesReales.forEach(reporte => {
 
-        L.marker([
-            reporte.lat,
-            reporte.lng
-        ])
-        .addTo(mapa)
-        .bindPopup(
-            `⚠️ ${reporte.tipo}`
-        );
+                L.marker([
+                    reporte.lat,
+                    reporte.lng
+                ])
+                .addTo(mapa)
+                .bindPopup(
+                    `⚠️ ${reporte.tipo}`
+                );
 
-    });
+            });
 
-});
-``
+        });
 
         mapa.on("click",function(e){
-            destinoLat = e.latlng.lat;
-            destinoLng = e.latlng.lng;
+
+            destinoLat =
+                e.latlng.lat;
+
+            destinoLng =
+                e.latlng.lng;
 
             if(marcadorDestino){
-                    mapa.removeLayer(
-                        marcadorDestino
-    );
 
-}
+                mapa.removeLayer(
+                    marcadorDestino
+                );
+
+            }
+
             marcadorDestino =
             L.marker(e.latlng)
             .addTo(mapa)
             .bindPopup(
-                "Destino seleccionado"
+                "Selected Destination"
             );
 
         });
+
     },
-    function(error) {
-        console.error("No se pudo obtener la ubicación:", error);
+
+    function(error){
+
+        console.error(
+            "Location error:",
+            error
+        );
+
+    }
+
+);
+
+window.addEventListener(
+    "load",
+    function(){
+
+        document.getElementById(
+            "btnUbicacion"
+        ).addEventListener(
+            "click",
+            obtenerUbicacion
+        );
+
     }
 );
 function esHorarioNocturno(){
