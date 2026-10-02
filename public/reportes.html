@@ -18,47 +18,48 @@
 
         <div class="header-reporte">
             <a href="mp.html" class="volver">&#8592;</a>
-            <h2>Nuevo Reporte</h2>
+            <h2 id="tituloReporte">Nuevo Reporte</h2>
         </div>
 
         <div class="reporte-card">
 
-            <h3>Tipo de incidente</h3>
+            <h3 id="lblTipoIncidente">Tipo de incidente</h3>
 
            <div class="tipos">
 
     <button type="button" class="tipo-btn" data-id="1">
         <img src="img/mala-persona.png" class="tipo-icono" alt="Robo">
-        <span>Robo</span>
+        <span id="txtRobo">Robo</span>
     </button>
 
     <button type="button" class="tipo-btn" data-id="2">
         <img src="img/excluir.png" class="tipo-icono" alt="Acoso">
-        <span>Acoso</span>
+        <span id="txtAcoso">Acoso</span>
     </button>
 
     <button type="button" class="tipo-btn" data-id="3">
         <img src="img/mala-idea.png" class="tipo-icono" alt="Calle oscura">
-        <span>Calle oscura</span>
+        <span id="txtCalleOscura">Calle oscura</span>
     </button>
 
     <button type="button" class="tipo-btn" data-id="4">
         <img src="img/otro.png" class="tipo-icono" alt="Otro">
-        <span>Otro</span>
+        <span id="txtOtro">Otro</span>
     </button>
 
 </div>
 
-            <h3 class="mt-4">Ubicación del incidente</h3>
-            <p class="texto-mapa">Selecciona el lugar donde ocurrió el incidente.</p>
+            <h3 class="mt-4" id="lblUbicacionIncidente">Ubicación del incidente</h3>
+            <p class="texto-mapa" id="txtUbicacion">Selecciona el lugar donde ocurrió el incidente.</p>
 
 <div id="mapaIncidente">
     <input type="hidden" id="latitud">
     <input type="hidden" id="longitud">
 </div>
-            <h3 class="mt-4">Descripción</h3>
+            <h3 class="mt-4" id="lblDescripcion">Descripción</h3>
 
            <textarea
+           id="descripcion"
               class="form-control"
               id="descripcion"
               rows="4"
@@ -70,22 +71,22 @@
                 <span id="contador">0</span>/200
             </div>
 
-            <h3 class="mt-4">Agregar foto</h3>
+            <h3 class="mt-4" id="lblFoto">Agregar foto</h3>
             
 <video id="video" autoplay playsinline></video>
 
 <canvas id="canvas" style="display:none;"></canvas>
 
 <div class="botones-camara">
-    <button type="button" id="capturar">Tomar foto</button>
-    <button type="button" id="apagar">Desactivar cámara</button>
+    <button type="button" id="capturar"><span id="txtTomarfoto">Tomar foto</span></button>
+    <button type="button" id="apagar"><span id="txtApagarCamara">Desactivar cámara</span></button>
 </div>
 
 <img id="foto">
 
                <div id="mensajeReporte" class="mt-3"></div>
               <button type="button" class="btn-enviar" id="btnEnviar">
-                 Enviar Reporte
+                 <span id="txtEnviar">Send report</span>
               </button>
             <div class="tipos">
 </div>

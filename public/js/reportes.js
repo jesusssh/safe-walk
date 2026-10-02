@@ -456,3 +456,82 @@ function esHorarioNocturno(){
     );
 
 });
+const idioma =
+
+localStorage.getItem(
+    "idioma"
+);
+
+if(idioma === "en"){
+
+    document.getElementById(
+        "tituloReporte"
+    ).textContent =
+    "New Report";
+
+    document.getElementById(
+        "lblTipoIncidente"
+    ).textContent =
+    "Incident Type";
+
+    document.getElementById(
+        "txtRobo"
+    ).textContent =
+    "Robbery";
+
+    document.getElementById(
+        "txtAcoso"
+    ).textContent =
+    "Harassment";
+
+    document.getElementById(
+        "txtCalleOscura"
+    ).textContent =
+    "Dark Street";
+
+    document.getElementById(
+        "txtOtro"
+    ).textContent =
+    "Other";
+
+    document.getElementById(
+        "lblUbicacionIncidente"
+    ).textContent =
+    "Incident Location";
+
+    document.getElementById(
+        "txtUbicacion"
+    ).textContent =
+    "Select the location where the incident occurred.";
+
+    document.getElementById(
+        "lblDescripcion"
+    ).textContent =
+    "Description";
+
+    document.getElementById(
+        "descripcion"
+    ).placeholder =
+    "Tell us what happened...";
+
+    document.getElementById(
+        "lblFoto"
+    ).textContent =
+    "Add Photo";
+
+    document.getElementById(
+        "txtTomarFoto"
+    ).textContent =
+    "Take Photo";
+
+    document.getElementById(
+        "txtApagarCamara"
+    ).textContent =
+    "Disable Camera";
+
+    document.getElementById(
+        "txtEnviar"
+    ).textContent =
+    "Submit Report";
+
+}

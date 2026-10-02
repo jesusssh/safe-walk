@@ -52,11 +52,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Obtener Datos Reales de la Sesión desde PHP
     cargarDatosSesion();
+    function cargarCantidadReportes(){
 
+    fetch("../reportes/mis_reportes.php")
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        if(data.success){
+
+            const contador =
+                document.getElementById(
+                    "cantidadReportes"
+                );
+
+            if(contador){
+
+                contador.textContent =
+                    data.reportes.length;
+
+            }
+
+        }
+
+    })
+
+    .catch(error => {
+
+        console.log(error);
+
+    });
+
+}
+    cargarCantidadReportes();
     // 4. Inicializar eventos de fotos y botones
     inicializarEventos();
 });
 
+// --- CONSULTA DE SESIÓN A PHP ---
 // --- CONSULTA DE SESIÓN A PHP ---
 function cargarDatosSesion() {
     fetch('../config/obtener_perfil.php')
@@ -67,8 +101,9 @@ function cargarDatosSesion() {
             return response.json();
         })
         .then(data => {
-            if (data.success && data.usuario) {
-                const u = data.usuario;
+            // Verificamos si la respuesta fue exitosa y trae los datos dentro de 'data'
+            if (data.success && data.data) {
+                const u = data.data; // <--- AQUÍ ESTABA EL ERROR (era data.data, no data.usuario)
 
                 // Mostramos nombre completo o combinamos nombre + apellido
                 const elNombre = document.getElementById('nombreUsuario');
@@ -83,7 +118,7 @@ function cargarDatosSesion() {
 
             } else {
                 // Si no hay sesión iniciada, redirigir al login
-                window.location.href = 'iniciosesion.html';
+                window.location.href = 'index.html';
             }
         })
         .catch(error => {

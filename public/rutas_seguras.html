@@ -25,15 +25,19 @@
     </div>
 
     <div class="rutas-card">
+<h5>Current Location</h5>
+<button
+    id="btnUbicacion"
+    class="btn-ubicacion"
+    disabled>
 
-        <h5>Tu ubicación</h5>
+     Current Location Ready
 
-        <input
-            type="text"
-            id="ubicacionActual"
-            class="form-control"
-            readonly
-            placeholder="Detectando ubicación...">
+</button>
+
+<input
+    type="hidden"
+    id="ubicacionActual">
 
         <h5 class="mt-4">Destino</h5>
 

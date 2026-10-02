@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 header("Content-Type: application/json");
 
 date_default_timezone_set(
@@ -10,6 +12,20 @@ require_once("../config/conexion.php");
 
 $database = new Database();
 $db = $database->getConnection();
+
+if(!isset($_SESSION["id_usuario"])){
+
+    echo json_encode([
+        "success" => false,
+        "message" =>
+            "No hay sesión iniciada."
+    ]);
+
+    exit;
+}
+
+$id_usuario =
+    $_SESSION["id_usuario"];
 
 try{
 
@@ -126,8 +142,7 @@ VALUES
 
 
     $stmt->execute([
-
-        ":id_usuario" => 1,
+        ":id_usuario" => $id_usuario,
 
         ":id_tipo_riesgo" =>
             $id_tipo_riesgo,
