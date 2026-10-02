@@ -21,12 +21,12 @@
     
         </a>
 
-        <h2>Rutas Seguras</h2>
+        <h2 id="lblTituloRutas">Rutas Seguras</h2>
 
     </div>
 
     <div class="rutas-card">
-<h5>Current Location</h5>
+<h5 id="lblUbicacionActual">Current Location</h5>
 <button
     id="btnUbicacion"
     class="btn-ubicacion"
@@ -40,9 +40,9 @@
     type="hidden"
     id="ubicacionActual">
 
-        <h5 class="mt-4">Destino</h5>
+        <h5 class="mt-4" id="lblDestino">Destino</h5>
 
-        <p class="texto-ayuda">
+        <p class="texto-ayuda" id="txtAyudaDestino">
             Selecciona tu destino directamente en el mapa.
         </p>
 
@@ -51,27 +51,27 @@
         <div class="info-ruta">
 
             <p>
-                <strong>Distancia:</strong>
+                <strong id="lblDistancia">Distancia:</strong>
                 <span id="distancia">--</span>
             </p>
 
             <p>
-                <strong>Tiempo estimado:</strong>
+                <strong id="lblTiempo">Tiempo estimado:</strong>
                 <span id="tiempo">--</span>
             </p>
 
             <p>
-                <strong>Nivel de seguridad:</strong>
+                <strong id="lblSeguridad">Nivel de seguridad:</strong>
                 <span id="seguridad">--</span>
             </p>
 
             <p>
-                <strong>Reportes cercanos:</strong>
+                <strong id="lblReportesCercanos">Reportes cercanos:</strong>
                 <span id="reportesEncontrados">0</span>
             </p>
 
             <p>
-                <strong>Riesgos detectados:</strong>
+                <strong id="lblRiesgos">Riesgos detectados:</strong>
             </p>
 
             <ul id="listaRiesgos"></ul>
@@ -79,7 +79,9 @@
         </div>
 
         <button class="btn-ruta">
+            <span id="lblBuscarRuta">
             Buscar Ruta Segura
+            </span>
         </button>
 
     </div>
