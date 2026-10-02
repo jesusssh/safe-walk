@@ -110,7 +110,7 @@ mapa.on("click", function (evento) {
 
     const lat = evento.latlng.lat;
     const lng = evento.latlng.lng;
-
+/*
     const distancia =
         mapa.distance(
 
@@ -133,7 +133,7 @@ mapa.on("click", function (evento) {
         return;
 
     }
-
+*/
     latitudInput.value = lat;
 
     longitudInput.value = lng;
@@ -288,6 +288,7 @@ function esHorarioNocturno(){
 
                 return;
             }
+            /*
             if(
     tipoSeleccionado == 3 &&
     !esHorarioNocturno()
@@ -301,6 +302,7 @@ function esHorarioNocturno(){
     return;
 
 }
+    */
             const textoDescripcion = descripcion.value.trim();
 
             if (textoDescripcion === "") {

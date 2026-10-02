@@ -38,23 +38,64 @@ navigator.geolocation.getCurrentPosition(
         L.marker([lat,lng])
         .addTo(mapa);
 
-        cargarReportesReales()
-        .then(() => {
+cargarReportesReales()
+.then(() => {
 
-            reportesReales.forEach(reporte => {
+    reportesReales.forEach(reporte => {
 
-                L.marker([
-                    reporte.lat,
-                    reporte.lng
-                ])
-                .addTo(mapa)
-                .bindPopup(
-                    `⚠️ ${reporte.tipo}`
-                );
+        let icono = "";
 
-            });
+        if(reporte.tipo === "Robo"){
+
+            icono = "img/mala-persona.png";
+
+        }
+        else if(reporte.tipo === "Acoso"){
+
+            icono = "img/excluir.png";
+
+        }
+        else if(reporte.tipo === "Calle Oscura"){
+
+            icono = "img/mala-idea.png";
+
+        }
+        else{
+
+            icono = "img/otro.png";
+
+        }
+
+        const iconoReporte = L.icon({
+
+            iconUrl: icono,
+
+            iconSize: [40,40],
+
+            iconAnchor: [20,40],
+
+            popupAnchor: [0,-40]
 
         });
+
+        L.marker(
+            [
+                reporte.lat,
+                reporte.lng
+            ],
+            {
+                icon: iconoReporte
+            }
+        )
+        .addTo(mapa)
+        .bindPopup(
+            `⚠️ ${reporte.tipo}`
+        );
+
+    });
+
+});
+``
 
         mapa.on("click",function(e){
 
@@ -405,19 +446,19 @@ rutaControl = L.Routing.control({
                 if(riesgoFinal <= 5){
 
                     nivelSeguridad =
-                        "🟢 Alta";
+                        "High";
 
                 }
                 else if(riesgoFinal <= 15){
 
                     nivelSeguridad =
-                        "🟡 Media";
+                        "Medium";
 
                 }
                 else{
 
                     nivelSeguridad =
-                        "🔴 Baja";
+                        "Low";
 
                 }
 
@@ -425,6 +466,38 @@ rutaControl = L.Routing.control({
                     "seguridad"
                 ).textContent =
                     nivelSeguridad;
+                const cardSeguridad =
+document.getElementById(
+    "seguridadCard"
+);
+
+cardSeguridad.classList.remove(
+    "seguridad-alta",
+    "seguridad-media",
+    "seguridad-baja"
+);
+
+if(nivelSeguridad === "High"){
+
+    cardSeguridad.classList.add(
+        "seguridad-alta"
+    );
+
+}
+else if(nivelSeguridad === "Medium"){
+
+    cardSeguridad.classList.add(
+        "seguridad-media"
+    );
+
+}
+else{
+
+    cardSeguridad.classList.add(
+        "seguridad-baja"
+    );
+
+}    
 
                 document.getElementById(
                     "reportesEncontrados"
@@ -444,7 +517,7 @@ rutaControl = L.Routing.control({
                 ){
 
                     listaRiesgos.innerHTML +=
-                        `<li>⚠️ ${tipo}: ${resumenRiesgos[tipo]}</li>`;
+                        `<li> ${tipo}: ${resumenRiesgos[tipo]}</li>`;
 
                 }
 

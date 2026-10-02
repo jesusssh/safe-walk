@@ -91,3 +91,51 @@ body.dark-mode .menu {
 body.dark-mode .menu img:not(.icono-alerta) {
     filter: brightness(0) invert(1);
 }
+.popup-robo{
+
+    border-left:5px solid #dc2626;
+
+    background:#fef2f2;
+
+    padding:10px;
+
+    border-radius:8px;
+
+}
+
+.popup-acoso{
+
+    border-left:5px solid #ea580c;
+
+    background:#fff7ed;
+
+    padding:10px;
+
+    border-radius:8px;
+
+}
+
+.popup-calle{
+
+    border-left:5px solid #2563eb;
+
+    background:#eff6ff;
+
+    padding:10px;
+
+    border-radius:8px;
+
+}
+
+
+.popup-otro{
+
+    border-left:5px solid #ca8a04;
+
+    background:#fefce8;
+
+    padding:10px;
+
+    border-radius:8px;
+
+}

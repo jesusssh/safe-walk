@@ -88,7 +88,7 @@ async function cargarReportes(){
 
 datos.reportes.forEach(
     reporte => {
-
+        /*
         if(
             reporte.nombre_tipo ===
             "Calle Oscura" &&
@@ -98,36 +98,104 @@ datos.reportes.forEach(
             return;
 
         }
-
+            */
         reportesMapa.push({
-
             id: reporte.id_reporte,
-
             tipo: reporte.nombre_tipo,
-
             lat: parseFloat(
                 reporte.latitud
             ),
-
             lng: parseFloat(
                 reporte.longitud
             )
-
         });
+        let clasePopup = "";
 
-        L.marker([
-            parseFloat(
-                reporte.latitud
-            ),
-            parseFloat(
-                reporte.longitud
-            )
-        ])
-        .addTo(map)
-        .bindPopup(
-            `<b>${reporte.nombre_tipo}</b><br>${reporte.descripcion}`
-        );
+if(reporte.nombre_tipo === "Robo"){
 
+    clasePopup = "popup-robo";
+
+}
+else if(reporte.nombre_tipo === "Acoso"){
+
+    clasePopup = "popup-acoso";
+
+}
+else if(reporte.nombre_tipo === "Calle Oscura"){
+
+    clasePopup = "popup-calle";
+
+}
+else{
+
+    clasePopup = "popup-otro";
+
+}
+let icono = "";
+if(reporte.nombre_tipo === "Robo"){
+
+    icono = "img/mala-persona.png";
+
+}
+
+if(reporte.nombre_tipo === "Acoso"){
+
+    icono = "img/excluir.png";
+
+}
+
+if(reporte.nombre_tipo === "Calle Oscura"){
+
+    icono = "img/mala-idea.png";
+
+}
+
+if(reporte.nombre_tipo === "Otro"){
+
+    icono = "img/otro.png";
+
+}
+
+const iconoReporte = L.icon({
+
+    iconUrl: icono,
+
+    iconSize: [35,35],
+
+    iconAnchor: [17,35],
+
+    popupAnchor: [0,-35]
+
+});
+L.marker(
+    [
+        parseFloat(
+            reporte.latitud
+        ),
+        parseFloat(
+            reporte.longitud
+        )
+    ],
+    {
+        icon: iconoReporte
+    }
+)
+.addTo(map)
+
+.bindPopup(
+`
+<div class="${clasePopup}">
+
+    <b>${reporte.nombre_tipo}</b>
+
+    <br>
+
+    ${reporte.descripcion}
+
+</div>
+`
+);
+``
     }
 );
 

@@ -46,36 +46,64 @@
         </p>
 
         <div id="mapaRutas"></div>
-
         <div class="info-ruta">
 
-            <p>
-                <strong id="lblDistancia">Distancia:</strong>
-                <span id="distancia">--</span>
-            </p>
+    <div class="estadisticas-ruta">
 
-            <p>
-                <strong id="lblTiempo">Tiempo estimado:</strong>
-                <span id="tiempo">--</span>
-            </p>
+        <div class="card-ruta">
 
-            <p>
-                <strong id="lblSeguridad">Nivel de seguridad:</strong>
-                <span id="seguridad">--</span>
-            </p>
+            <div>📏</div>
 
-            <p>
-                <strong id="lblReportesCercanos">Reportes cercanos:</strong>
-                <span id="reportesEncontrados">0</span>
-            </p>
+            <h3 id="distancia">--</h3>
 
-            <p>
-                <strong id="lblRiesgos">Riesgos detectados:</strong>
-            </p>
-
-            <ul id="listaRiesgos"></ul>
+            <span>Distance</span>
 
         </div>
+
+        <div class="card-ruta">
+
+            <div>⏱️</div>
+
+            <h3 id="tiempo">--</h3>
+
+            <span>Duration</span>
+
+        </div>
+        <div class="seguridad-card" id="seguridadCard">
+
+    <span class="titulo-info">
+        Safety Level
+    </span>
+
+    <h3 id="seguridad">
+        --
+    </h3>
+
+</div>
+
+<div class="reportes-card">
+
+    <span class="titulo-info">
+        Nearby Reports
+    </span>
+
+    <h3 id="reportesEncontrados">
+        0
+    </h3>
+
+</div>
+
+<div class="riesgos-card">
+
+    <span class="titulo-info">
+        Detected Risks
+    </span>
+
+    <ul id="listaRiesgos"></ul>
+
+</div>
+
+    </div>
 
         <button class="btn-ruta">
             <span id="lblBuscarRuta">
