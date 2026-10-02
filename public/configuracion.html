@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuración - SafeWalk</title>
- 
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
- 
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/configuracion.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="css/estilosper.css">
 </head>
- 
+
 <body>
- 
+
     <main class="contenedor">
- 
+
         <header class="header-pagina">
             <button id="btnVolver" class="btn-volver" onclick="volverPerfil()">
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
             <h1 id="lblTituloConfig" data-es="Configuración" data-en="Settings">Configuración</h1>
         </header>
- 
+
         <section class="lista-opciones">
- 
+
             <button class="opcion">
                 <div class="izquierda">
                     <i class="fa-solid fa-ruler"></i>
@@ -41,7 +41,7 @@
                     </select>
                 </div>
             </button>
- 
+
             <button class="opcion">
                 <div class="izquierda">
                     <i class="fa-solid fa-globe"></i>
@@ -54,8 +54,7 @@
                     </select>
                 </div>
             </button>
- 
-            <!-- Fila de Tema limpia sin el <button> duplicado externo -->
+
             <div id="btnCambiarTema" class="opcion opcion-click" style="cursor: pointer;">
                 <div class="izquierda">
                     <i id="iconoTema" class="fa-solid fa-moon"></i>
@@ -65,7 +64,7 @@
                     <span id="textoTemaEstado" class="estado-texto" data-es="Claro" data-en="Light">Claro</span>
                 </div>
             </div>
- 
+
             <button class="opcion">
                 <div class="izquierda">
                     <i class="fa-solid fa-circle-question"></i>
@@ -73,7 +72,7 @@
                 </div>
                 <i class="fa-solid fa-chevron-right"></i>
             </button>
- 
+
             <button class="opcion">
                 <div class="izquierda">
                     <i class="fa-solid fa-circle-info"></i>
@@ -83,29 +82,21 @@
                     <span class="valor-opcion">V1.0.0</span>
                     <i class="fa-solid fa-chevron-right"></i>
                 </div>
+            </button>
 
-           <section class="salir">
-    <button id="btnCerrarSesion" class="cerrar" type="button"
-        onclick="cerrarSesion()">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        <span>Cerrar Sesión</span>
-    </button>
-</section>
+        </section>
 
-<script>
-function cerrarSesion() {
-    alert("Cerrando sesión...");
-
-    window.location.href = "../auth/logout.php";
-}
-</script>
+        <section class="salir">
+            <button id="btnCerrarSesion" class="cerrar" type="button">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Cerrar Sesión</span>
+            </button>
+        </section>
 
     </main>
- 
+
     <script src="js/configuracion.js"></script>
- 
+
 </body>
- 
+
 </html>
-
-

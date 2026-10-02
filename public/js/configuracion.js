@@ -1,3 +1,8 @@
+// Función global para volver al perfil desde la flecha superior
+function volverPerfil() {
+    window.location.href = "miperfil.html";
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Cargar y aplicar Tema Guardado
     const temaGuardado = localStorage.getItem('temaApp') || 'claro';
@@ -21,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Traducir los elementos al cargar la pantalla
     aplicarTraduccionConfiguracion(idiomaGuardado);
 
-    // 4. Activar el evento para cambiar de Tema
+    // 4. Evento para cambiar de Tema
     const btnCambiarTema = document.getElementById('btnCambiarTema');
     if (btnCambiarTema) {
         btnCambiarTema.addEventListener('click', () => {
@@ -32,14 +37,26 @@ document.addEventListener('DOMContentLoaded', () => {
             aplicarTema(nuevoTema);
         });
     }
+
+    // 5. Evento para el botón de regresar
+    const btnVolver = document.getElementById('btnVolver');
+    if (btnVolver) {
+        btnVolver.addEventListener('click', volverPerfil);
+    }
+
+    // 6. Evento para cerrar sesión
+    const btnCerrarSesion = document.getElementById('btnCerrarSesion');
+    if (btnCerrarSesion) {
+        btnCerrarSesion.addEventListener('click', () => {
+            window.location.href = "../auth/logout.php";
+        });
+    }
 });
 
 // Función que se ejecuta al cambiar la opción del desplegable de idioma
 function cambiarIdioma(nuevoIdioma) {
     const claveIdioma = (nuevoIdioma === "English" || nuevoIdioma === "en") ? "en" : "es";
     localStorage.setItem("idioma", claveIdioma);
-
-    // Traducir inmediatamente esta pantalla
     aplicarTraduccionConfiguracion(claveIdioma);
 }
 
@@ -52,11 +69,9 @@ function cambiarUnidad(nuevaUnidad) {
 function aplicarTraduccionConfiguracion(lang) {
     const esIngles = (lang === 'en' || lang === 'English');
 
-    // Título superior de la página
     const lblTitulo = document.querySelector('header h1') || document.getElementById('lblTituloConfig');
     if (lblTitulo) lblTitulo.textContent = esIngles ? 'Settings' : 'Configuración';
 
-    // Opciones del menú
     const lblUnidades = document.getElementById('lblUnidades');
     const lblIdioma = document.getElementById('lblIdioma');
     const lblTema = document.getElementById('lblTema');
@@ -76,7 +91,6 @@ function aplicarTraduccionConfiguracion(lang) {
         btnCerrarSesion.innerHTML = `<i class="fa-solid fa-right-from-bracket"></i> ${esIngles ? 'Log Out' : 'Cerrar Sesión'}`;
     }
 
-    // Actualiza texto de estado del Tema según idioma
     const temaActual = localStorage.getItem('temaApp') || 'claro';
     aplicarTema(temaActual);
 }
@@ -97,25 +111,4 @@ function aplicarTema(tema) {
         if (textoEstado) textoEstado.textContent = esIngles ? 'Light' : 'Claro';
         if (icono) icono.className = 'fa-solid fa-moon';
     }
-    
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-
-    const btnCerrarSesion = document.getElementById("btnCerrarSesion");
-
-    if (btnCerrarSesion) {
-
-        btnCerrarSesion.addEventListener("click", function() {
-
-            window.location.href = "../auth/logout.php";
-
-        });
-
-    }
-
-});
-
-
-
-
