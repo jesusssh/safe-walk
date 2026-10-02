@@ -63,7 +63,7 @@ async function guardar(e){
 
             formulario.reset();
 
-            window.location.href="inicio2.html";
+            window.location.href="index.html";
 
         }else{
 

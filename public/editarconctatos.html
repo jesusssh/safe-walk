@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Editar Contacto - SafeWalk</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/contac.css">
+    <link rel="stylesheet" href="css/estilosper.css">
+</head>
+
+<body>
+
+    <main class="contenedor">
+
+        <header class="header-pagina">
+
+            <button class="btn-volver" onclick="volverContactos()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+
+            <h1>Editar Contacto</h1>
+
+        </header>
+
+
+        <section class="formulario-contacto">
+
+            <div class="mb-3">
+
+                <label for="nombreContacto" class="form-label">
+                    Nombre
+                </label>
+
+                <input
+                    type="text"
+                    id="nombreContacto"
+                    class="form-control"
+                    placeholder="Nombre del contacto">
+
+            </div>
+
+
+            <div class="mb-3">
+
+                <label for="numContacto" class="form-label">
+                    Número de teléfono
+                </label>
+
+                <input
+                    type="tel"
+                    id="numContacto"
+                    class="form-control"
+                    placeholder="Número de teléfono">
+
+            </div>
+
+
+            <button
+                type="button"
+                class="btn-agregar"
+                onclick="guardarContacto()">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                Guardar cambios
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/editarcontacto.js"></script>
+
+</body>
+
+</html>
