@@ -455,3 +455,62 @@ rutaControl = L.Routing.control({
     });
 
 });
+const idioma =
+
+localStorage.getItem(
+    "idioma"
+);
+
+if(idioma === "en"){
+
+    document.getElementById(
+        "lblTituloRutas"
+    ).textContent =
+    "Safe Routes";
+
+    document.getElementById(
+        "lblUbicacionActual"
+    ).textContent =
+    "Current Location";
+
+    document.getElementById(
+        "lblDestino"
+    ).textContent =
+    "Destination";
+
+    document.getElementById(
+        "txtAyudaDestino"
+    ).textContent =
+    "Select your destination directly on the map.";
+
+    document.getElementById(
+        "lblDistancia"
+    ).textContent =
+    "Distance:";
+
+    document.getElementById(
+        "lblTiempo"
+    ).textContent =
+    "Estimated Time:";
+
+    document.getElementById(
+        "lblSeguridad"
+    ).textContent =
+    "Safety Level:";
+
+    document.getElementById(
+        "lblReportesCercanos"
+    ).textContent =
+    "Nearby Reports:";
+
+    document.getElementById(
+        "lblRiesgos"
+    ).textContent =
+    "Detected Risks:";
+
+    document.getElementById(
+        "txtBuscarRuta"
+    ).textContent =
+    "Find Safe Route";
+
+}
